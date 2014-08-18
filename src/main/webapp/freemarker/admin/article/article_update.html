@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<#include "../include/resource.html">
+<body>
+<#include "../include/left.html">
+  <div id="main-content">
+    <noscript>
+    <div class="notification error png_bg">
+      <div> 很遗憾！您的浏览器不支持JS脚本，无法正常浏览该网页。</div>
+    </div>
+    </noscript>
+    <!-- Page Head -->
+    <h2>欢迎进入 管理员后台</h2>
+    <p id="page-intro">这是一个管理界面。</p>
+
+    <div class="clear"></div>
+    <div class="content-box">
+      <div class="content-box-header">
+        <h3>修改文章</h3>
+        <ul class="content-box-tabs">
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="content-box-content">
+        
+  
+         
+        <div class="tab-content default-tab" id="tab1">
+          <form action="${webroot}/back/article/doupdateArticle" method="post" enctype="multipart/form-data">
+          <input type="hidden" value="${article.id}" name="id" />
+            <fieldset>
+            <p>
+              <label>标题</label>
+              <input class="text-input medium-input datepicker" type="text" id="medium-input" name="title"  value="${article.title}"/>
+              <!--<span class="input-notification success png_bg">成功通过提示信息</span>
+              <span class="input-notification error png_bg">错误提示信息</span>
+              -->
+              <br />
+            <p>
+              <label>类型</label>
+              <select name="type" class="small-input">
+             
+              <#list articleTypeList as articleType>
+
+                            
+               <option <#if articleType.id == article.type> selected="selected"  </#if> value="${articleType.id }">
+               ${articleType.type}
+               </option> 
+
+                  
+              </#list>
+           
+                
+              </select>
+            </p>
+            <p>
+              <label>内容</label>
+              <textarea class="text-input textarea wysiwyg" id="textarea" name="content" cols="79" rows="15">${article.content}</textarea>
+            </p>
+            <p>
+              <input class="button" type="submit" value="修改" />
+            </p>
+            </fieldset>
+            <div class="clear"></div>
+          </form>
+        </div>
+        <!-- End #tab2 -->
+      </div>
+      <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+    <div class="content-box column-left"><!-- End .content-box-header -->
+ 
+      <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+    
+    <div class="clear"></div>
+
+    <!-- End Notifications -->
+   <#include "../include/footer.html">
+  </div>
+</body>
+</html>

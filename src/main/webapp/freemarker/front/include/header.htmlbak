@@ -1,0 +1,45 @@
+<!-- 网页头部 -->
+
+<!-- ******************* start header   *********************** -->
+<div class="phd">
+    <div class="top main infinitus_header">
+        <div class="tool">
+            <p class="quicklink tr">
+                <a href="" target="_blank" class="">汇兴科技网</a>
+                |<a href="javascript:addfav();" class="">加入收藏</a>	<!--首页 头部快捷菜单-->
+            </p>
+
+            <div class="clearfix">
+               <!--<div class="tool-search clearfix">
+                    <form name="topsearch" id="topsearch" method="GET" action="http://wwwspace.infinitus.com.cn/?app=search&amp;controller=index&amp;action=search">
+                        <input name="app" value="search" type="hidden">
+                        <input name="controller" value="index" type="hidden">
+                        <input name="action" value="search" type="hidden">
+                        <input name="type" value="all" type="hidden">
+                                                <input onfocus="this.value=(this.value=='健康')?'':this.value" onblur="this.value=(this.value=='')?'健康':this.value" name="wd" value="健康" class="text sear-box" type="input">
+                                                <input value="检索" class="submit sear-btn f-r" title="去搜索" type="submit">
+                    </form>
+                </div>-->
+            </div>
+        </div>
+        <a href="http://www.kelidly.com/" class="logo">凯利得</a>
+    </div>
+        <div class="top_nav">
+        <div class="main">
+            <ul class="clearfix">
+                <li><a class="<#if nid??&&nid='index'>hover</#if>" href="${webroot}/index.html">首 页</a></li>
+                	<#list directoryList as directory>
+                		<li><a class="<#if nid??&&nid='${directory.id}'>hover</#if>" <#if directory.url?? >href="${webroot}${directory.url}"</#if>>${directory.directoryName}</a></li>
+                	</#list>
+                
+              <!--   <li><a class="<#if nid??&&nid='about'>hover</#if>" href="${webroot}/about/index.html">关于汇兴</a></li>
+                <li><a class="<#if nid??&&nid='wel'>hover</#if>" href="">产品中心</a></li>
+                <li><a class="<#if nid??&&nid='news'>hover</#if>" href="${webroot}/news/index.html">新闻咨询</a></li>
+                <li><a class="<#if nid??&&nid='contact'>hover</#if>" href="${webroot}/about/contact">联系我们</a></li> -->
+               
+            </ul>
+        </div>   
+</div>
+</div>
+        
+<!-- *******************  end header   *********************** -->

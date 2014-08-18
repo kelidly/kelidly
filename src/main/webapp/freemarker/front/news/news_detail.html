@@ -1,0 +1,111 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<#include "../include/resource.html">
+<body>
+	<#assign nid="news"> 
+	<!--head start-->
+	<#include "../include/header.html">
+	<!--head end-->
+	<!--body start-->
+	<div class="pcon">
+		<div style="clear: both;"></div>
+		<div id="nybanner">
+			<div class="zj">
+				<img src="${webroot}/freemarker/themes/img/nybanner.jpg"
+					height="201">
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="nycontent">
+			<div class="zj">
+
+				<!-- 导航栏  -->
+				<div class="daohang">
+					<div class="home">
+						<a href="">首页 </a>
+					</div>
+					&nbsp;&gt;&nbsp; <a href=""
+						style="color: #444; text-decoration: none;">新闻咨询</a>
+					&nbsp;&gt;&nbsp; <a href=""
+						style="color: #444; text-decoration: none;">${newsBean.typeId}</a>
+				</div>
+
+				<!-- 左侧分栏 -->
+
+				<#include "newstype.html">
+
+				<!-- 右侧内容 -->
+				<div class="right">
+				<h3 class="contact-title contact-bot-line">媒体报道</h3>
+				<div class="contact-div">
+					<table class="news-list" border="0" cellpadding="0" cellspacing="0"
+						width="100%">
+						<tbody>
+							<tr>
+								<td align="center" height="26"><h4
+										class="news-details-title">${newsBean.title}</h4></td>
+							</tr>
+						</tbody>
+					</table>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tbody>
+							<tr>
+								<td align="right" height="26">发布时间：${newsBean.pubTime}&nbsp;&nbsp;被阅次数：${newsBean.hot} &nbsp;&nbsp;来源：</td>
+							</tr>
+						</tbody>
+					</table>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tbody>
+							<tr>
+								<td class="news-content" height="26">
+									<!-- 内容-->
+									
+									
+									${newsBean.content}
+									
+									<p class="MsoNormal">
+										<span lang="EN-US">&nbsp;</span>
+									</p>
+									<p></p>
+									<p>&nbsp;</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+					<!-- <table style="margin: 10px 0px; padding: 0px 10px;" border="0"
+						cellpadding="0" cellspacing="0" width="100%">
+						<tbody>
+							<tr>
+								<td align="left" height="26">[上一条]<a href="">延华集团启动“基于云计算的智慧城市运营管理体系及模式研究”课题</a><br>
+										[下一条]<a href="">翁志勇：建智慧城市，活智慧人生</a></td>
+							</tr>
+						</tbody>
+					</table> -->
+				</div>
+			</div>
+
+
+
+
+
+
+
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+
+
+	</div>
+
+	<!--body end-->
+
+	<#include "../include/footer.html">
+</body>
+
+</html>
