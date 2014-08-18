@@ -13,6 +13,7 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 public class HttpRequest {
+	
 
     public static String sendGet(String url, String param) {
         String result = "";
