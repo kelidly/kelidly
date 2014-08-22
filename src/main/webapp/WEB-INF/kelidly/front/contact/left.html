@@ -1,0 +1,20 @@
+
+<div class="left">
+	<div class="clm">
+		<ul>
+			<li><a href="${webroot}/article/contact.html">联系方式</a></li>
+			<li><a href="${webroot}/article/feedback.html">客户留言</a></li>			
+			<li><a href="${webroot}/article/emap.html">电子地图</a></li>
+			<#list articleList as article>
+				<li><a href="${webroot}/article/contact.html?id=${article.id}">${article.title}</a></li>
+			</#list>		
+		</ul>
+	</div>
+	<div style="width: 221px;">
+		<a href=""><img src="${webroot}/freemarker/themes/img/ny_kf.jpg"
+			height="70" width="221"></a>
+	</div>
+</div>
+
+
+

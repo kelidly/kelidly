@@ -1,0 +1,107 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<#include "../include/resource.html">
+<body>
+	<#assign nid="news"> <#assign mid="news_pub"> <#include
+	"../include/left.html">
+
+
+	<div id="main-content">
+		<noscript>
+			<div class="notification error png_bg">
+				<div>很遗憾！您的浏览器不支持JS脚本，无法正常浏览该网页。</div>
+			</div>
+		</noscript>
+		<!-- Page Head -->
+		<h2>欢迎进入 管理员后台</h2>
+		<p id="page-intro">这是一个管理界面。</p>
+
+		<div class="clear"></div>
+		<div class="content-box">
+			<div class="content-box-header">
+				<h3>发布文章</h3>
+				<ul class="content-box-tabs">
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="content-box-content">
+
+
+
+				<div class="tab-content default-tab" id="tab1">
+					<form action="${webroot}/back/news/add" method="post">
+						<fieldset>
+							<p>
+								<div style="float: right;">
+									<input id="create" style="display: none;" class="button" type="button" onclick="createEditor()" value="创建编辑器" /> 
+									<input id="delete" class="button" type="button"	onclick="deleteEditor()" value="删除编辑器" />
+									<input class="button" type="submit" value="发布" />	
+								</div>
+							</p>
+							<p>
+								<label>添加标题</label> <input
+									class="text-input medium-input datepicker" type="text"
+									id="medium-input" name="title" />
+							</p>
+							<br />
+
+							<p>
+								<label>选择类型</label> <select name="typeId" class="small-input">
+									<#list typeList as tlist>
+									<option value="${tlist.id }">${tlist.type }</option> </#list>
+
+								</select>
+							</p>
+							<p>
+								<label>内容</label>
+								<script id="editor" name="content" type="text/plain"
+									style="width:100%;height:500px;"></script>
+							</p>
+						
+							<script type="text/javascript">
+								//实例化编辑器
+								//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+								var ue = UE.getEditor('editor');
+
+								function deleteEditor() {
+									UE.getEditor('editor').destroy();
+									$('editor').attr("name", "content");
+									$('#create').show();
+									$('#delete').hide();
+								}
+								function createEditor() {
+									UE.getEditor('editor');
+									$('#delete').show();
+									$('#create').hide();
+								}
+							</script>
+							
+						</fieldset>
+						
+					</form>
+
+
+				</div>
+				<!-- End #tab2 -->
+			</div>
+			<!-- End .content-box-content -->
+		</div>
+		<!-- End .content-box -->
+		<div class="content-box column-left">
+			<!-- End .content-box-header -->
+
+			<!-- End .content-box-content -->
+		</div>
+		<!-- End .content-box -->
+
+		<div class="clear"></div>
+
+		<!-- End Notifications -->
+		<#include "../include/footer.html">
+	</div>
+
+</body>
+</html>

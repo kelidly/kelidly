@@ -1,0 +1,23 @@
+<!-- 返回顶部 -->
+<!-- ******************* backtop footer   *********************** -->
+<div class="scroll-top" id="scroll-top"></div>
+<script>
+	$(function() {
+		function showScroll() {
+			$(window).scroll(
+					function() {
+						var scrollValue = $(window).scrollTop();
+						scrollValue > 300 ? $('div[class=scroll-top]').fadeIn()
+								: $('div[class=scroll-top]').fadeOut();
+					});
+			$('#scroll-top').click(function() {
+				$("html,body").animate({
+					scrollTop : 0
+				}, 1000);
+			});
+		}
+		showScroll();
+	})
+</script>
+
+<!-- *******************  backtop footer   *********************** -->

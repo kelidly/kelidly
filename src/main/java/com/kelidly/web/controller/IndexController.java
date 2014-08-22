@@ -33,7 +33,10 @@ public class IndexController {
 
 		
 		List linksList = linksService.query(1, 20).getResult();
-		model.addAttribute("linksList", linksList);		
+		model.addAttribute("linksList", linksList);	
+		
+		
+		
 
 		
 		return "/front/index";

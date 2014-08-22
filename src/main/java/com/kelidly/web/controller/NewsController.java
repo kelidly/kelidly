@@ -46,6 +46,9 @@ public class NewsController {
 		List<NewsType> typeList = newsService.queryAllType();
 	    model.addAttribute("typeList", typeList);
 	    
+	    
+	    
+	    
 	    //最新咨询
 	    List recentList = newsService.queryRecentNews();
 		model.addAttribute("recentList", recentList);

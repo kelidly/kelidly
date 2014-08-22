@@ -1,0 +1,118 @@
+<!-- 网页头部 -->
+
+<!-- ******************* start header   *********************** -->
+<div id="container">
+	<div class="section" id="section-1">
+
+		<div class="M-top clearfix" style="left: 0px; top: 0px;">
+			<div class="M-logo fl">
+				<a href="http://www.erongdu.com/"><img src="rd3_files/logo.png">
+				<div class="logo-bg hide">专注产品,拥抱变化</div></a>
+			</div>
+			<script>
+				$(".M-logo").mouseover(function() {
+					$(".M-logo .logo-bg").removeClass("hide")
+				})
+				$(".M-logo").mouseout(function() {
+					$(".M-logo .logo-bg").addClass("hide")
+				})
+			</script>
+			<div class="M-top-right fr clearfix">
+				<div class="M-nav clearfix fl" id="menu1">
+					<ul>
+						<li><a href=""><div style="margin-top: 0px;">
+									<p style="margin-top: 0px;">
+										<span>产品方案</span><font>PRODUCT</font>
+									</p>
+								</div></a></li>
+						<li><a href=""><div style="margin-top: 0px;">
+									<p>
+										<span>合作伙伴</span><font>PARTNER</font>
+									</p>
+								</div></a></li>
+						<li><a href=""><div style="margin-top: 0px;">
+									<p>
+										<span>案例展示</span><font>WORK</font>
+									</p>
+								</div></a></li>
+						<li><a href=""><div style="margin-top: 0px;">
+									<p>
+										<span>资讯动态</span><font>NEWS</font>
+									</p>
+								</div></a></li>
+						<li><a href=""><div style="margin-top: 0px;">
+									<p>
+										<span>关于融都</span>
+									</p>
+									<font>RONGDU</font>
+								</div></a></li>
+					</ul>
+				</div>
+
+
+				<div class="header_lx float_left">
+					<a href=""> <b class="header_lx1"></b><span class="hide">0571-33333333
+					</span>
+					</a> <a href=""> <b class="header_lx2"></b><span class="hide">汇兴找伙伴</span>
+					</a> <!-- <a class="qq-btn"> <b class="header_lx3"></b><span
+						class="hide">点击在线咨询</span>
+					</a> -->
+				</div>
+				<script>
+					$('.header_lx a').each(function() {
+						$(this).hover(function() {
+							jQuery(this).find("span").removeClass("hide");
+							jQuery(this).addClass("lx_width")
+						}, function() {
+							jQuery(this).find("span").addClass("hide");
+							jQuery(this).removeClass("lx_width")
+						});
+					});
+				</script>
+
+			</div>
+
+		</div>
+
+		<!--   客服
+<div class="qq-consult" style="display:none;">
+  <div class="qq-consult-con"> 
+     <span class="qq-consult-title">咨询or留言</span>
+     <span> Consulting or leave a message</span>
+     <p>请留下您的联系方式或者宝贵意见，我们会在第一时间反馈</p>
+     <ul class="qq-ul clearfix">
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1355920995&amp;site=qq&amp;menu=yes"></a><span>客服-1</span></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=237328451&amp;site=qq&amp;menu=yes"></a><span>客服-2</span></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2428776102&amp;site=qq&amp;menu=yes"></a><span>客服-3</span></li>
+		<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=537079798&amp;site=qq&amp;menu=yes"></a><span>客服-4</span></li>
+     </ul>
+  </div>
+  <div class="qq-close"></div>
+</div>-->		
+		<script>
+			$(function() {
+				$(".qq-btn").click(function() {
+
+					var i = $.layer({
+						type : 1,
+						title : false,
+						closeBtn : false,
+						border : [ 0 ],
+						area : [ '636px', '360px' ],
+						page : {
+							dom : '.qq-consult'
+						}
+					});
+					$('.qq-close').on('click', function() {
+						layer.close(i);
+					});
+				})
+
+			});
+		</script>
+
+	</div>
+
+</div>
+
+<!-- *******************  end header   *********************** -->
