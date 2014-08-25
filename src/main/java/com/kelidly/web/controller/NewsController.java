@@ -28,15 +28,9 @@ public class NewsController {
 			@RequestParam(value="pageSize",defaultValue="40") int pageSize,
 			@RequestParam(value="typeId",defaultValue="1") int typeId,Model model){
 		
-		List newsList = newsService.queryByType(typeId);       
-        if (newsList != null && newsList.size()!=0) {			
-        	News newsBean = (News)newsList.get(0);
-        	NewsType newsType = newsService.findNewstypeByid(newsBean.getTypeId());
-        	//新闻类型
-        	model.addAttribute("newsType",newsType);
-		}
-        //某类型新闻列表（未用）
-        model.addAttribute("newsList", newsList);	
+        NewsType newsType = newsService.findNewstypeByid(typeId);
+    	//新闻类型
+    	model.addAttribute("newsType",newsType);
         
         //分页新闻列表
         PageModel pagemodel = newsService.query(pageNo,pageSize,typeId);
@@ -44,14 +38,15 @@ public class NewsController {
 		
 		//新闻类型列表
 		List<NewsType> typeList = newsService.queryAllType();
-	    model.addAttribute("typeList", typeList);
+	    model.addAttribute("typeList", typeList);       
 	    
-	    
-	    
-	    
-	    //最新咨询
-	    List recentList = newsService.queryRecentNews();
-		model.addAttribute("recentList", recentList);
+//	    //最新咨询
+//	    List recentList = newsService.queryRecentNews();
+//		model.addAttribute("recentList", recentList);
+//		List newsList = newsService.queryByType(typeId);       
+//      //某类型新闻列表
+//      model.addAttribute("newsList", newsList);	
+		
 		return "/front/news/news";
 	}
 	
@@ -59,18 +54,17 @@ public class NewsController {
 	public String toDetailView(@RequestParam(value="id",defaultValue="1") int newsId,
 			@RequestParam(value="typeId",defaultValue="1") int typeId,Model model){
 		
-		//List newsList = newsService.queryByType(newsId);
 	    List<NewsType> typeList = newsService.queryAllType();
 	    model.addAttribute("typeList", typeList);
 	    
 	    News newsBean = newsService.queryForBeanById(newsId);
 	    model.addAttribute("newsBean", newsBean);
 	    
-        //List updownList = newsService.queryForUpDownById(newsId);
 	    
 		//最新咨询
-		List<News> recentList = newsService.queryRecentNews();
-		model.addAttribute("recentList", recentList);
+//		List<News> recentList = newsService.queryRecentNews();
+//		model.addAttribute("recentList", recentList);
+	    
 		return "/front/news/news_detail";
 	}
 	@RequestMapping("/proof")

@@ -61,6 +61,16 @@ public class ArticleController {
 		
 		return "/front/product/detail";
 	}
+	
+	@RequestMapping("/productinfo")
+	public String productInfo(@RequestParam(value="id",defaultValue="1")int id,Model model){		
+		
+		//根据id查文章
+		Article article = articleService.findArticleByid(id);
+		model.addAttribute("article", article);
+		
+		return "/front/product/info";
+	}
 	/**
 	 * 联系我们
 	 * @param model

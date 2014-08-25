@@ -18,17 +18,8 @@ html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, sel
 
 /*A*/
 
-a{
-
-	text-decoration:none;
-
-}
-
-a:hover{
-
-	text-decoration:none;
-
-}
+a{ text-decoration:none; color:#0C0B0B;}
+a:hover{ text-decoration:none; color:#E76068;}
 
 /*img*/
 
