@@ -1,15 +1,10 @@
 package com.kelidly.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "article")
@@ -28,15 +23,18 @@ public class Article implements Serializable {
 	private String title;
 	private String content;
 	private long type;
+	private String imgurl;
 	public Article() {
 		super();
 	}
-	public Article(long id, String title, String content, long type) {
+	public Article(long id, String title, String content, long type,
+			String imgurl) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.type = type;
+		this.imgurl = imgurl;
 	}
 	public long getId() {
 		return id;
@@ -61,6 +59,12 @@ public class Article implements Serializable {
 	}
 	public void setType(long type) {
 		this.type = type;
+	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
 	}
 	
 	

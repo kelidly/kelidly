@@ -52,7 +52,7 @@ public class ArticleController {
 	@RequestMapping("/product")
 	public String productDetail(@RequestParam(value="id",defaultValue="1")int id,Model model){
 		
-		//查询左右文章，
+		//查询左右文章，所有product文章
 		List<Article> articleList = articleService.findArticleByType(2);
 		model.addAttribute("articleList", articleList);
 		//根据id查文章
