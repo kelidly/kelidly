@@ -37,7 +37,8 @@ public interface SiteDao extends BaseDao<Site> {
 	 * 查找二级栏目	
 	 * @return
 	 */
-	List<Site> getSecondSiteList();
+
+	List<Site> getSecondListSiteList();
 	
 	
 }
