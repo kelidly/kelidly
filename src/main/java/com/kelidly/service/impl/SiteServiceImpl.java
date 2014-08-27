@@ -77,8 +77,19 @@ public class SiteServiceImpl  implements SiteService{
 	}
 
 	@Override
+	public List<Site> findFirstSiteList() {
+		List<Site> sitelist = siteDao.getFirstSiteList();
+		return sitelist;
+	}
+	
+	@Override
 	public List<Site> findSecondSiteList() {
 		List<Site> sitelist = siteDao.getSecondSiteList();
 		return sitelist;
+	}
+	@Override
+	public List<Site> findSiteListByPid(long pid) {
+		List<Site> sublist=siteDao.getSiteListByPid(pid);
+		return sublist;
 	}
 }

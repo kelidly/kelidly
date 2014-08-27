@@ -12,7 +12,7 @@ public interface ArticleDao extends BaseDao<Article> {
 	
 	List<Article> getAllProductArticle();
 
-	Article getArticleByid(int id);
+	Article getArticleByid(long id);
 	
 	List<ArticleType> getAllArticleType();
 
@@ -21,5 +21,9 @@ public interface ArticleDao extends BaseDao<Article> {
 	List<Article> getArticleByType(long type);
 
 	PageModel query(int pageNo, int pageSize);
+
+	PageModel getPageArticleBySiteId(int pageNo, int pageSize, long siteid);
+
+	
 
 }

@@ -5,8 +5,7 @@
 
 <#include "../include/resource.html">
 <body>
-	<#assign nid="product">
-
+	<#assign nid="product"> 	
 	<!--head start-->
 	<#include "../include/header.html">
 	<!--head end-->
@@ -23,31 +22,35 @@
 	<div class="clearfix mediaCenter_warp">
 
 		<div class="about_w920">
-			<#include "aboutleft.html">
-			<div class="Content_fr ContentDetail">
+			<#include "newsleft.html">
+			<div class="Content_fr">
 				<h2>
 					${site.name!'无题'}<span class="en">${site.name!'无题'}</span>
-				</h2>
-				<div class="title">
-					<h1>${article.title}</h1>
-					<h4>发表于：${article.addtime!'2014-01-01'}</h4>
+				</h2>				
+				<#if pagemodel??>
+				<div class="list">
+					<ul>						
+						<#list pagemodel.result  as article>
+						<li><a href="${webroot}/news/detail.html?pid=${psite.id}&id=${site.id}&aid=${article.id}"><span>${article.addtime!'2014-01-01'}</span>${article.title!'无题'}</a></li>
+						</#list>
+						
+					</ul>
 				</div>
+				<#else>				
 				<div class="text">
-
-					${article.content}
+					${site.content!"无内容"}
 					</br>
 					 <a href="javascript:history.go(-1);" class="Return">返 回</a>
-				</div>
+				</div>	
+						
+				</#if>
+				
 			</div>
 		</div>
-
-
-
-
 		<!--body end-->
 
-		<#include "../include/footer.html"> <#include
-		"../include/backtop.html">
+		<#include "../include/footer.html"> 
+		<#include "../include/backtop.html">
 </body>
 
 </html>
