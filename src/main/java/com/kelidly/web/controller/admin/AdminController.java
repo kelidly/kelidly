@@ -66,7 +66,7 @@ public class AdminController {
 			session.setAttribute(CommonConstant.AUTH_USER, AdminName);
 			
 			//栏目树
-			SiteTree siteTree = siteService.getSiteTree();		
+			SiteTree siteTree = siteService.findSiteTree();		
 			session.setAttribute("tree", siteTree);
 			
 			return "/admin/index";

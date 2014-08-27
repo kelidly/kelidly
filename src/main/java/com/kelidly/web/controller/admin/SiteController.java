@@ -37,9 +37,9 @@ public class SiteController {
 
 	@RequestMapping(value="/showSite")
 	public String showSite(Model model,@RequestParam("siteid")long id){
-		Site site=siteService.getSiteById(id);
+		Site site=siteService.findSiteById(id);
 		if(site!=null){
-			Site psite=siteService.getSiteById(site.getPid());
+			Site psite=siteService.findSiteById(site.getPid());
 			model.addAttribute("site", site);
 			if(psite==null){
 				psite=new Site();
@@ -49,7 +49,7 @@ public class SiteController {
 			model.addAttribute("psite", psite);
 		}		
 		//栏目树
-		SiteTree siteTree = siteService.getSiteTree();		
+		SiteTree siteTree = siteService.findSiteTree();		
 		model.addAttribute("tree", siteTree);
 		return "/admin/article/site";
 	}
@@ -65,9 +65,9 @@ public class SiteController {
 		}
 		model.addAttribute("rtMsg", rtMsg);
 		
-		SiteTree siteTree = siteService.getSiteTree();
+		SiteTree siteTree = siteService.findSiteTree();
 		model.addAttribute("tree", siteTree);
-		Site psite=siteService.getSiteById(site.getPid());
+		Site psite=siteService.findSiteById(site.getPid());
 		if(psite==null){
 			psite=new Site();
 			psite.setName("根目录");
@@ -94,9 +94,9 @@ public class SiteController {
 			model.addAttribute("rtMsg", rtMsg);			
 		}		
 		
-		SiteTree siteTree = siteService.getSiteTree();
+		SiteTree siteTree = siteService.findSiteTree();
 		model.addAttribute("tree", siteTree);
-		Site psite=siteService.getSiteById(site.getPid());
+		Site psite=siteService.findSiteById(site.getPid());
 		if(psite==null){
 			psite=new Site();
 			psite.setName("根目录");
@@ -109,7 +109,7 @@ public class SiteController {
 	@RequestMapping(value="/delSite")
 	public String delSite( Model model,@RequestParam("siteid")long id){
 		String rtMsg ="";
-		Site psite=siteService.getSiteById(id);
+		Site psite=siteService.findSiteById(id);
 		if(psite!=null&&psite.getPid()>0){	
 			if (siteService.delSite(psite.getId())) {
 				rtMsg = "删除栏目成功！";	
@@ -121,7 +121,7 @@ public class SiteController {
 		}
 		model.addAttribute("rtMsg", rtMsg);	
 		
-		SiteTree siteTree = siteService.getSiteTree();
+		SiteTree siteTree = siteService.findSiteTree();
 		request.setAttribute("tree", siteTree);
 		return "/admin/article/addsite";
 	}

@@ -21,7 +21,7 @@ public class SiteServiceImpl  implements SiteService{
 	SiteDao siteDao;
 	
 	@Override
-	public SiteTree getSiteTree() {
+	public SiteTree findSiteTree() {
 		List<Site> list=siteDao.getFirstSiteList();
 		SiteTree tree=new SiteTree(null, new ArrayList<Tree>());
 		for(Site s:list){
@@ -37,12 +37,12 @@ public class SiteServiceImpl  implements SiteService{
 	}
 	
 	@Override
-	public Site getSiteById(long id) {
+	public Site findSiteById(long id) {
 		return (Site) siteDao.getByPk(Site.class, id);
 	}
 	
 	@Override
-	public Site getSiteByCode(String name) {
+	public Site findSiteByCode(String name) {
 		return siteDao.getSiteByName(name);
 	}
 	
@@ -74,5 +74,11 @@ public class SiteServiceImpl  implements SiteService{
 		}else{
 			return false;
 		}
+	}
+
+	@Override
+	public List<Site> findSecondSiteList() {
+		List<Site> sitelist = siteDao.getSecondSiteList();
+		return sitelist;
 	}
 }

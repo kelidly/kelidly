@@ -1,15 +1,17 @@
 package com.kelidly.service;
 
+import java.util.List;
+
 import com.kelidly.entity.Site;
 import com.kelidly.model.tree.SiteTree;
 
 public interface SiteService {
 
-	SiteTree getSiteTree();
+	SiteTree findSiteTree();
 
-	Site getSiteById(long id);
+	Site findSiteById(long id);
 
-	Site getSiteByCode(String name);
+	Site findSiteByCode(String name);
 
 	void modifySite(Site site);
 
@@ -19,5 +21,6 @@ public interface SiteService {
 
 	boolean checkSiteName(String name);
 	
+	List<Site> findSecondSiteList();
 	
 }
