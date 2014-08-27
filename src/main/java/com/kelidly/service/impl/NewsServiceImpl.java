@@ -41,7 +41,7 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public PageModel query(int pageNo, int pageSize,int typeId) {
 		
-		return newsDao.query( pageNo,  pageSize,typeId);
+		return newsDao.query(pageNo,pageSize,typeId);
 	}
 
 	@Override

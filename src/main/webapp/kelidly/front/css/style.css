@@ -533,7 +533,7 @@ text-decoration:underline;
 color:#999;
 }
 .public-a9 a:hover {
-color:#35a4de;
+color:#E76068;
 }
 .page-consult span.page-consult-title {
 display: block;
@@ -700,7 +700,7 @@ background:#f2f2f2;
 /*.mediaCenter_kv{ height:563px; background:url(../images/mediaCenter_kv.jpg) no-repeat center;}*/
 .mediaCenter_kv img { width:100%;}
 .about_w920{ width:1200px; margin:0px auto; padding:80px 0; overflow:hidden}
-.mediaCenter_warp .about_w920{ overflow:hidden; background:url(../images/menu_bj_05.gif) repeat-y left; padding:0 0 40px 0; margin:40px auto; min-height:620px;}
+.mediaCenter_warp .about_w920{ overflow:hidden; background:url(../img/menu_gb_05.gif) repeat-y left; padding:0 0 40px 0; margin:40px auto; min-height:620px;}
 .mediaCenter_warp .menu_fl{ width:181px; float:left; padding-top:14px;}
 .mediaCenter_warp .menu_fl li{ line-height:30px; display:block; margin:6px 0; text-indent:50px; font-size:14px;}
 .mediaCenter_warp .menu_fl li a{ color:#666; display:block;}

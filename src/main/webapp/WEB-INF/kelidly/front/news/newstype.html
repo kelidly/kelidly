@@ -1,13 +1,9 @@
-			<div class="left">
-				<div class="clm">
-					<ul>
-					<#list typeList as tList>
-						<li><a href="${webroot}/news/index?typeId=${tList.id}">${tList.type}</a></li>
-					</#list>
-					</ul>
-				</div>
-				<div style="width: 221px;">
-					<a href=""><img src="${webroot}/freemarker/themes/img/ny_kf.jpg" height="70"	width="221"></a>
-				</div>
-			</div>
-			
+
+<div class="menu_fl">
+	<ul>
+		<#list typeList as tList>			
+		<li class="<if mid??&&mid='String.valueOf(${tList.id})'>curr"><a href="${webroot}/news/index?typeId=${tList.id}">${tList.type}<i></i></a></li>
+		
+		</#list>		
+	</ul>
+</div>

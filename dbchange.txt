@@ -1,1 +1,1 @@
-alter table article add imgurl text;
+alter table article add imgurl varchar(200);

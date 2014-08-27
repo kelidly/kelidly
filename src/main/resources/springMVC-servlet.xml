@@ -23,6 +23,7 @@
 
 	<mvc:resources mapping="/common/**" location="/common/" />
 	<mvc:resources mapping="/htmlView/**" location="/htmlView/" />
+	<mvc:resources mapping="/kelidly/**" location="/kelidly/" />
 	<!-- <mvc:default-servlet-handler /> -->
 
 		<!-- jsp视图解析器 -->

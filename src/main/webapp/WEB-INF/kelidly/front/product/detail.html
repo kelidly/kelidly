@@ -15,7 +15,7 @@
 	<!-- 导航栏 -->
 	<div class="eq-apb-main">
 		<div class=" public-w public-a9">
-			<a href="index.php">首页</a><span>/</span>产品中心
+			<a href="${weburl}">首页</a><span>/</span>产品中心
 		</div>
 	</div>
 	<!--内容-->
@@ -43,15 +43,15 @@
 					<li>
 						<div class="work-img-con">
 							<span class="work-img-bg">
-							<img src="${web}"></span> 
-							<span class="work-img">
+							<img src="${article.imgurl!'/kelidly/front/img/no.png'}"></span> 
+							<!-- <span class="work-img">
 							<a class="fancybox" href="http://www.erongdu.com/uploads/allimg/140614/1-140614002P0.png"
 								data-fancybox-group="gallery">
 								<img src="rd3_files/1-140614002K3.jpg"></a>
-							</span>
+							</span> -->
 						</div>
 						<div class="work-img-abstract">
-							<a href="http://www.csct.net.cn/" target="_blank">楚商创投</a>
+							<a href="${webroot}/article/productinfo.html?id=${article.id}" target="_blank">${article.title!'无题'}</a>
 						</div>
 					</li>
 					</#list>
