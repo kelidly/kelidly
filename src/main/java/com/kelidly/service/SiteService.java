@@ -21,11 +21,13 @@ public interface SiteService {
 
 	boolean checkSiteName(String name);
 	
+
 	List<Site> findFirstSiteList();
 	
-	List<Site> findSecondSiteList();
+	List<Site> findSecondListSiteList();
 
 	List<Site> findSiteListByPid(long pid);
+
 
 	
 }
