@@ -21,6 +21,6 @@ public interface SiteService {
 
 	boolean checkSiteName(String name);
 	
-	List<Site> findSecondSiteList();
+	List<Site> findSecondListSiteList();
 	
 }

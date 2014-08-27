@@ -64,11 +64,12 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	}
 
 	@Override
-	public List<Site> getSecondSiteList() {
-		String hql = "from Site where rank=:rank";
+	public List<Site> getSecondListSiteList() {
+		String hql = "from Site where rank=:rank and state=:state";
 		Session s = sessionFactory.openSession();
 		Query query = s.createQuery(hql);		
 		query.setInteger("rank", 2);
+		query.setInteger("state", 2);
 		List<Site> list = query.list();
 		return list;
 	}

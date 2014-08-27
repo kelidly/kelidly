@@ -76,9 +76,13 @@ public class SiteServiceImpl  implements SiteService{
 		}
 	}
 
+	
+	/**
+	 * 查找有列表的栏目
+	 */
 	@Override
-	public List<Site> findSecondSiteList() {
-		List<Site> sitelist = siteDao.getSecondSiteList();
+	public List<Site> findSecondListSiteList() {
+		List<Site> sitelist = siteDao.getSecondListSiteList();
 		return sitelist;
 	}
 }
