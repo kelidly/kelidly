@@ -61,7 +61,29 @@
 						<li><a class="<#if mid??&&mid='system_manage'>current</#if>" href="${webroot}/back/system/showSystemConfig.html">系统信息</a></li>
 						<!-- <li><a href="#">我的信息</a></li>
 						<li><a href="#">用户权限</a></li> -->
-					</ul></li> 
+					</ul></li>
+					<li><a href="#" class="nav-top-item <#if nid??&&nid='system'>current</#if>"">栏目管理 </a>			
+					
+					 <ul >
+				        <#if tree??&&tree.hasChild()>
+				
+				            <#list tree.child as item>
+				                <li>
+				            <div ><a class="c" href="/site/showSite.html?siteid=${item.model.id?c}">一级：${item.model.name!}</a></div>
+				                <#if item??&&item.hasChild()>
+				                				                    
+				                    <#list item.child as subitem>
+				                    <li><a class="b" href="/site/showSite.html?siteid=${subitem.model.id?c}" data-nav="/site/showSite.html?siteid=${subitem.model.id?c}"><span>&#183;</span>${subitem.model.name}</a></li>
+				                    </#list>
+				                
+				                </#if>
+				        </li>
+				            </#list>
+				
+				        </#if>
+				    </ul>
+					
+					</li> 
 			</ul>
 		</div>
 	</div>

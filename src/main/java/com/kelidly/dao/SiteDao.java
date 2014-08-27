@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kelidly.entity.Site;
 
-public interface SiteDao {
+public interface SiteDao extends BaseDao<Site> {
 
 	/**
 	 * 根据name查找site栏目对象

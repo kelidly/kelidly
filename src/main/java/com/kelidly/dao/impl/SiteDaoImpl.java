@@ -13,7 +13,7 @@ import com.kelidly.dao.SiteDao;
 import com.kelidly.entity.Site;
 
 
-@Component("adminDao") 
+@Component("siteDao") 
 @SuppressWarnings("unchecked")
 public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 
@@ -27,7 +27,7 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	public Site getSiteByName(String name) {
 		String sql = "from Site where name=:name";
 		Session s = sessionFactory.openSession();
-		Query query = s.createSQLQuery(sql);		
+		Query query = s.createQuery(sql);		
 		query.setString("name", name);
 		List<Site> list = query.list();
 		if(list.size()>=1){
@@ -47,7 +47,7 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	public List<Site> getSiteListByPid(long pid) {
 		String sql = "from Site where pid=:pid";
 		Session s = sessionFactory.openSession();
-		Query query = s.createSQLQuery(sql);		
+		Query query = s.createQuery(sql);		
 		query.setLong("pid", pid);
 		List<Site> list = query.list();
 		return list;
@@ -55,10 +55,10 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	
 	@Override
 	public List<Site> getFirstSiteList() {
-		String sql = "from Site where rank=:rank";
+		String hql = "from Site where rank=:rank";
 		Session s = sessionFactory.openSession();
-		Query query = s.createSQLQuery(sql);		
-		query.setLong("rank", 1);
+		Query query = s.createQuery(hql);		
+		query.setInteger("rank", 1);
 		List<Site> list = query.list();
 		return list;
 	}
