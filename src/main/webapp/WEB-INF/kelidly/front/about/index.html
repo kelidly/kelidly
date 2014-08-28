@@ -5,7 +5,8 @@
 
 <#include "../include/resource.html">
 <body>
-	<#assign nid="product"> 	
+	<#assign nid="product">
+	<#assign mid=site.id> 	 	
 	<!--head start-->
 	<#include "../include/header.html">
 	<!--head end-->
@@ -36,6 +37,12 @@
 						
 					</ul>
 				</div>
+				<!-- 分页导航 -->
+				<!-- 注意这个表单必须做，action：必须指向控制器,id必须叫做pageForm_search -->
+				<form action="${webroot}${site.url!'#'}" id="pageForm_search"
+					method="get">			
+				</form>					
+				<#include "../include/pagebar.html">
 				<#else>				
 				<div class="text">
 					${site.content!"无内容"}
