@@ -6,7 +6,7 @@
 
 		<div class="M-top clearfix" style="left: 0px; top: 0px;">
 			<div class="M-logo fl">
-				<a href="${weburl}"><img src="${webroot}/kelidly/front/img/logo.png">
+				<a href="${weburl}"><img src="${webroot}/kelidly/front/img/loadlogo.png">
 				<div class="logo-bg hide">专注呈现 至善至美</div></a>
 			</div>
 			<script>
@@ -20,32 +20,18 @@
 			<div class="M-top-right fr clearfix">
 				<div class="M-nav clearfix fl" id="menu1">
 					<ul>
-						<li><a href="/article/product.html"><div style="margin-top: 0px;">
+						<#list psitelist as site>
+						<li><a href="${site.url!'#'}"><div style="margin-top: 0px;">
+
 									<p style="margin-top: 0px;">
-										<span>产品中心</span><font>PRODUCT</font>
+
+										<span>${site.name!"无标题"}</span><font>${site.code!"loading"}</font>
+
 									</p>
 								</div></a></li>
-						<li><a href="/news/index.html"><div style="margin-top: 0px;">
-									<p>
-										<span>媒体咨询</span><font>PARTNER</font>
-									</p>
-								</div></a></li>
-						<li><a href=""><div style="margin-top: 0px;">
-									<p>
-										<span>案例展示</span><font>WORK</font>
-									</p>
-								</div></a></li>
-						<li><a href=""><div style="margin-top: 0px;">
-									<p>
-										<span>资讯动态</span><font>NEWS</font>
-									</p>
-								</div></a></li>
-						<li><a href=""><div style="margin-top: 0px;">
-									<p>
-										<span>关于融都</span>
-									</p>
-									<font>RONGDU</font>
-								</div></a></li>
+
+						</#list>
+
 					</ul>
 				</div>
 

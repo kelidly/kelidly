@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+
 import com.kelidly.entity.Case;
+
+import com.kelidly.entity.Site;
+
 import com.kelidly.service.LinksService;
+import com.kelidly.service.SiteService;
 
 @Controller
 @RequestMapping("index")
@@ -24,30 +29,32 @@ public class IndexController {
 	@Resource(name = "linksService")
 	LinksService linksService;
 	
+	@Resource(name="siteService")
+	SiteService siteService;
+	
 	@RequestMapping("/login")
 	public String login(){
 		
 		return "/login/login";
 	}
-/*	@RequestMapping("/admin")
-	public String adminIndex(){
-		
-		return "/admin/index";
-	}*/
+
 	
 	@RequestMapping("/index")
 	public String index(Model  model){
 		
-
-		
 		List linksList = linksService.query(1, 20).getResult();
 		model.addAttribute("linksList", linksList);	
 		
-		
-		
-
+		List<Site> psitelist=siteService.findFirstSiteList();
+		model.addAttribute("psite", psitelist);
 		
 		return "/front/index";
+	}
+	
+	@RequestMapping("/load")
+	public String load(){
+		
+		return "/front/load";
 	}
 	
 	@RequestMapping("/interceptor")

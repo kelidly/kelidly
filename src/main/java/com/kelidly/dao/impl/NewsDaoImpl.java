@@ -112,6 +112,8 @@ public class NewsDaoImpl extends ObjectDaoImpl<News> implements NewsDao{
 		List<NewsType> list = find(hql);
 		return list;
 	}
+	
+	
 
 
 }

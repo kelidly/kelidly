@@ -40,7 +40,7 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 	}	
 	
 	@Override
-	public Article getArticleByid(int id) {
+	public Article getArticleByid(long id) {
 		
 		String hql="from Article where id= "+id;	
 		
@@ -84,6 +84,16 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 		return pageModel;
 	}
 
+	
+	@Override
+	public PageModel getPageArticleBySiteId(int pageNo, int pageSize, long siteid) {
+		StringBuffer queryHql = new StringBuffer("from Article where siteid="+siteid);
+		StringBuffer countSql = new StringBuffer("select * from article where siteid="+siteid);
+		
+		PageModel pageModel = queryPageModel(pageNo,pageSize,queryHql,"",countSql);
+		
+		return pageModel;
+	}
 
 
 	

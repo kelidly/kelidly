@@ -728,4 +728,5 @@ background:#f2f2f2;
 .mediaCenter_warp .ContentDetail .text{font-size:14px; line-height:26px; padding:20px 0;}
 .mediaCenter_warp .ContentDetail .text p{ padding-bottom:26px;}
 
-
+.Return{ padding:0 26px; line-height:30px; background:#36a5df; color:#fff; float:right; margin-top:10px;}
+.Return:hover{ background:#48b4ec; color:#fff;}

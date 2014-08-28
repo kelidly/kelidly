@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public Article findArticleByid(int id) {
+	public Article findArticleByid(long id) {
 
 		return articleDao.getArticleByid(id);
 	}
@@ -135,8 +135,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.query(pageNo, pageSize);
 	}
 	
-
-	
+	@Override
+	public PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid){
+		return articleDao.getPageArticleBySiteId(pageNo, pageSize, siteid);
+	}
 
 	
 

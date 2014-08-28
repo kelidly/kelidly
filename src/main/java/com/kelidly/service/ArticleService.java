@@ -16,7 +16,7 @@ public interface ArticleService {
 	
 	List<Article> findAllProductArticle();
 	
-	Article findArticleByid(int id);
+	Article findArticleByid(long id);
 	
 	List<ArticleType> findAllArticleType();
 	
@@ -37,6 +37,10 @@ public interface ArticleService {
 	List<Article> findArticleByType(long type);
 
 	PageModel findArticleByPage(int pageNo, int pageSize);
+
+	PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid);
+
+	
 
 	
 	
