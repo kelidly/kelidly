@@ -1,10 +1,24 @@
+//js获取项目根路径，如： http://localhost:8083/uimcardprj  
+function getRootPath(){  
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp  
+    var curWwwPath=window.document.location.href;  
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp  
+    var pathName=window.document.location.pathname;  
+    var pos=curWwwPath.indexOf(pathName);  
+    //获取主机地址，如： http://localhost:8083  
+    var localhostPaht=curWwwPath.substring(0,pos);  
+    //获取带"/"的项目名，如：/uimcardprj  
+    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);  
+    return(localhostPaht);  
+}  
+
 var udb = {
-	login:function(){
+	login:function(swfurl){
         if(self!=top){
             top.location.href=self.location.href;
         }
-        UDB.sdk.QLogin.ajaxOpenWithSaveToken('/auth/udb', '/auth/udb?xparam=1',
-            '/auth/udb?cancel=1');
+        var rootPath = getRootPath();
+        UDB.sdk.QLogin.ajaxOpenWithSaveToken(rootPath + swfurl);
 	},
 	logout:function(returnUrl){
 		var backUrl = location.href;
@@ -14,7 +28,7 @@ var udb = {
 		location.href = "http://"+window.location.host+"/udb/logout?backUrl="+encodeURIComponent(backUrl);
 	},
 	reg:function(){
-		location.href = "https://udb.yy.com/register.do?appid=5036&url="+encodeURIComponent(location.href);
+		location.href = "https://udb.hx.com/register.do?appid=5036&url="+encodeURIComponent(location.href);
 	},
 	loginForYasi:function(path){
         var url = "http://"+window.location.host + path;
@@ -28,11 +42,11 @@ var udb = {
 		}
 		
 		var url = "http://"+window.location.host+ "/buyOfficialCourse/order?id=" + courseId;
-		location.href = "https://udb.yy.com/register.do?appid=5036&url=" + encodeURIComponent(url) + advParam;
+		location.href = "https://udb.hx.com/register.do?appid=5036&url=" + encodeURIComponent(url) + advParam;
 	},
 	regForYasiVideo:function(path){
 		var url = "http://"+window.location.host+ path;
-		location.href = "https://udb.yy.com/register.do?appid=5036&url=" + encodeURIComponent(url);
+		location.href = "https://udb.hx.com/register.do?appid=5036&url=" + encodeURIComponent(url);
 	},
 	loginForMustLogin:function(path){
 		if(self!=top){
