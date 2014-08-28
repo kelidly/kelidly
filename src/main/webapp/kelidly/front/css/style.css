@@ -12,6 +12,7 @@ body {
 .gogo hover {
 	opacity:0.6;	
 }
+
 .M-top {
 	background:#fff;
 	height:80px;
@@ -730,3 +731,13 @@ background:#f2f2f2;
 
 .Return{ padding:0 26px; line-height:30px; background:#36a5df; color:#fff; float:right; margin-top:10px;}
 .Return:hover{ background:#48b4ec; color:#fff;}
+
+/*轮显*/
+#banner{height: 300px;background:#d3d3d3;}
+.fade-slidebox{height: 300px;}
+.fade-slidebox .fade-content,.fade-slidebox .screen, .fade-slidebox .screen a{width: 100%;height: 300px;overflow: hidden;}
+.fade-slidebox .screen a{display: block;}
+.fade-slidebox .fade-ul{width: 980px;margin: -30px auto;z-index: 10;position: relative;text-align: center;}
+.fade-slidebox .fade-ul li{display: inline-block;*display:inline;zoom:1;*margin-left: 6px;}
+.fade-slidebox .fade-ul li a{display: block;width: 14px;height: 14px;background: #000000;}
+.fade-slidebox .fade-ul li.hover a{background: #e77b16;}

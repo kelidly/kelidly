@@ -264,3 +264,15 @@ i,em{ font-style:normal;}
 .border{ border:1px solid red;}
 
 .text{color:#666666;}
+
+.bannermain {
+	width: 1000px;
+	margin: 0 auto;
+}
+.box_css {
+	height: 394px;
+	position: relative;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
