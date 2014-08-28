@@ -25,7 +25,7 @@
     
     <!--产品分类栏-->
 <script charset="utf-8" src="js/moveimg.js"></script>
-<script type="text/javascript" src="front/js/udb.js"></script>
+<script type="text/javascript" src="js/udb.js"></script>
 <script type="text/javascript" src="js/udb.sdk.qlogin.all.min.js"></script>
 <script type="text/javascript">
            $(function () {
@@ -62,9 +62,9 @@
     <#list pagemodel.result  as article>
       <li>
         <div class="work-img-con">
-         <span class="work-img"><a class="fancybox" href="javascript:udb.login();" data-fancybox-group="gallery"><img src="${article.imgurl!'/kelidly/front/img/no.png'}"></a></span>
+         <span class="work-img"><a class="fancybox" href="javascript:udb.login('${article.flashurl}');" data-fancybox-group="gallery"><img src="${article.imgurl!'img/no.png'}"></a></span>
       </div>
-      <div class="work-img-abstract"> <a href="http://www.binfendai.com/" target="_blank">${article.title!"无题"}</a> </div>
+      <div class="work-img-abstract"> <a href="javascript:udb.login('${article.flashurl}');" target="_blank">${article.title!"无题"}</a> </div>
       </li>	
       </#list>
     </ul>
