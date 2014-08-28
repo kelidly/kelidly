@@ -81,9 +81,9 @@ public class SiteServiceImpl  implements SiteService{
 	 * 查找有列表的栏目
 	 */
 	@Override
-
 	public List<Site> findFirstSiteList() {
 		List<Site> sitelist = siteDao.getFirstSiteList();
+
 		return sitelist;
 	}
 	
