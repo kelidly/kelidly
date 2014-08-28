@@ -400,7 +400,7 @@ font-size:14px;
  cursor:pointer;
  width:115px;
  height:50px;
- background:url(./work-li.png) 5px 40px no-repeat;
+ background:url(../img/work-li.png) 5px 40px no-repeat;
 }
 .page-table-nav ul li a:hover {
  float:left;
@@ -410,10 +410,10 @@ font-size:14px;
  font-family:"微软雅黑";
  width:115px;
  height:50px;
- background:url(./work-li-cur.png) 5px 40px no-repeat;
+ background:url(../img/work-li-cur.png) 5px 40px no-repeat;
 }
 .page-table-nav ul li.cur a {
- background:url(./work-li-cur.png) 5px 40px no-repeat;
+ background:url(../img/work-li-cur.png) 5px 40px no-repeat;
  float:left;
  font-size:18px;
  color:#4a4a4a;

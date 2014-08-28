@@ -16,7 +16,7 @@
 	<!-- 导航栏 -->
 	<div class="eq-apb-main">
 		<div class=" public-w public-a9">
-			<a href="index.php">首页</a><span>/</span>效果展示
+			<a href="${weburl}">首页</a><span>/</span><a href="${psite.url}">${psite.name}</a>
 		</div>
 	</div>
 	<!--内容-->
@@ -52,53 +52,33 @@
       <ul class="table-nav-tab">
       <#list sublist as subsite>
         <li class="<if mid??&&mid='String.valueOf(${subsite.id})'>cur"><a>${subsite.name!"无题"}</a></li>
-        </#list>
-        <li><a>珠宝首饰</a></li>
-        <li><a>家具</a></li>
-        <li><a>艺术品</a></li>
-        <li><a style="margin-right:0px;">服装</a></li>
+      </#list>        
       </ul>
     </div>
     <div id="brand" class="clearfix" style="width: 1200px; margin:0 auto;">
+    
+    <#list pageModelList as pagemodel>
     <ul class="bd-box" id="mainContent" style="display:block;">
+    <#list pagemodel.result  as article>
       <li>
         <div class="work-img-con">
-         <span class="work-img"><a class="fancybox" href="javascript:udb.login();" data-fancybox-group="gallery"><img src="img/thumb-207.jpg"></a></span>
+         <span class="work-img"><a class="fancybox" href="javascript:udb.login();" data-fancybox-group="gallery"><img src="${article.imgurl!'/kelidly/front/img/no.png'}"></a></span>
       </div>
-      <div class="work-img-abstract"> <a href="http://www.binfendai.com/" target="_blank">缤纷贷</a> </div>
-      </li>
-      <li>
-        <div class="work-img-con"><span class="work-img"> <a class="fancybox" href="javascript:udb.login();" data-fancybox-group="gallery"><img src="rd3_files/1-140614002K3.jpg"></a></span> </div>
-        <div class="work-img-abstract"> <a href="http://www.csct.net.cn/" target="_blank">楚商创投</a> </div>
-      </li>
+      <div class="work-img-abstract"> <a href="http://www.binfendai.com/" target="_blank">${article.title!"无题"}</a> </div>
+      </li>	
+      </#list>
     </ul>
-    <ul class="bd-box" id="mainContent">
-      <li>
-        <div class="work-img-con">  <span class="work-img"><a class="fancybox" href="http://www.erongdu.com/uploads/allimg/140614/1-140614003156.png" data-fancybox-group="gallery"><img src="rd3_files/1-140614003150.jpg"></a></span> </div>
-        <div class="work-img-abstract"> <a href="http://www.binfendai.com/" target="_blank">缤纷贷</a> </div>
-      </li>
-    </ul>
-    <ul class="bd-box" id="mainContent">
-      <li>
-        <div class="work-img-con">  <span class="work-img"><a class="fancybox" href="http://www.erongdu.com/uploads/allimg/140613/1-140613222911.png" data-fancybox-group="gallery"><img src="rd3_files/1-140613222Z1.png"></a></span> </div>
-        <div class="work-img-abstract"> <a href="http://www.jurendai.cn/" target="_blank">聚人贷</a> </div>
-      </li>
-    </ul>
-    <ul class="bd-box" id="mainContent">
-    </ul>
-    <ul class="bd-box" id="mainContent">
-      <li>
-        <div class="work-img-con">  <span class="work-img"><a class="fancybox" href="http://www.erongdu.com/uploads/allimg/140613/1-140613222911.png" data-fancybox-group="gallery"><img src="rd3_files/1-140613222Z1.png"></a></span> </div>
-        <div class="work-img-abstract"> <a href="http://www.jurendai.cn/" target="_blank">聚人贷</a> </div>
-      </li>
-    </ul>
-    <ul class="bd-box" id="mainContent">
-    </ul>
+  </#list>
   </div>
-  <script type="text/javascript">
-							     $(".work-table-content").tabChange({isClick:true,childLi:".table-nav-tab li",childContent:"#brand .bd-box",hoverClassName:"cur"});
-							</script> 
-</div>
+			<script type="text/javascript">
+				$(".work-table-content").tabChange({
+					isClick : true,
+					childLi : ".table-nav-tab li",
+					childContent : "#brand .bd-box",
+					hoverClassName : "cur"
+				});
+			</script>
+		</div>
 </div>
 	<!--body end-->
 
