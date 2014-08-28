@@ -20,6 +20,7 @@ public class Site {
 	private String url;
 	private String content;
 	private long pid;
+	private int sort;
 	public long getId() {
 		return id;
 	}
@@ -68,8 +69,14 @@ public class Site {
 	public void setPid(long pid) {
 		this.pid = pid;
 	}
+	public int getSort() {
+		return sort;
+	}
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
 	public Site(long id, String name, String code, int rank, int state,
-			String url, String content, long pid) {
+			String url, String content, long pid, int sort) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -79,10 +86,12 @@ public class Site {
 		this.url = url;
 		this.content = content;
 		this.pid = pid;
+		this.sort = sort;
 	}
 	public Site() {
 		super();
 	}
+	
 	
 	
 	

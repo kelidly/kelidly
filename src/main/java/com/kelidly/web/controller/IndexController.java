@@ -43,7 +43,7 @@ public class IndexController {
 		model.addAttribute("linksList", linksList);	
 		
 		List<Site> psitelist=siteService.findFirstSiteList();
-		model.addAttribute("psite", psitelist);
+		model.addAttribute("psitelist", psitelist);
 		
 		return "/front/index";
 	}
