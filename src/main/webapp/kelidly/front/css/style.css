@@ -709,7 +709,7 @@ background:#f2f2f2;
 
 .mediaCenter_warp .menu_fl li a{ color:#666; display:block;}
 .mediaCenter_warp .menu_fl li i{ width:6px; height:8px; display:block; background:url(../img/icon_03.png) no-repeat 0 -111px; float:right; margin:10px 22px 0 0; display:none;}
-.mediaCenter_warp .menu_fl li.curr a{ background:#eaeaea; color:#E41414;}
+.mediaCenter_warp .menu_fl li.curr a{ background:#eaeaea; color:#DE7235;}
 .mediaCenter_warp .menu_fl li.curr i{ display:block;}
 
 .mediaCenter_warp .Content_fr{ width:880px; margin-left:40px; float:left;}
