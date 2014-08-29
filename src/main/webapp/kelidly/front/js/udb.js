@@ -13,12 +13,12 @@ function getRootPath(){
 }  
 
 var udb = {
-	login:function(swfurl){
+	login:function(swfurl,w,h){
         if(self!=top){
             top.location.href=self.location.href;
         }
         var rootPath = getRootPath();
-        UDB.sdk.QLogin.ajaxOpenWithSaveToken(rootPath + swfurl);
+        UDB.sdk.QLogin.ajaxOpenWithSaveToken((rootPath + swfurl),w,h);
 	},
 	logout:function(returnUrl){
 		var backUrl = location.href;
