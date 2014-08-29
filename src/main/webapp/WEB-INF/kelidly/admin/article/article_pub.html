@@ -43,7 +43,7 @@
 
 				<div class="tab-content default-tab" id="tab1">
 					<form action="${webroot}/back/article/addArticle.html"
-						method="post">
+						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="status" id="status" value="add" />
 						<fieldset>
 							<p>
@@ -61,13 +61,21 @@
 							<br />
 
 							<p>
-								<label>选择条目</label> <select name="type" class="small-input">
-									<#list articletypeList as articleType>
-									<option value="${articleType.id }">${articleType.type
-										}</option> </#list>
+								<label>选择栏目</label> <select name="siteid" class="small-input">
+									<#list secListSiteList as secListSite>
+									<option value="${secListSite.id }">${secListSite.name}</option> </#list>
 
 								</select>
 							</p>
+							
+							<p>
+								<label>展示图片</label>
+								<input type="file"  name="imgfile" >
+							</p>
+<!-- 							<p>
+								<label>flash上传</label>
+								<input type="file"  name="file" >
+							</p> -->
 							<p>
 								<label>添加内容</label>
 								<script id="editor" name="content" type="text/plain"

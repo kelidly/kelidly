@@ -1,11 +1,20 @@
 package com.kelidly.web.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.kelidly.constants.Global;
 import com.kelidly.entity.Article;
 import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
@@ -20,6 +29,8 @@ public class BaseController {
 	@Resource(name = "articleService")
 	ArticleService articleService;
 
+	@Autowired
+	private HttpServletRequest request;
 	/**
 	 * 显示site和article
 	 * @param pid 一级栏目的id，查找二级目录使用
@@ -56,6 +67,77 @@ public class BaseController {
 			model.addAttribute("article", article);
 			
 		}
+	}
+	
+	/**
+	 * 判断文件夹是否存在，不存在者创建
+	 */
+	protected void checkfolderExists(String url) {
+		File file=new File(url);  
+		if  (!file .exists()  && !file .isDirectory())      
+		{      
+			try {
+				file .mkdirs(); 				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		   
+		    
+		}
+	}
+	/**
+	 * 判断文件是否存在，不存在者创建
+	 */
+	protected void checkFileExists(String url) {
+		File file=new File(url);  
+		if(!file.exists())    
+		{    
+		    try {    
+		        file.createNewFile();    
+		    } catch (IOException e) {    
+		        e.printStackTrace();    
+		    }    
+		}  
+	}
+	
+	protected String addImage(CommonsMultipartFile imgfile) {
+		
+		String filePath = null;
+		
+		if (!imgfile.isEmpty()) {
+			InputStream is=null;
+			FileOutputStream fos =null;
+			
+			//系统配置目录
+			String varfilename = Global.getValue("resources");
+			//当前时间做文件夹
+			String filedirName = "/"+new Date().getTime();
+			//文件名
+			String fileName = "/"+imgfile.getOriginalFilename();
+			
+			//系统目录
+			filePath = varfilename+filedirName+fileName;
+			//保存目录
+			String rootPath = request.getSession().getServletContext().getRealPath("/");
+			
+			checkfolderExists(rootPath+varfilename+filedirName);
+			try {
+				fos = new FileOutputStream(rootPath+filePath);
+				is = imgfile.getInputStream();
+				int b=0;
+				while((b=is.read())!= -1){
+					fos.write(b);
+				}
+				fos.flush();
+				fos.close();
+				is.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;				
+			}			
+		}
+		return filePath;
+		
 	}
 
 }

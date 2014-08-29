@@ -45,7 +45,7 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	
 	@Override
 	public List<Site> getSiteListByPid(long pid) {
-		String sql = "from Site where pid=:pid";
+		String sql = "from Site where pid=:pid order by sort asc";
 		Session s = sessionFactory.openSession();
 		Query query = s.createQuery(sql);		
 		query.setLong("pid", pid);
@@ -55,7 +55,7 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 	
 	@Override
 	public List<Site> getFirstSiteList() {
-		String hql = "from Site where rank=:rank";
+		String hql = "from Site where rank=:rank order by sort asc";
 		Session s = sessionFactory.openSession();
 		Query query = s.createQuery(hql);		
 		query.setInteger("rank", 1);

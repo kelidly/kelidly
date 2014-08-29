@@ -1,5 +1,6 @@
 package com.kelidly.web.controller.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,24 +11,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.kelidly.constants.Global;
 import com.kelidly.entity.Article;
 import com.kelidly.entity.ArticleType;
-import com.kelidly.entity.News;
-import com.kelidly.entity.NewsType;
+import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
 import com.kelidly.service.ArticleService;
-import com.kelidly.service.NewsService;
+import com.kelidly.service.SiteService;
+import com.kelidly.web.controller.BaseController;
 
 @Controller
 @RequestMapping("/back/article")
-public class BackArticleController {
+public class BackArticleController extends BaseController{
 
 	@Resource(name = "articleService")
 	ArticleService articleService;
+	
+	@Resource(name="siteService")
+	SiteService siteService;
 	
 	@Autowired
 	private HttpServletRequest request;
@@ -124,10 +129,31 @@ public class BackArticleController {
 	 * @return
 	 */
 	@RequestMapping("/addArticle")
-	public String addArticle(Article article,Model model){		
+	public String addArticle(
+			Article article,
+			Model model,
+			@RequestParam(value="status",required=false)String status,
+			@RequestParam(value="imgfile",required=false) CommonsMultipartFile imgfile){		
 		
-		if("add".equals(request.getParameter("status"))){
+//		String realPath = request.getSession().getServletContext().getRealPath("/")
+//				+"/common/kelidly-res/effect"+"/"+new Date().getTime()+"/sss.jpg";
+//		String filePath = "/common/kelidly-res/effect/"+new Date().getTime()+"/sss.jpg";	
+		Global.getValue("resources");
+		
+		if("add".equals(status)){
 			
+			//添加图片
+			String filePath = addImage(imgfile);
+			if (filePath!=null) {
+				article.setImgurl(filePath);
+			}else {
+				article.setImgurl(null);
+			}			
+			
+			//添加flash(未编写)
+			article.setFlashurl("/");
+			
+			article.setAddtime(new Date());
 			String rtMsg = "";
 			boolean flag = articleService.addArticle(article);
 			if (flag) {
@@ -143,8 +169,8 @@ public class BackArticleController {
 				return "/admin/article/article_pub";
 			}
 		}else{
-			List<ArticleType> articletypeList = articleService.findAllArticleType();
-			model.addAttribute("articletypeList", articletypeList);
+			List<Site> secListSiteList = siteService.findSecondListSiteList();			
+			model.addAttribute("secListSiteList", secListSiteList);
 			return "/admin/article/article_pub";
 		}
 		

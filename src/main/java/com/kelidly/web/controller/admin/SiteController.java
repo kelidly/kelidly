@@ -19,7 +19,7 @@ import com.kelidly.service.SiteService;
 import com.kelidly.util.NumberUtils;
 
 @Controller  
-@RequestMapping("/site")
+@RequestMapping("/back/site")
 public class SiteController {
 
 	@Resource(name="adminService")
@@ -51,7 +51,7 @@ public class SiteController {
 		//栏目树
 		SiteTree siteTree = siteService.findSiteTree();		
 		model.addAttribute("tree", siteTree);
-		return "/admin/article/site";
+		return "/admin/site/site";
 	}
 	
 	@RequestMapping(value="/modifySite")
@@ -74,7 +74,7 @@ public class SiteController {
 			psite.setPid(0);
 		}
 		model.addAttribute("psite", psite);
-		return "/admin/article/site";
+		return "/admin/site/site";
 	}
 
 	@RequestMapping(value="/addSite")
@@ -103,7 +103,7 @@ public class SiteController {
 			psite.setPid(0);
 		}
 		model.addAttribute("psite", psite);
-		return "/admin/article/addsite";
+		return "/admin/site/addsite";
 	}
 	
 	@RequestMapping(value="/delSite")
@@ -123,7 +123,7 @@ public class SiteController {
 		
 		SiteTree siteTree = siteService.findSiteTree();
 		request.setAttribute("tree", siteTree);
-		return "/admin/article/addsite";
+		return "/admin/site/addsite";
 	}
 	
 }

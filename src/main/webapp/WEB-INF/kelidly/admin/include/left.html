@@ -20,12 +20,7 @@
 						<li><a class="<#if mid??&&mid='news_manage'>current</#if>" href="${webroot}/back/news/manage.html">新闻管理</a></li>
 						<li><a class="<#if mid??&&mid='news_typeManage'>current</#if>" href="${webroot}/back/news/toTypeView.html">类目管理</a></li>
 					</ul></li>
-				<li><a href="#" class="nav-top-item <#if nid??&&nid='article'>current</#if>"> 内容管理 </a>
-					<ul>
-						<li><a class="<#if mid??&&mid='article_pub'>current</#if>" href="${webroot}/back/article/addArticle.html">发布文章</a></li>
-						<li><a class="<#if mid??&&mid='article_manage'>current</#if>" href="${webroot}/back/article/manageArticle.html">文章管理</a></li>
-						<li><a class="<#if mid??&&mid='article_type'>current</#if>" href="${webroot}/back/article/showArticleType.html">类目管理</a></li>
-					</ul></li>
+				
 				<li><a href="#" class="nav-top-item <#if nid??&&nid='case'>current</#if>""> 客户案例 </a>
 					<ul>
 						<li><a class="<#if mid??&&mid='case_pub'>current</#if>" href="${webroot}/back/case/pub.html">发布案例</a></li>
@@ -62,18 +57,25 @@
 						<!-- <li><a href="#">我的信息</a></li>
 						<li><a href="#">用户权限</a></li> -->
 					</ul></li>
-					<li><a href="#" class="nav-top-item <#if nid??&&nid='system'>current</#if>"">栏目管理 </a>			
 					
+					<li><a href="#" class="nav-top-item <#if nid??&&nid='article'>current</#if>"> 文章管理 </a>
+					<ul>
+						<li><a class="<#if mid??&&mid='article_pub'>current</#if>" href="${webroot}/back/article/addArticle.html">发布文章</a></li>
+						<li><a class="<#if mid??&&mid='article_manage'>current</#if>" href="${webroot}/back/article/manageArticle.html">文章管理</a></li>
+						<li><a class="<#if mid??&&mid='article_type'>current</#if>" href="${webroot}/back/article/showArticleType.html">类目管理</a></li>
+					</ul></li>
+					
+					<li><a href="#" class="nav-top-item <#if nid??&&nid='site'>current</#if>"">栏目管理 </a>		
 					 <ul >
 				        <#if tree??&&tree.hasChild()>
 				
 				            <#list tree.child as item>
 				                <li>
-				            <div ><a class="c" href="/site/showSite.html?siteid=${item.model.id?c}">一级：${item.model.name!}</a></div>
+				            <div ><a class="<#if mid??&&mid=item.model.id?c>current</#if>" href="/back/site/showSite.html?siteid=${item.model.id?c}">一级：${item.model.name!}</a></div>
 				                <#if item??&&item.hasChild()>
 				                				                    
 				                    <#list item.child as subitem>
-				                    <li><a class="b" href="/site/showSite.html?siteid=${subitem.model.id?c}" data-nav="/site/showSite.html?siteid=${subitem.model.id?c}"><span>&#183;</span>${subitem.model.name}</a></li>
+				                    <li><a class="<#if mid??&&mid=subitem.model.id?c>current</#if>" href="/back/site/showSite.html?siteid=${subitem.model.id?c}" ><span>&#183;</span>${subitem.model.name}</a></li>
 				                    </#list>
 				                
 				                </#if>
@@ -84,6 +86,7 @@
 				    </ul>
 					
 					</li> 
+					
 			</ul>
 		</div>
 	</div>
