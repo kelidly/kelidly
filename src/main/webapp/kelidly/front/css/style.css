@@ -805,7 +805,7 @@ background:#f2f2f2;
 	background:#dedede;
 }
 .kefu .tp {
-	background: url(../kefu_files/float_bg.gif)
+	background: url(../img/float_bg.gif)
 }
 .kefu .cn {
 	background:#dedede;
@@ -830,34 +830,34 @@ background:#f2f2f2;
 }
 .kefu .cn UL LI img{ vertical-align:middle;}
 .kefu .titZx {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .titDh {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .titDc {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .icoZx {
 	
 }
 .kefu .icoTc {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .icoFf {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .icoTl {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .btnOpen {
-	background: url(../kefu_files/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .btnOpen_n {
-	background: url(../bg/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .btnCtn {
-	background: url(../kefu_files/float_s.gif) no-repeat
+	background: url(../img/float_s.gif) no-repeat
 }
 .kefu .titZx {
 	background-position: 5px -10px
@@ -932,7 +932,7 @@ background:#f2f2f2;
 .pic_con{
 	width: 875px;
 	padding: 10px;
-	margin: -24px 10px 10px 24px;
+	margin: -24px 10px 10px -30px;
 	position: relative
 }
 .pic_lists{
