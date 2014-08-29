@@ -277,3 +277,10 @@ i,em{ font-style:normal;}
 	margin-right: auto;
 }
 
+
+.blace { clear:both; z-index:1; }
+.blank5 { height:5px; line-height:5px; overflow:hidden; clear:both;}
+.blank7 { height:7px; line-height:7px; overflow:hidden; clear:both;}
+.blank10 { height:10px; line-height:10px; overflow:hidden; clear:both;}
+.blank15 { height:15px; line-height:15px; overflow:hidden; clear:both;}
+.blank20 { height:20px; line-height:20px; overflow:hidden; clear:both;}
