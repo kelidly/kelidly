@@ -740,7 +740,7 @@ background:#f2f2f2;
 .fade-slidebox{height: 480px;}
 .fade-slidebox .fade-content,.fade-slidebox .screen, .fade-slidebox .screen a{width: 100%;height: 480px;overflow: hidden;}
 .fade-slidebox .screen a{display: block;}
-.fade-slidebox .fade-ul{width: 980px;margin: -30px auto;z-index: 10;position: relative;text-align: center;}
+.fade-slidebox .fade-ul{width: 1200px;margin: -30px 270px 30px;z-index: 10;position: relative;text-align: right;;}
 .fade-slidebox .fade-ul li{display: inline-block;*display:inline;zoom:1;*margin-left: 6px;}
 .fade-slidebox .fade-ul li a{display: block;width: 14px;height: 14px;background: #000000;}
 .fade-slidebox .fade-ul li.hover a{background: #e77b16;}
@@ -784,6 +784,148 @@ background:#f2f2f2;
 .col1_right .sinawb { width:62px; height:22px; display:block; background:url(../img/weibo.png) 0px 0px;}
 .col1_right .qqwb { width:57px; height:23px; display:block; background:url(../img/weibo.png) 0px -24px; margin-top:8px;}
 .col1_right .crb_right { width:110px; float:right; }
+
+/* 客服 */
+.kefu {
+	position: fixed; top: 80px; right: 1px; _position: absolute
+}
+.kefu A {
+	color: #be2f2d
+}
+.kefu A:hover {
+	color: #ff8100; text-decoration: none
+}
+.kefu .floatL {
+	position: relative; width: 28px; float: left
+}
+.kefu .floatL A {
+	text-indent: -9999px; display: block; font-size: 0px
+}
+.kefu .floatR {
+	background:#dedede;
+}
+.kefu .tp {
+	background: url(../kefu_files/float_bg.gif)
+}
+.kefu .cn {
+	background:#dedede;
+}
+.kefu .floatR {
+	padding-bottom: 15px; width: 145px; background-repeat: no-repeat; background-position: -131px bottom; float: left; overflow: hidden
+}
+.kefu .tp {
+	background-repeat: no-repeat; background-position: 0% 0%; height: 95px
+}
+.kefu .cn {
+	background-repeat: repeat-y; background-position: -262px 0px
+}
+.kefu .cn H3 {
+	text-indent: -9999px; height: 36px; font-size: 0px
+}
+.kefu .cn UL {
+	padding-bottom: 0px; padding-left: 14px; padding-right: 14px; padding-top: 0px
+}
+.kefu .cn UL LI {
+	border-bottom: #e6e5e4 1px solid; line-height: 30px; font-size:14px; word-wrap: break-word; height: 30px; overflow: hidden; word-break: normal
+}
+.kefu .cn UL LI img{ vertical-align:middle;}
+.kefu .titZx {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .titDh {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .titDc {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .icoZx {
+	
+}
+.kefu .icoTc {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .icoFf {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .icoTl {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .btnOpen {
+	background: url(../kefu_files/float_s.gif) no-repeat
+}
+.kefu .btnOpen_n {
+	background: url(../bg/float_s.gif) no-repeat
+}
+.kefu .btnCtn {
+	background: url(../kefu_files/float_s.gif) no-repeat
+}
+.kefu .titZx {
+	background-position: 5px -10px
+}
+.kefu .titDh {
+	background-position: 5px -66px
+}
+.kefu .titDc {
+	background-position: 5px -124px
+}
+.kefu .icoZx {
+	background-position: 2px -154px
+}
+.kefu .icoTc {
+	background-position: 0px -323px
+}
+.kefu .icoFf {
+	background-position: 2px -213px
+}
+.kefu .icoTl {
+	padding-left: 20px; display: block; font-family: "Î¢ÈíÑÅºÚ"; background-position: 2px -266px; float: left
+}
+.kefu .btnOpen {
+	background-position: -30px -396px
+}
+.kefu .btnOpen_n {
+	background-position: 0px -530px
+}
+.kefu .btnCtn {
+	background-position: 0px -396px
+}
+.kefu .icoZx {
+	padding-left: 28px; display: block; float: left
+}
+.kefu .icoTc {
+	padding-left: 28px; display: block; float: left
+}
+.kefu .icoFf {
+	padding-left: 28px; display: block; float: left
+}
+.kefu .btnOpen {
+	position: relative; width: 28px; height: 118px; top: 80px; left: 2px
+}
+.kefu .btnOpen_n {
+	position: relative; width: 28px; height: 118px; top: 80px; left: 2px
+}
+.kefu .btnCtn {
+	position: relative; width: 28px; height: 118px; top: 80px; left: 2px
+}
+.kefu .btnOpen {
+	top: 80px; left: 1px
+}
+.kefu .btnOpen_n {
+	top: 80px; left: 1px
+}
+.kefu .btnCtn {
+	top: 80px; left: 2px
+}
+.kefu UL LI H3.titDc A {
+	width: 80px; display: block; height: 36px
+}
+.kefu UL LI.top {
+	border-bottom: #ace5f9 1px solid;height: 30px;line-height: 30px;
+}
+.kefu UL LI.bot {
+	border-bottom-style: none
+}
+
 
 
 
