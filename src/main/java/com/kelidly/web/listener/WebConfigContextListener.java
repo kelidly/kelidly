@@ -45,7 +45,7 @@ public class WebConfigContextListener implements ServletContextListener {
 		for(String s:webinfo){
 			logger.debug(s+":"+info.getValue(s));
 			context.setAttribute(s, info.getValue(s));
-		}		
+		}
 		context.setAttribute("webroot", context.getContextPath());
 	}
 
