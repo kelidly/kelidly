@@ -11,7 +11,51 @@
 	<!--head end-->
 	<!--body start-->
 		<!--  banner -->	
+<script>
 
+(function($){
+	$.fn.extend({
+		fadeSlide:function(options){
+			var defaults = {
+				slideTime:"2000"
+				};
+			var options = $.extend(defaults,options);
+			this.each(function(){
+				var o = options;
+				var obj = $(this);
+				var oLi = $(".fade-ul li",obj);
+				var oDiv = $(".fade-content div",obj);
+				var Timer;
+				var index = 1;
+				var leng = (oLi.length);
+				$(oDiv[0]).css({"display":"block"})
+				oLi.mouseover(function(){
+					index = oLi.index(this);
+					showImg(index);
+					}).eq(0).mouseover();
+				obj.hover(function(){
+						clearInterval(Timer);
+					},function(){
+					Timer = setInterval(function(){
+							showImg(index);
+							index++;
+							if(index==leng)
+							{
+								index=0;	
+							}
+						},o.slideTime)	
+				}).trigger("mouseleave");
+				function showImg(index){
+					$(oDiv[index]).fadeIn("slow").show().siblings().fadeOut().hide();
+					$(oLi).removeClass("hover").eq(index).addClass("hover");
+				}	
+			});
+		}
+	});
+})(jQuery);	
+
+
+</script>
 	<div class="clearfix" id="banner">
 		<div class="fade-slidebox">
 			<div class="fade-content">

@@ -40,6 +40,10 @@
                     if(o.isClick==true)
                     {
                         oLiClick();
+                      
+                        $(oLi[0]).addClass(o.hoverClassName).siblings().removeClass(o.hoverClassName);
+                        oDiv.fadeOut().hide();
+                        $(oDiv[0]).fadeIn().show();
                     }
                     else if(o.isHover==true)
                     {
