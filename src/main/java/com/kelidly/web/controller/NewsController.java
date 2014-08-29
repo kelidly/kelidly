@@ -27,7 +27,7 @@ public class NewsController extends BaseController {
 			@RequestParam(value = "id", defaultValue = "1") long id,
 			@RequestParam(value = "aid", defaultValue = "1") long articleid,
 			@RequestParam(value = "currentPage", defaultValue = "1") int pageNo,
-			@RequestParam(value = "pageSize", defaultValue = "40") int pageSize,
+			@RequestParam(value = "pageSize", defaultValue = "2") int pageSize,
 			Model model) {
 
 		showSiteAndArticle(pid, id,articleid, pageNo, pageSize, model);

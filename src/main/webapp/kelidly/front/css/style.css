@@ -691,12 +691,12 @@ padding-left:15px;
 background:#f2f2f2;
 }
 /*翻页*/
-.green-black { height:30px; margin-top:20px;PADDING-BOTTOM: 10px; PADDING-TOP: 15px; text-align:center;}
-.green-black A {PADDING:4px 8px; BACKGROUND:#c1c1c1; COLOR: #fff; MARGIN:0 1px; TEXT-DECORATION: none}
-.green-black A:hover {	 BACKGROUND:#71B4DE; color:#fff;}
-.green-black A:active { BACKGROUND:#71B4DE; color:#fff;}
-.green-black .current { FONT-WEIGHT: bold; color:#fff; BACKGROUND:#71B4DE; background:#DE7171;;}
-.green-black SPAN.disabled {PADDING:4px 8px; BACKGROUND:#c1c1c1; MARGIN-RIGHT: 1px; COLOR: #fff;}
+.green-black { height:30px; margin-top:20px; text-align:center; padding-top:15px; padding-bottom:10px;}
+.green-black A { padding: 4px 8px; background: #c1c1c1; color: #fff; margin: 0 1px; text-decoration: none;}
+.green-black A:hover { color:#fff; background:#DE7235;}
+.green-black A:active { color:#fff; background:#E76068;}
+.green-black .current { color:#fff; font-weight:bold; background:#E76068;}
+.green-black SPAN.disabled { margin-right: 1px; color: #fff; padding: 4px 8px; background: #c1c1c1;}
 .green-black i{ font-family:"宋体";font-size:12px; font-weight:bold;}
 
 /*-mediaCenter-*/
@@ -706,9 +706,10 @@ background:#f2f2f2;
 .mediaCenter_warp .about_w920{ overflow:hidden; background:url(../img/menu_gb_05.gif) repeat-y left; padding:0 0 40px 0; margin:40px auto; min-height:620px;}
 .mediaCenter_warp .menu_fl{ width:181px; float:left; padding-top:14px;}
 .mediaCenter_warp .menu_fl li{ line-height:30px; display:block; margin:6px 0; text-indent:50px; font-size:14px;}
+
 .mediaCenter_warp .menu_fl li a{ color:#666; display:block;}
 .mediaCenter_warp .menu_fl li i{ width:6px; height:8px; display:block; background:url(../img/icon_03.png) no-repeat 0 -111px; float:right; margin:10px 22px 0 0; display:none;}
-.mediaCenter_warp .menu_fl li.curr a{ background:#eaeaea; color:#E41414;}
+.mediaCenter_warp .menu_fl li.curr a{ background:#eaeaea; color:#DE7235;}
 .mediaCenter_warp .menu_fl li.curr i{ display:block;}
 
 .mediaCenter_warp .Content_fr{ width:880px; margin-left:40px; float:left;}

@@ -2,7 +2,7 @@
 <div class="menu_fl">
 	<ul>
 		<#list sublist as subsite>		
-		<li class="<if mid??&&mid='String.valueOf(${subsite.id})'>curr"><a href="${webroot}/support/index.html?pid=${psite.id}&id=${subsite.id}">${subsite.name!"无题"}<i></i></a></li>
+		<li class="<#if mid??&&mid=subsite.id>curr</#if>"><a href="${webroot}/support/index.html?pid=${psite.id}&id=${subsite.id}">${subsite.name!"无题"}<i></i></a></li>
 		</#list>		
 	</ul>
 </div>

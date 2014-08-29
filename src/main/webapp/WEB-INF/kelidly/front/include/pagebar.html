@@ -1,0 +1,85 @@
+<!-- 分页导航 -->
+<div>
+	<form action="" name="pageForm" id="pageForm" onclick="buildform();">
+		<!-- 需要添加新的隐藏域（其他查询条件） -->
+		<!-- 访问服务端的动作标记 -->
+		<input type="hidden" name="pid" value="${psite.id!'1'}" />
+		<input type="hidden" name="id" value="${site.id!'1'}" />					
+		<input name="currentPage" type="hidden"	value="${pagemodel.currentPage}" /> 
+		
+		<div class="green-black">
+			<#if pagemodel.currentPage<=1 ><span class="disabled">首页</span></#if>
+	       	<#if (pagemodel.currentPage > 1) > 	<a href="javascript:firstpage();">首页</a></#if> 
+	       	
+	       	<#if (pagemodel.currentPage-2>=1) ><a href="javascript:pre2page();">${pagemodel.currentPage-2}</a>  </#if>
+	       	<#if (pagemodel.currentPage-1>=1) ><a href="javascript:prepage();">${pagemodel.currentPage-1}</a>  </#if>
+	       	<a class="current">${pagemodel.currentPage}</a>	       	
+	       	<#if (pagemodel.currentPage+1<=pagemodel.allPage) ><a href="javascript:nextpage();">${pagemodel.currentPage+1}</a></#if>	
+	       	<#if (pagemodel.currentPage+2<=pagemodel.allPage) ><a href="javascript:next2page();">${pagemodel.currentPage+2}</a></#if>	
+
+	       	<#if (pagemodel.currentPage>=pagemodel.allPage) > &nbsp;<span class="disabled">末页</span></#if>
+	       	<#if (pagemodel.currentPage<pagemodel.allPage) > <a href="javascript:lastpage();">末页</a></#if> 
+	       	<!-- <span>显示<input type="text" name="pageSize" size=2 maxlength="2" value="${pagemodel.pageSize }" />条</span> -->
+        </div>
+         
+		<!-- 当前共有${pagemodel.allCount}条记录
+		当前显示${pagemodel.currentPage}/${pagemodel.allPage }页
+		<#if pagemodel.currentPage<=1 > 首页 上页 </#if>		
+		<#if (pagemodel.currentPage > 1) > <a href="javascript:firstpage();">首页</a> <a href="javascript:prepage();">上页</a> </#if> 
+		
+		<#if (pagemodel.currentPage>=pagemodel.allPage) > 下页 尾页 </#if> 
+		<#if (pagemodel.currentPage<pagemodel.allPage) > <a	href="javascript:nextpage();">下页</a> <a href="javascript:lastpage();">尾页</a></#if> 
+		每页显示<input type="text" name="pageSize" size=2 maxlength="2" value="${pagemodel.pageSize }" />条记录  -->
+			<script>
+				function buildform() {
+					pageForm.action = pageForm_search.action;
+					pageForm.method = pageForm_search.method;
+					var alle = document.getElementById("pageForm_search").childNodes;
+					
+					if (alle) {
+						for (var i = 0; i < alle.length; i++) {
+
+							if (alle[i].type == "hidden") {
+								var input = document.createElement("input");
+								input.type = "hidden";
+								input.name = alle[i].name;
+								input.value = alle[i].value;
+								pageForm.appendChild(input);
+							}
+						}
+						
+					}
+				}
+				function firstpage() {					
+					buildform();					
+					pageForm.currentPage.value = '1';
+					pageForm.submit();
+				}
+				function prepage() {					
+					buildform();					
+					pageForm.currentPage.value = ${pagemodel.currentPage - 1};
+					pageForm.submit();
+				}
+				function pre2page() {					
+					buildform();					
+					pageForm.currentPage.value = ${pagemodel.currentPage - 2};
+					pageForm.submit();
+				}
+				function nextpage() {					
+					buildform();
+					pageForm.currentPage.value = ${pagemodel.currentPage + 1};
+					pageForm.submit();
+				}
+				function next2page() {					
+					buildform();
+					pageForm.currentPage.value = ${pagemodel.currentPage + 2};
+					pageForm.submit();
+				}
+				function lastpage() {					
+					buildform();
+					pageForm.currentPage.value = ${pagemodel.allPage};
+					pageForm.submit();
+				}
+			</script>
+	</form>
+</div>
