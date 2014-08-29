@@ -753,7 +753,7 @@ background:#f2f2f2;
 
 
 .col1_left { width:900px; _width:680px; float:left; }
-.indexpic { margin-left:15px; _margin-left:10px; width:881px; height:400px; background:url(../images/ys.png) no-repeat;border-bottom: 1px solid #CDCDCD;}
+.indexpic { margin-left:15px; _margin-left:10px; width:881px; height:400px; background:url(../img/ys.png) no-repeat;border-bottom: 1px solid #CDCDCD;}
 .indexpic img {position: absolute;margin-left: 617px;margin-top: 40px;    }
 
 .tdeg { padding:10px 0px 10px 21px; }
@@ -766,23 +766,86 @@ background:#f2f2f2;
 
 
 .col1_right { width:264px; float:right; margin-right:5px; _margin-right:1px; border-left:1px solid #cdcdcd; padding-left:5px; }
-.col1_right .shadow1 { width:264px; height:6px; line-height:6px; overflow:hidden; background:url(../images/shadow1.png) no-repeat;}
+.col1_right .shadow1 { width:264px; height:6px; line-height:6px; overflow:hidden; background:url(../img/shadow1.png) no-repeat;}
 
 .col1_right .tel { width:222px; height:112px; background:#F7F7F7; border:1px solid #cdcdcd; padding:10px 20px 15px; }
 .col1_right .ticon { width:px; height:60px; background:url(../images/phone.png) no-repeat;}
 .col1_right .ticon p { margin-left:26px; color:#787878; font-size:15px; padding-top:3px;}
 .col1_right .ticon .pnum { margin-top:3px; margin-left:50px; font-size:24px; color:#0072ff; }
-.col1_right .tel a { display:block; width:183px; margin:12px auto 0px; height:44px; background:url(../images/qqzx1.png);  }
-.col1_right .tel a:hover  { display:block; width:183px; height:44px; background:url(../images/qqzx2.png);  }
-.col1_right .tel a:active{display:block; width:183px; height:44px; background:url(../images/qqzx3.png);  }
+.col1_right .tel a { display:block; width:183px; margin:12px auto 0px; height:44px; background:url(../img/qqzx1.png);  }
+.col1_right .tel a:hover  { display:block; width:183px; height:44px; background:url(../img/qqzx2.png);  }
+.col1_right .tel a:active{display:block; width:183px; height:44px; background:url(../img/qqzx3.png);  }
 
 .col1_right .cr_block1 { width:px; padding:10px 15px 15px; background:#F7F7F7; border:1px solid #cdcdcd;  }
 .col1_right .crb_ttl { font-size:17px; color:#666; float:left; }
 .col1_right .crb_more { font-family:"宋体"; color:#999; float:right; }
 .col1_right .cr_block1 li { display:block; width:230px; overflow:hidden; line-height:24px; font-family:"宋体"; font-size:14px; white-space:nowrap; -o-text-overflow:ellipsis; text-overflow: ellipsis; }
 .col1_right .crb_left { width:80px; float:left; margin:15px 0px 0px 25px; }
-.col1_right .sinawb { width:62px; height:22px; display:block; background:url(../images/weibo.png) 0px 0px;}
-.col1_right .qqwb { width:57px; height:23px; display:block; background:url(../images/weibo.png) 0px -24px; margin-top:8px;}
+.col1_right .sinawb { width:62px; height:22px; display:block; background:url(../img/weibo.png) 0px 0px;}
+.col1_right .qqwb { width:57px; height:23px; display:block; background:url(../img/weibo.png) 0px -24px; margin-top:8px;}
 .col1_right .crb_right { width:110px; float:right; }
 
+
+
+.pic_con{
+	width: 875px;
+	padding: 10px;
+	margin: -24px 10px 10px 24px;
+	position: relative
+}
+.pic_lists{
+	float: left;
+	width: 8888px;
+	height: 170px;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	left: 20px
+}
+.btn_change{width:40px;height:60px;position:absolute;text-indent:-9999px;cursor:pointer}
+.left_btn{
+	background: url(../img/leftstop.jpg) no-repeat;
+	top: 105px;
+	left: -17px
+}
+.right_btn{
+	background: url(../img/rightstart.jpg) no-repeat;
+	top: 105px;
+	right: -47px
+}
+
+.pic_content{
+	overflow: hidden;
+	height: 145px;
+	loat: left;
+	width: 870px;
+	padding: 10px;
+	position: relative;
+	margin: 40px auto 0px
+}
+.pic_content ul li{
+	float: left;
+	width: 160px;
+	height: 150px;
+	padding: 3px;
+	background: #9CC;
+	text-align: center;
+	margin: 0 0 0 10px;
+	position: relative
+}
+.pic_content ul li p{height:24px;background:#333;line-height:24px;color:#fff;width:151px;position:absolute;bottom:2px;left:2px;text-align:center;display:none}
+.pic_content ul li a img{
+	width: 150px;
+	height: 150px
+}
+
+.highlight_tip{
+	width: 50%;
+	position: relative;
+	margin: 0 auto;
+	top: 10px;
+	left: 20%;
+}
+.highlight_tip span{height:24px;padding:5px;line-height:24px;float:left;margin:0 2px;cursor:pointer}
+.highlight_tip span.current{height:18px;width:18px;line-height:18px;background:#9CC;text-align:center}
 

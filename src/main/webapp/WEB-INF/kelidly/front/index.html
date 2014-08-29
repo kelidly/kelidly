@@ -11,51 +11,7 @@
 	<!--head end-->
 	<!--body start-->
 		<!--  banner -->	
-<script>
-
-(function($){
-	$.fn.extend({
-		fadeSlide:function(options){
-			var defaults = {
-				slideTime:"2000"
-				};
-			var options = $.extend(defaults,options);
-			this.each(function(){
-				var o = options;
-				var obj = $(this);
-				var oLi = $(".fade-ul li",obj);
-				var oDiv = $(".fade-content div",obj);
-				var Timer;
-				var index = 1;
-				var leng = (oLi.length);
-				$(oDiv[0]).css({"display":"block"})
-				oLi.mouseover(function(){
-					index = oLi.index(this);
-					showImg(index);
-					}).eq(0).mouseover();
-				obj.hover(function(){
-						clearInterval(Timer);
-					},function(){
-					Timer = setInterval(function(){
-							showImg(index);
-							index++;
-							if(index==leng)
-							{
-								index=0;	
-							}
-						},o.slideTime)	
-				}).trigger("mouseleave");
-				function showImg(index){
-					$(oDiv[index]).fadeIn("slow").show().siblings().fadeOut().hide();
-					$(oLi).removeClass("hover").eq(index).addClass("hover");
-				}	
-			});
-		}
-	});
-})(jQuery);	
-
-
-</script>
+<script type="text/javascript" src="js/index.js"></script>
 	<div class="clearfix" id="banner">
 		<div class="fade-slidebox">
 			<div class="fade-content">
@@ -101,33 +57,33 @@
             <div class="indexpic">                  
              </div>
              <!--3D效果展示 -->
+
             <div class="tdeg">
                 <div class="eg_ttl">33D效果展示</div>
                 <div class="eg_more"><a href="" target="_blank">更多&gt;&gt;</a></div>
                 <div class="blank10"></div>
-                <div class="ul_scroll mCustomScrollbar _mCS_1"><div id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container" style="position: relative; left: 0px; width: 9072px;">
-                <ul style="width: 9072px;">         
-                             
-                            
-                                
-                              <li>
-                                            <a href="javascript:void(0)" id="" onclick="show3(this,'light3',500, 500, 'http://sam.winbiz.cn/Flash/Craft%20gift/SZWSJZ-P_Flash/SZWSJZ-P_Flash.swf','工艺礼品-手机架',147,1,0,0,0,'21')">
-                                                <img src="yinshang_files/2bf86cda-7a31-4def-8e8d-a7fe1af8fd54.png" alt="3D产品,3D动画,工艺礼品-手机架" height="150" width="150"></a> 
-                                              <input class="QRCode" value="f66daa10-f28f-4020-aea0-fbe85de47a97.png" type="hidden">
-                             <input class="flogo" value="" type="hidden">
-                              </li>
-                                
-                                <li>
-                                            <a href="javascript:void(0)" id="" onclick="show3(this,'light3',500, 500, 'http://sam.winbiz.cn/Flash/Craft%20gift/SZWSB-P_Flash/SZWSB-P_Flash.swf','瑞士手表',148,1,0,0,0,'21')">
-                                                <img src="yinshang_files/a22e27c2-dbdb-4ccb-9204-1e98ae51ec3a.png" alt="3D产品,3D动画,瑞士手表" height="150" width="150"></a> 
-                                              <input class="QRCode" value="2186f758-c4b5-4f54-aaf5-5f0cbef6946e.png" type="hidden">
-                             <input class="flogo" value="" type="hidden">
-                              </li>
-                                
-                </ul>
-                </div>
+<div class="pic_con">
+	<div class="btn_change left_btn">上一页</div>
+	<div class="btn_change right_btn">下一页</div>
+	<div class="pic_content">
+		<div class="pic_lists">
+			<ul>
+				<li><a href="#"><img src="img/theme_thumb5(9).png"/></a><p>唯美画面一</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(12).png"/></a><p>唯美画面二</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(22).png"/></a><p>唯美画面三</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(25).png"/></a><p>唯美画面四</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(4).png"/></a><p>唯美画面一</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(8).png"/></a><p>唯美画面一</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(15).png"/></a><p>唯美画面一</p></li>
+				<li><a href="#"><img src="img/theme_thumb5(20).png"/></a><p>唯美画面一</p></li>
+			</ul>
+		</div>
 
-                				</div>
+	<div class="highlight_tip">
+		<span class="current">1</span><span>2</span><span>3</span>
+	</div>
+</div>
+
                 				</div>
             </div>
         </div><!--col1_left-->
