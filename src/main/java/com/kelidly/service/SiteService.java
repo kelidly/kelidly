@@ -28,6 +28,8 @@ public interface SiteService {
 	List<Site> findSecondListSiteList();
 
 	List<Site> findSiteListByPid(long pid);
+	
+	List<Integer> findIdListByPid(long pid);
 
 
 

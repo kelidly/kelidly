@@ -40,6 +40,8 @@ public interface ArticleService {
 
 	PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid);
 
+	List<Article> getArticleByLimit(List<Integer> a, int i);
+
 	
 
 	

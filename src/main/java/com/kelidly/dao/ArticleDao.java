@@ -24,6 +24,8 @@ public interface ArticleDao extends BaseDao<Article> {
 
 	PageModel getPageArticleBySiteId(int pageNo, int pageSize, long siteid);
 
+	List<Article> getArticleByLimit(List<Integer> a, int i);
+
 	
 
 }

@@ -74,6 +74,15 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 		return list;
 	}
 
+	@Override
+	public List<Integer> getIdListByPid(long pid) {
+		String sql = "select id from Site where pid=:pid and state = 2";
+		Session s = sessionFactory.openSession();
+		Query query = s.createQuery(sql);		
+		query.setLong("pid", pid);
+		List<Integer> alist = query.list();
+		return alist;
+	}
 	
 
 }
