@@ -769,17 +769,17 @@ background:#f2f2f2;
 .col1_right { width:264px; float:right; margin-right:5px; _margin-right:1px; border-left:1px solid #cdcdcd; padding-left:5px; }
 .col1_right .shadow1 { width:264px; height:6px; line-height:6px; overflow:hidden; background:url(../img/shadow1.png) no-repeat;}
 
-.col1_right .tel { width:222px; height:112px; background:#F7F7F7; border:1px solid #cdcdcd; padding:10px 20px 15px; }
-.col1_right .ticon { width:px; height:60px; background:url(../images/phone.png) no-repeat;}
+.col1_right .tel { width:222px; height:59px; background:#F7F7F7; border:1px solid #cdcdcd; padding:10px 20px 15px; }
+.col1_right .ticon { width:px; height:60px; background:url(../img/phone.png) no-repeat;}
 .col1_right .ticon p { margin-left:26px; color:#787878; font-size:15px; padding-top:3px;}
-.col1_right .ticon .pnum { margin-top:3px; margin-left:50px; font-size:24px; color:#0072ff; }
+.col1_right .ticon .pnum { margin-top:3px; margin-left:50px; font-size:24px; color:#FF001F; }
 .col1_right .tel a { display:block; width:183px; margin:12px auto 0px; height:44px; background:url(../img/qqzx1.png);  }
 .col1_right .tel a:hover  { display:block; width:183px; height:44px; background:url(../img/qqzx2.png);  }
 .col1_right .tel a:active{display:block; width:183px; height:44px; background:url(../img/qqzx3.png);  }
 
 .col1_right .cr_block1 { width:px; padding:10px 15px 15px; background:#F7F7F7; border:1px solid #cdcdcd;  }
 .col1_right .crb_ttl { font-size:17px; color:#666; float:left; }
-.col1_right .crb_more { font-family:"宋体"; color:#999; float:right; }
+.col1_right .crb_more { font-family:"宋体"; color:#D51717; float:right; }
 .col1_right .cr_block1 li { display:block; width:230px; overflow:hidden; line-height:24px; font-family:"宋体"; font-size:14px; white-space:nowrap; -o-text-overflow:ellipsis; text-overflow: ellipsis; }
 .col1_right .crb_left { width:80px; float:left; margin:15px 0px 0px 25px; }
 .col1_right .sinawb { width:62px; height:22px; display:block; background:url(../img/weibo.png) 0px 0px;}

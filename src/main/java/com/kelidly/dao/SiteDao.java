@@ -39,6 +39,8 @@ public interface SiteDao extends BaseDao<Site> {
 	 */
 
 	List<Site> getSecondListSiteList();
+
+	List<Integer> getIdListByPid(long pid);
 	
 	
 }

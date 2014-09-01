@@ -11,13 +11,15 @@ import com.kelidly.entity.Article;
 import com.kelidly.entity.ArticleType;
 import com.kelidly.model.PageModel;
 import com.kelidly.service.ArticleService;
+import com.kelidly.service.SiteService;
 
 @Component("articleService")
 public class ArticleServiceImpl implements ArticleService {
 
 	@Resource(name="articleDao")
 	ArticleDao articleDao;
-	
+	@Resource(name="siteService")
+	SiteService siteService;
 
 
 	@Override
@@ -133,6 +135,23 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid){
 		return articleDao.getPageArticleBySiteId(pageNo, pageSize, siteid);
+	}
+//	@Override
+//	public List<Article> findArticleByLimit(long pid,int i){
+//		
+//		List<Integer> a = siteService.findIdListByPid(pid);
+//		
+//		List<Article> articles = articleDao.getArticleByLimit(a,i);
+//		
+//		return articles;
+//		
+//	}
+	
+	@Override
+	public List<Article> getArticleByLimit(List<Integer> a, int i) {
+		
+		List<Article> articleList = articleDao.getArticleByLimit(a, i);
+		return articleList;
 	}
 
 	

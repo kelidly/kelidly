@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import com.kelidly.dao.ArticleDao;
 import com.kelidly.entity.Article;
 import com.kelidly.entity.ArticleType;
+import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
 
 
@@ -17,10 +20,10 @@ import com.kelidly.model.PageModel;
 @SuppressWarnings("unchecked")
 public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
+	
 	@Resource
 	private SessionFactory sessionFactory;
 	@Override
@@ -93,6 +96,20 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 		PageModel pageModel = queryPageModel(pageNo,pageSize,queryHql,"",countSql);
 		
 		return pageModel;
+	}
+	
+
+	@Override
+	public List<Article> getArticleByLimit(List<Integer> a, int i) {
+
+		String hql="from Article where siteid in (:alist) order by addtime desc";  
+		Query query = getSession().createQuery(hql);  
+		query.setParameterList("alist", a);  
+//		query.setInteger("i", i);
+		query.setFirstResult(0);
+		query.setMaxResults(i);
+		List<Article> articleList = query.list();
+		return articleList;
 	}
 
 

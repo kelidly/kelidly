@@ -69,8 +69,12 @@
 	<div class="pic_content">
 		<div class="pic_lists">
 			<ul>
-				<li><a href="#"><img src="img/theme_thumb5(9).png"/></a><p>唯美画面一</p></li>
-				<li><a href="#"><img src="img/theme_thumb5(12).png"/></a><p>唯美画面二</p></li>
+				 <#list effectList as effect>
+				 
+				<li><a href="#"><img src="${effect.imgurl!'/kelidly/frong/img/no.png'}"/></a><p>${effect.title}</p></li>
+				 
+				 </#list>
+<!-- 				<li><a href="#"><img src="img/theme_thumb5(12).png"/></a><p>唯美画面二</p></li>
 				<li><a href="#"><img src="img/theme_thumb5(22).png"/></a><p>唯美画面三</p></li>
 				<li><a href="#"><img src="img/theme_thumb5(25).png"/></a><p>唯美画面四</p></li>
 				
@@ -79,7 +83,7 @@
 				<li><a href="#"><img src="img/theme_thumb5(15).png"/></a><p>唯美画面一</p></li>
 				<li><a href="#"><img src="img/theme_thumb5(20).png"/></a><p>唯美画面一</p></li>
 				<li><a href="#"><img src="img/theme_thumb5(15).png"/></a><p>唯美画面一</p></li>
-				<li><a href="#"><img src="img/theme_thumb5(20).png"/></a><p>唯美画面一</p></li>				
+				<li><a href="#"><img src="img/theme_thumb5(20).png"/></a><p>唯美画面一</p></li>	 -->			
 				
 
 			</ul>
@@ -96,12 +100,10 @@
             <div class="tel">
                 <div class="ticon">
                     <p>国内服务热线：</p>
-                    <p class="pnum">4006-920-360</p>
-					 <div class="nextTel">
-                            <p style="padding-top: 0px;" class="nextNum">020-38216487</p>
-                        </div>
+                    <p class="pnum">${fuwutel}</p>
+					
                 </div>
-                  <a href="http://wpa.qq.com/msgrd?V=1&amp;uin=878239366&amp;Site=WINBIZ&amp;Menu=yes" id="online-qq3" class="onlinebtn" target="_blank"></a>
+                  
             </div>
             
                      
@@ -109,51 +111,47 @@
             
             <div class="cr_block1">
                 <div>
-                    <div class="crb_ttl">常见问题</div>
-                    <a class="crb_more" href="http://www.winbiz.cn/zh_cn/About.html#tip6" target="_blank">更多&gt;&gt;</a>
+                    <div class="crb_ttl">新闻动态</div>
+                    <a class="crb_more" href="${webroot}/news/index.html?pid=2&id=7" >更多&gt;&gt;</a>
                 </div>
                 <div class="blank7"></div>
                 <ul>
-                    <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                    <li><a href="http://www.winbiz.cn/zh_cn/About.html#tip6" target="_blank">3D自动成像系统主要适合哪些行业？</a></li>
-                    <li><a href="http://www.winbiz.cn/zh_cn/Download.html" target="_blank">3D成像软件支持哪些相机型号？</a></li>
-                     <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                      <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                       <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                        <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                         <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                          <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
-                           <li><a href="http://www.winbiz.cn/zh_cn/About.html" target="_blank">什么是3D自动成像系统？</a></li>
+                <#list newsList as news>
+	                 <li><a href="${webroot}/news/detail.html?pid=2&id=${news.siteid}&aid=${news.id}"  title="${news.title}">
+	                    <span>
+	                    <#if news.title?length lt 15>   
+							${news.title}						
+						<#else> 
+						    ${news.title[0..16]}... 
+						</#if>	                    
+	                    </span></a></li>
+                                    
+                </#list>           
                 </ul>
-            </div>
-            
+            </div>       
            
             <div class="blank7"></div>
             
-            <div class="cr_block1">
+              <div class="cr_block1">
                 <div>
-                    <div class="crb_ttl">新闻动态</div>
-                    <a class="crb_more" href="http://www.winbiz.cn/zh_cn/News.html" target="_blank">更多&gt;&gt;</a>
+                    <div class="crb_ttl">技术支持</div>
+                    <a class="crb_more" href="${webroot}/support/index.html?pid=9&id=10" >更多&gt;&gt;</a>
                 </div>
                 <div class="blank7"></div>
                 <ul>
-                
-                                        <li><a href="http://www.winbiz.cn/zh_cn/NewsDetail/13/532.html" target="_blank" title="产品为什么要用3D展示？">
-                                           <span>产品为什么要用3D展示？</span></a></li>
+               	<#list supportList as support>
+	                 <li><a href="${webroot}/support/detail.html?pid=9&id=${support.siteid}&aid=${support.id}"  title="${support.title}">
+	                    <span>
+	                    <#if support.title?length lt 15>   
+							${support.title}						
+						<#else> 
+						    ${support.title[0..16]}... 
+						</#if>	                    
+	                    </span></a></li>
                                     
-                                        <li><a href="http://www.winbiz.cn/zh_cn/NewsDetail/14/505.html" target="_blank" title="3d展示——电商的撒手锏">
-                                           <span>3d展示——电商的撒手锏</span></a></li>
-                                           	   <li><a href="http://www.winbiz.cn/zh_cn/NewsDetail/13/532.html" target="_blank" title="产品为什么要用3D展示？">
-                                           <span>产品为什么要用3D展示？</span></a></li>
-                                    
-                                        <li><a href="http://www.winbiz.cn/zh_cn/NewsDetail/14/505.html" target="_blank" title="3d展示——电商的撒手锏">
-                                           <span>3d展示——电商的撒手锏</span></a></li>
-                                    
-                                      
-                                    
+                </#list>           
                 </ul>
             </div>
-            
             
             <div class="blank7"></div>
             
@@ -172,7 +170,7 @@
 	<!--body end-->
 
 	<#include "include/footer.html">
-   	<#include "include/kefu.html">
+   	
      
 
 </body>
