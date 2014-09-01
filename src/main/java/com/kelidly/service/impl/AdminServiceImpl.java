@@ -15,6 +15,7 @@ public class AdminServiceImpl implements AdminService {
 	AdminDao adminDao;
 	
 
+	@Override
 	public boolean addAdmin(Admin bean) {
 		
 		try {
@@ -28,6 +29,7 @@ public class AdminServiceImpl implements AdminService {
 
 
 
+	@Override
 	public boolean loginAdmin(String userName, String pwd) {
 		boolean flag = false;
 		Admin admin = adminDao.getAdminByInputNameAndPassword(userName, pwd);

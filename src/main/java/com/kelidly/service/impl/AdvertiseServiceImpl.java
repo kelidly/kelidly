@@ -22,6 +22,7 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 		return advertiseDao.update(bean);
 	}
 
+	@Override
 	public boolean saveBean(Advertise bean) {
 		
 		try {

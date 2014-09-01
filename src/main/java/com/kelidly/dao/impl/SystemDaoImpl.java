@@ -18,6 +18,7 @@ public class SystemDaoImpl extends ObjectDaoImpl<SystemConfig> implements System
 	@Resource
 	private SessionFactory sessionFactory;
 
+	@Override
 	public List getsystem() {		
 		
 		Session s = sessionFactory.openSession();
@@ -29,11 +30,13 @@ public class SystemDaoImpl extends ObjectDaoImpl<SystemConfig> implements System
 		
 	}
 
+	@Override
 	public void updateSystemById(List<SystemConfig> list) {
 		update(list);
 
 	}
 
+	@Override
 	@Deprecated
 	public List getSystemListBySytle(int i) {		
 		Session s = sessionFactory.openSession();
@@ -46,10 +49,12 @@ public class SystemDaoImpl extends ObjectDaoImpl<SystemConfig> implements System
 		
 	}
 
+	@Override
 	public void addSystemConfig(SystemConfig systemConfig) {
 		// save(systemConfig);
 	}
 
+	@Override
 	public List getAllowIp() {
 		// TODO Auto-generated method stub
 		return null;

@@ -19,6 +19,7 @@ public class CaseDaoImpl extends ObjectDaoImpl<Case> implements CaseDao{
 	private static final long serialVersionUID = 1L;
 
 	//待续
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		
 		StringBuffer queryHql = new StringBuffer("from Case ");
@@ -29,12 +30,14 @@ public class CaseDaoImpl extends ObjectDaoImpl<Case> implements CaseDao{
 		return pageModel;
 	}
 
+	@Override
 	public Case queryBean(int id) {
 		
 		return (Case)getByPk(Case.class, id);
 	}
 
 
+	@Override
 	public boolean delete(int[] idArr) {
 //		StringBuffer str = new StringBuffer("delete from cust_case  where id in(");
 //		for (int i = 0; i < idArr.length; i++) {

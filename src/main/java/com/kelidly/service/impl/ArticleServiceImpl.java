@@ -1,6 +1,5 @@
 package com.kelidly.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,13 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import com.kelidly.dao.ArticleDao;
-import com.kelidly.dao.SiteDao;
 import com.kelidly.entity.Article;
 import com.kelidly.entity.ArticleType;
-import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
-import com.kelidly.model.tree.SiteTree;
-import com.kelidly.model.tree.Tree;
 import com.kelidly.service.ArticleService;
 
 @Component("articleService")

@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.kelidly.entity.Article;
 import com.kelidly.entity.ArticleType;
-import com.kelidly.entity.NewsType;
-import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
-import com.kelidly.model.tree.SiteTree;
 
 
 public interface ArticleService {

@@ -139,5 +139,102 @@ public class BaseController {
 		return filePath;
 		
 	}
+	
+protected String addFlashFiles2(CommonsMultipartFile[] files) {
+		
+		String filePath = null;
+		
+		if (files.length != 0 && files != null) {
+			InputStream is=null;
+			FileOutputStream fos =null;
+			FileOutputStream imgfos =null;
+			FileOutputStream swffos =null;
+			//系统配置目录
+			String varfilename = Global.getValue("resources");
+			String filedirName = "/"+new Date().getTime();
+			//系统目录
+			filePath = varfilename + "/common/kelidly-res/effect" + filedirName;
+			//保存目录
+			String rootPath = request.getSession().getServletContext().getRealPath("/") + filePath;
+			
+			//checkfolderExists(rootPath);
+			//checkfolderExists(rootPath + "/image");
+			checkfolderExists(rootPath);
+			checkfolderExists(rootPath + "/image");
+			try {
+
+				String originalFilename = null;
+				for (CommonsMultipartFile commonsMultipartFile : files) {
+					is = commonsMultipartFile.getInputStream();
+					originalFilename = commonsMultipartFile.getOriginalFilename();
+					if(originalFilename.lastIndexOf(".swf") != -1 
+							|| originalFilename.lastIndexOf(".xml") != -1){
+						swffos = new FileOutputStream(rootPath + "/" + originalFilename);
+						fos = swffos;
+					}
+					else{
+						imgfos = new FileOutputStream(rootPath + "/image/" + originalFilename);
+						fos = imgfos;
+					}
+					int b=0;
+					while((b=is.read())!= -1){
+						fos.write(b);
+					}
+					fos.flush();
+					fos.close();
+					is.close();
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;				
+			}			
+		}
+		return filePath;
+		
+	}
+protected String addFlashFiles(String rootPath,CommonsMultipartFile commonsMultipartFile) {
+	
+	
+	
+	if (commonsMultipartFile != null) {
+		InputStream is=null;
+		FileOutputStream fos =null;
+		FileOutputStream imgfos =null;
+		FileOutputStream swffos =null;
+
+		try {
+
+			String originalFilename = null;
+			
+				is = commonsMultipartFile.getInputStream();
+				originalFilename = commonsMultipartFile.getOriginalFilename();
+				if(originalFilename.lastIndexOf(".swf") != -1 
+						|| originalFilename.lastIndexOf(".xml") != -1){
+					swffos = new FileOutputStream(rootPath + "/" + originalFilename);
+					fos = swffos;
+				}
+				else{
+					imgfos = new FileOutputStream(rootPath + "/image/" + originalFilename);
+					fos = imgfos;
+				}
+				int b=0;
+				while((b=is.read())!= -1){
+					fos.write(b);
+				}
+				fos.flush();
+				fos.close();
+				is.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;				
+		}			
+	}
+	return "";
+	
+}
+
 
 }

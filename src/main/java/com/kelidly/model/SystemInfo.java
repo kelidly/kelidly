@@ -20,7 +20,7 @@ public class SystemInfo {
 	}
 	
 	private SystemConfig getConfig(String key){
-		SystemConfig sys=(SystemConfig)map.get(key);
+		SystemConfig sys=map.get(key);
 		return sys;
 	}
 	public String getValue(String key){

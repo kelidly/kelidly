@@ -11,10 +11,12 @@ import com.kelidly.entity.Advertise;
 @SuppressWarnings("unchecked")
 public class AdvertiseDaoImpl extends ObjectDaoImpl<Advertise> implements AdvertiseDao{
 
+	@Override
 	public Advertise queryBean(int AdvertiseId) {
 		return (Advertise)getByPk(Advertise.class, AdvertiseId);
 	}
 
+	@Override
 	public Boolean update(Advertise bean) {
 /*		String hql = "update AdvertiseBean set content='" + bean.getContent()  
 				+ "' where id= " + bean.getId();

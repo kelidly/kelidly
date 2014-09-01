@@ -1,6 +1,5 @@
 package com.kelidly.web.controller.admin;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

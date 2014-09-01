@@ -34,7 +34,7 @@ public class AdminDaoImpl extends ObjectDaoImpl<Admin> implements AdminDao{
 		query.setString("password", pwd);
 		List<Admin> list = query.list();
 		if (list != null && list.size() >= 1) {
-			return (Admin) list.get(0);
+			return list.get(0);
 		} else {
 			return null;
 		}

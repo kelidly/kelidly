@@ -14,10 +14,12 @@ public class LinksServiceImpl implements LinksService {
 
 	@Resource(name="linksDao")
 	LinksDao linksDao;
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		return linksDao.query(pageNo, pageSize);
 	}
 
+	@Override
 	public boolean delete(int id) {
 		
 		try {
@@ -31,6 +33,7 @@ public class LinksServiceImpl implements LinksService {
 		
 	}
 
+	@Override
 	public boolean update(Links bean) {
 		
 		try {
@@ -41,6 +44,7 @@ public class LinksServiceImpl implements LinksService {
 		return true;
 	}
 
+	@Override
 	public boolean add(Links bean) {
 		try {
 			linksDao.create(bean);
@@ -50,10 +54,12 @@ public class LinksServiceImpl implements LinksService {
 		return true;
 	}
 
+	@Override
 	public Links queryBean(int id) {
 		return linksDao.queryBean(id);
 	}
 
+	@Override
 	public boolean delete(int[] idArr) {
 		return linksDao.delete(idArr);
 	}

@@ -33,10 +33,12 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 	@Resource
 	private SessionFactory sessionFactory;
 
+	@Override
 	public Session getSession() {
 		return sessionFactory.openSession();
 	}
 
+	@Override
 	public void batchDelete(Class clazz, long[] id) {
 		String strId = "";
 		for (int i = 0; i < id.length; i++) {
@@ -51,6 +53,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		}
 	}
 
+	@Override
 	public void create(Object entity) {
 		Session session = null;
 		Transaction tr = null;
@@ -85,6 +88,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 
 	}
 
+	@Override
 	public void delete(Object entity) {
 		logger.debug("delete(Object) entity.class="
 				+ entity.getClass().getName());
@@ -136,6 +140,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 			throw new DaoException(Messages.getString("BaseDao.delete.Error"));
 		}
 	}
+	@Override
 	public void delete(Class clazz, long id) {
 		logger.debug("ClassName=" + clazz.getName() + "  ,id=" + id);
 		try {
@@ -152,6 +157,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		}
 	}
 
+	@Override
 	public void deleteAll(Class clazz) {
 		logger.debug("deleteAll(Class) ClassName=" + clazz.getName());
 		Session session = null;
@@ -185,6 +191,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		}
 	}
 
+	@Override
 	public void deleteAll(Collection entities) {
 		Session session = null;
 		Transaction tr = null;
@@ -216,6 +223,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		}
 	}
 
+	@Override
 	public void excuteSql(String strsql) {
 		logger.debug("excuteSql(String) strsql=" + strsql);
 		Session session = null;
@@ -248,6 +256,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 
 	}
 
+	@Override
 	public List find(String strhql) {
 		List result = null;
 		logger.debug("find(String) queryString=" + strhql);
@@ -267,6 +276,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List find(String strhql, Object param) {
 		logger.debug("find(String, Object) queryString=" + strhql + " ,param="
 				+ param);
@@ -287,6 +297,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List findByNamedParam(String strhql, String name, Object param) {
 		logger.debug("findByNamedParam(String, String, Object) strhql="
 				+ strhql + "name=" + name + " ,param=" + param);
@@ -309,6 +320,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List findBySql(String strsql) {
 		logger.debug("exceuteSQL(String) strsql=" + strsql);
 		System.out.println(strsql);
@@ -329,6 +341,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List findBySql(String strsql, List params) {
 		String paramnameArray = "";
 		if (params != null) {
@@ -364,6 +377,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public Object getByPk(Class clazz, int id) {
 		logger.debug("getByPk(Class, Integer) class=" + clazz.getName()
 				+ " , ID=" + id);
@@ -382,6 +396,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public Object getByPk(Class clazz, long id) {
 		logger.debug("getByPk(Class, Long) Class=" + clazz.getName() + ",id="
 				+ id);
@@ -401,6 +416,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public Object getByPk(Class clazz, String id) {
 		logger.debug("getByPk(Class, String) Class=" + clazz.getName() + ",id="
 				+ id);
@@ -423,6 +439,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 	// return HibernateSessionFactory.getSession();
 	// }
 
+	@Override
 	public int getTotalCount(String strhql) {
 		logger.debug("getTotalCount() strhql=" + strhql);
 		int result = 0;
@@ -442,6 +459,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public int getTotalCount(String strhql, Object obj) {
 		logger.debug("getTotalCount(String,Object)  strhql=" + strhql + ""
 				+ obj.getClass().getName());
@@ -466,6 +484,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public int getTotalCount(String strhql, List params) {
 		String paramnameArray = "";
 		if (params != null) {
@@ -504,6 +523,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public int getTotalCountBySql(String strsql) {
 		logger.debug("getTotalCountBySql(String) strsql=" + strsql);
 		int result = 0;
@@ -523,6 +543,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public int getTotalCountBySql(String strsql, List params) {
 		String paramnameArray = "";
 		if (params != null) {
@@ -564,6 +585,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return this.find(strhql);
 	}
 
+	@Override
 	public Object loadByPk(Class clazz, String keyName, Object keyValue) {
 		Object result = null;
 		String query = "from " + clazz.getName() + "  where " + keyName + "=? ";
@@ -583,6 +605,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List query(int pageNo, int pageSize, String strhql) {
 		logger.debug("query(int, int, String) pageNo=" + pageNo + ",pageSize="
 				+ pageSize + " ,strhql=" + strhql);
@@ -607,6 +630,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List query(int pageNo, int pageSize, String strhql, Object obj) {
 		logger.debug("query(int, int, String, Object) pageNo=" + pageNo
 				+ ",pageSize=" + pageSize + "strhql=" + strhql + "  ,obj"
@@ -631,6 +655,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List query(int pageNo, int pageSize, String strhql, List params) {
 		logger.debug("query(int, int, String, Object) pageNo=" + pageNo
 				+ ",pageSize=" + pageSize + ",strhql=" + strhql);
@@ -668,6 +693,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List queryBySql(int pageNo, int pageSize, String strsql) {
 		logger.debug("query(int, int, String) pageNo=" + pageNo + ",pageSize="
 				+ pageSize + " ,strsql=" + strsql);
@@ -690,6 +716,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public List queryBySql(int pageNo, int pageSize, String strsql, List params) {
 		logger.debug("query(int, int, String, Object) pageNo=" + pageNo
 				+ ",pageSize=" + pageSize + " , strsql=" + strsql);
@@ -727,6 +754,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 		return result;
 	}
 
+	@Override
 	public void update(Object entity) {
 		logger.debug("update(Object) entity.class="
 				+ entity.getClass().getName());
@@ -799,6 +827,7 @@ public class ObjectDaoImpl<T> implements Serializable, BaseDao<T> {
 
 	
 	// MSQL分页查询
+	@Override
 	public PageModel queryPageModel(int pageNo, int pageSize,
 			StringBuffer queryHql, String whereSql, StringBuffer countSql) {
 

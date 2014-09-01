@@ -1,7 +1,5 @@
 package com.kelidly.web.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -9,10 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kelidly.entity.Site;
-import com.kelidly.model.PageModel;
 import com.kelidly.service.ArticleService;
-import com.kelidly.service.NewsService;
 import com.kelidly.service.SiteService;
 
 @Controller

@@ -14,6 +14,7 @@ import com.kelidly.model.PageModel;
 @SuppressWarnings("unchecked")
 public class WordsDaoImpl extends ObjectDaoImpl<Words> implements WordsDao{
 
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		
 //		StringBuffer queryHql = new StringBuffer("from WordsBean ");
@@ -25,6 +26,7 @@ public class WordsDaoImpl extends ObjectDaoImpl<Words> implements WordsDao{
 		return pageModel;
 	}
 
+	@Override
 	public Words queryBean(int id) {
 		
 		return (Words)getByPk(Words.class, id);

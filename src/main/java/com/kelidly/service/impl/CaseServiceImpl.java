@@ -15,10 +15,12 @@ public class CaseServiceImpl implements CaseService {
 	@Resource(name = "caseDao")
 	CaseDao caseDao;
 
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		return caseDao.query(pageNo, pageSize);
 	}
 
+	@Override
 	public boolean delete(int id) {
 
 		try {			
@@ -31,6 +33,7 @@ public class CaseServiceImpl implements CaseService {
 		
 	}
 
+	@Override
 	public boolean update(Case bean) {
 		try {			
 			caseDao.update(bean);
@@ -43,6 +46,7 @@ public class CaseServiceImpl implements CaseService {
 		
 	}
 
+	@Override
 	public boolean add(Case bean) {
 		
 		try {
@@ -55,10 +59,12 @@ public class CaseServiceImpl implements CaseService {
 		
 	}
 
+	@Override
 	public Case queryBean(int id) {
 		return caseDao.queryBean(id);
 	}
 
+	@Override
 	public boolean delete(int[] idArr) {
 		return caseDao.delete(idArr);
 	}

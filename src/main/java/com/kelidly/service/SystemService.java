@@ -2,8 +2,6 @@ package com.kelidly.service;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import com.kelidly.entity.SystemConfig;
 import com.kelidly.model.SystemInfo;
 

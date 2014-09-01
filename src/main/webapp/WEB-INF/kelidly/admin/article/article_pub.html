@@ -43,14 +43,15 @@
 
 				<div class="tab-content default-tab" id="tab1">
 					<form action="${webroot}/back/article/addArticle.html"
-						method="post" enctype="multipart/form-data">
+						 method="post" enctype="multipart/form-data">
 						<input type="hidden" name="status" id="status" value="add" />
+						
 						<fieldset>
 							<p>
 								<div style="float: right;">
 									<input id="create" style="display: none;" class="button" type="button" onclick="createEditor()" value="创建编辑器" /> 
 									<input id="delete" class="button" type="button"	onclick="deleteEditor()" value="删除编辑器" />
-									<input class="button" type="submit" value="发布" />	
+									<input class="button" type="button"  value="发布" />	
 								</div>
 							</p>
 							<p>
@@ -72,10 +73,7 @@
 								<label>展示图片</label>
 								<input type="file"  name="imgfile" >
 							</p>
-<!-- 							<p>
-								<label>flash上传</label>
-								<input type="file"  name="file" >
-							</p> -->
+
 							<p>
 								<label>添加内容</label>
 								<script id="editor" name="content" type="text/plain"
@@ -118,7 +116,119 @@
 		<!-- End .content-box -->
 
 		<div class="clear"></div>
+							<p>
+								<label>flash上传</label>
+								<input type="hidden" value="" id="flashurl" name="flashurl"></input>
+				<form id="uploadForm" action='${webroot}/back/article/addSwfFiles.html?swfdirName=${.now}' method="post" enctype="multipart/form-data">
+						
+						<div class="upload_box">
+                        <div class="upload_main">
+                            <div class="upload_choose">
+                                <input id="fileselect" type="file" size="30" name="fileselect" multiple />
+                                <span id="fileDragArea" class="upload_drag_area">或者将文件拖到此处</span>
+                            </div>
+                            <div id="preview" class="upload_preview"></div>
+                        </div>
+                        <div class="upload_submit">
+                        <button type="button" id="fileSubmit" class="upload_submit_btn">确认上传文件</button>
+                        </div>
+                        <div id="uploadInf" class="upload_inf"></div>
+                    </div>
+                    </form>
+							</p>
+<script>		
 
+var arrFiles = [];
+var params = {
+	fileInput: $("#fileselect").get(0),
+	dragDrop: $("#fileDragArea").get(0),
+	upButton: $("#fileSubmit").get(0),
+	url: $("#uploadForm").attr("action"),
+	filter: function(files) {
+		
+		for (var i = 0, file; file = files[i]; i++) {
+			if (file.type.indexOf("image") == 0 || file.type.indexOf("application/x-shockwave-flash") == 0
+			|| file.type.indexOf("text/xml") == 0) {
+				if (file.size >= 1024000) {
+					alert('您这张"'+ file.name +'"文件大小过大，应小于1M');	
+				} else {
+					arrFiles.push(file);	
+				}			
+			}else {
+				alert('文件"' + file.name + '"不是图片,swf,xml格式。');	
+			}
+		}
+		return arrFiles;
+	},
+	onSelect: function(files) {
+		var html = '', i = 0;
+		$("#preview").html('<div class="upload_loading"></div>');
+		var funAppendImage = function() {
+			file = files[i];
+			if (file) {
+				var reader = new FileReader()
+				reader.onload = function(e) {
+					html = html + '<div id="uploadList_'+ i +'" class="upload_append_list"><p><strong>' + file.name + '</strong>'+ 
+						'<a href="javascript:" class="upload_delete" title="删除" data-index="'+ i +'">删除</a><br />' +
+						
+						'<span id="uploadProgress_' + i + '" class="upload_progress"></span>' +
+					'</div>';
+					
+					i++;
+					funAppendImage();
+				}
+				reader.readAsDataURL(file);
+			} else {
+				$("#preview").html(html);
+				if (html) {
+					//删除方法
+					$(".upload_delete").click(function() {
+						ZXXFILE.funDeleteFile(files[parseInt($(this).attr("data-index"))]);
+						return false;	
+					});
+					//提交按钮显示
+					$("#fileSubmit").show();	
+				} else {
+					//提交按钮隐藏
+					$("#fileSubmit").hide();	
+				}
+			}
+		};
+		funAppendImage();		
+	},
+	onDelete: function(file) {
+		$("#uploadList_" + file.index).fadeOut(10);
+		ZXXFILE.fileFilter.pop(file);
+	},
+	onDragOver: function() {
+		$(this).addClass("upload_drag_hover");
+	},
+	onDragLeave: function() {
+		$(this).removeClass("upload_drag_hover");
+	},
+	onProgress: function(file, loaded, total) {
+		var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+		eleProgress.show().html(percent);
+	},
+	onSuccess: function(file, response) {
+		$("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
+		$("#flashurl").val(response);
+	},
+	onFailure: function(file) {
+		$("#uploadInf").append("<p>文件" + file.name + "上传失败！</p>");	
+		$("#uploadImage_" + file.index).css("opacity", 0.2);
+	},
+	onComplete: function() {
+		//提交按钮隐藏
+		$("#fileSubmit").hide();
+		//file控件value置空
+		$("#fileselect").val("");
+		$("#uploadInf").append("<p>当前文件全部上传完毕，可继续添加上传。</p>");
+	}
+};
+ZXXFILE = $.extend(ZXXFILE, params);
+ZXXFILE.init();
+</script>
 		<!-- End Notifications -->
 		<#include "../include/footer.html">
 	</div>

@@ -1,7 +1,5 @@
 package com.kelidly.web.listener;
 
-import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -9,8 +7,6 @@ import javax.servlet.ServletContextListener;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import com.kelidly.constants.Global;
 import com.kelidly.model.SystemInfo;
 import com.kelidly.service.SystemService;

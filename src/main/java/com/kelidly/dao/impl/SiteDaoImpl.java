@@ -31,7 +31,7 @@ public class SiteDaoImpl extends ObjectDaoImpl<Site> implements SiteDao{
 		query.setString("name", name);
 		List<Site> list = query.list();
 		if(list.size()>=1){
-			return (Site)list.get(0);
+			return list.get(0);
 		}else{
 			return null;
 		}

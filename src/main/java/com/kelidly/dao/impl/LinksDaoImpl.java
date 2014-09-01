@@ -20,6 +20,7 @@ public class LinksDaoImpl extends ObjectDaoImpl<Links> implements LinksDao{
 	private static final long serialVersionUID = 1L;
 
 
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		
 		StringBuffer queryHql = new StringBuffer("from Links");
@@ -30,6 +31,7 @@ public class LinksDaoImpl extends ObjectDaoImpl<Links> implements LinksDao{
 		return pageModel;
 	}
 
+	@Override
 	public Links queryBean(int id) {
 		
 		return (Links)getByPk(Links.class, id);
@@ -49,6 +51,7 @@ public class LinksDaoImpl extends ObjectDaoImpl<Links> implements LinksDao{
 
 
 
+	@Override
 	public boolean delete(int[] idArr) {
 //		StringBuffer str = new StringBuffer("delete from links  where id in(");
 //		for (int i = 0; i < idArr.length; i++) {

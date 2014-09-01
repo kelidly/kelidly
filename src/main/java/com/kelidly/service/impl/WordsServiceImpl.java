@@ -14,10 +14,12 @@ public class WordsServiceImpl implements WordsService {
 
 	@Resource(name="wordsDao")
      WordsDao wordsDao;
+	@Override
 	public PageModel query(int pageNo, int pageSize) {
 		return wordsDao.query(pageNo, pageSize);
 	}
 
+	@Override
 	public boolean delete(int id) {
 		try {
 			wordsDao.delete(Words.class, id);
@@ -28,6 +30,7 @@ public class WordsServiceImpl implements WordsService {
 		return true;
 	}
 
+	@Override
 	public boolean update(Words bean) {
 		try {
 			wordsDao.update(bean);
@@ -39,6 +42,7 @@ public class WordsServiceImpl implements WordsService {
 	}
 	
 
+	@Override
 	public Words queryBean(int id) {
 		return wordsDao.queryBean(id);
 	}

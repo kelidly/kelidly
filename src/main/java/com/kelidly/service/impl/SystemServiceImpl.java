@@ -1,14 +1,10 @@
 package com.kelidly.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.ContextLoader;
@@ -39,6 +35,7 @@ public class SystemServiceImpl implements SystemService {
 	@Resource
 	private SystemDao systemDao;
 	
+	@Override
 	public SystemInfo getSystemInfo() {
 		SystemInfo info = new SystemInfo(); 
 		List list = systemDao.getsystem();
@@ -50,6 +47,7 @@ public class SystemServiceImpl implements SystemService {
 	}
 
 	
+	@Override
 	public List getSystemInfoForList() {		
 		return systemDao.getsystem();
 	}
@@ -58,12 +56,14 @@ public class SystemServiceImpl implements SystemService {
 	 * 根据模块显示系统设置信息
 	 * @return
 	 */	
+	@Override
 	public List getSystemInfoForListBysytle(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
+	@Override
 	public void updateSystemInfo(List<SystemConfig> list) {
 		for (SystemConfig systemConfig : list) {
 			systemDao.update(systemConfig);
@@ -76,11 +76,13 @@ public class SystemServiceImpl implements SystemService {
 	 * @param url
 	 * url 为网站根目录路径
 	 */
+	@Override
 	public void clean(String url) {
 		
 	}
 
 	
+	@Override
 	@Transactional
 	public void updateSystem(long id) {
 		
@@ -100,6 +102,7 @@ public class SystemServiceImpl implements SystemService {
 	}
 
 
+	@Override
 	public void addDrawBankList(List list) {
 		// TODO Auto-generated method stub
 		
