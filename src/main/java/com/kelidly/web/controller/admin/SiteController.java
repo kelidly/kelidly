@@ -9,16 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.kelidly.entity.Site;
 import com.kelidly.model.tree.SiteTree;
 import com.kelidly.service.AdminService;
 import com.kelidly.service.ArticleService;
 import com.kelidly.service.SiteService;
+import com.kelidly.web.controller.BaseController;
 
 @Controller  
 @RequestMapping("/back/site")
-public class SiteController {
+public class SiteController extends BaseController{
 
 	@Resource(name="adminService")
 	AdminService adminService; 
@@ -53,7 +55,19 @@ public class SiteController {
 	}
 	
 	@RequestMapping(value="/modifySite")
-	public String modifySite(Model model,Site site) {	
+	public String modifySite(Model model,Site site,
+			@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile) {	
+		
+		if(imgfile!=null){
+			// 添加图片
+			String filePath = addImage(imgfile);
+			if (filePath != null) {
+				site.setImgurl(filePath);
+			} else {
+				site.setImgurl(null);
+			}
+		}
+		
 		String rtMsg = "";
 		try {
 			siteService.modifySite(site);
@@ -76,9 +90,21 @@ public class SiteController {
 	}
 
 	@RequestMapping(value="/addSite")
-	public String addSite(Site site, Model model,@RequestParam(value="actionType",defaultValue="") String actionType){
+	public String addSite(Site site, Model model,
+			@RequestParam(value="actionType",defaultValue="") String actionType,
+			@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile){
 
 		if("add".equals(actionType)){
+			
+			if(imgfile!=null){
+				// 添加图片
+				String filePath = addImage(imgfile);
+				if (filePath != null) {
+					site.setImgurl(filePath);
+				} else {
+					site.setImgurl(null);
+				}
+			}
 			
 			//检测编码
 			boolean haveName = siteService.checkSiteName(site.getName());

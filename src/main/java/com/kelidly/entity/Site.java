@@ -21,6 +21,7 @@ public class Site {
 	private String content;
 	private long pid;
 	private int sort;
+	private String imgurl;	
 	public long getId() {
 		return id;
 	}
@@ -75,8 +76,14 @@ public class Site {
 	public void setSort(int sort) {
 		this.sort = sort;
 	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
 	public Site(long id, String name, String code, int rank, int state,
-			String url, String content, long pid, int sort) {
+			String url, String content, long pid, int sort, String imgurl) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -87,10 +94,12 @@ public class Site {
 		this.content = content;
 		this.pid = pid;
 		this.sort = sort;
+		this.imgurl = imgurl;
 	}
 	public Site() {
 		super();
 	}
+
 	
 	
 	

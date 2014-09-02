@@ -30,7 +30,7 @@ public class Global {
 	
 	public static String[] SYSTEMNAME=new String[]{"webname","meta_keywords","meta_description",
 		"beian","copyright","fuwutel","address","weburl","vip_fee","most_cash","theme_dir","salescall1"
-		,"salescall2","salescall3","salescall4"};
+		,"salescall2","salescall3","salescall4","qqkefu1","qqkefu2","qqkefu3","qqkefu4","qqkefu5"};
 	
 	public static ThreadLocal ipThreadLocal= new ThreadLocal();
 	public static ThreadLocal perviewBorrowThreadLocal = new ThreadLocal();

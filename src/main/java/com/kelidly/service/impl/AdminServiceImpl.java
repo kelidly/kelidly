@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.kelidly.dao.AdminDao;
 import com.kelidly.entity.Admin;
 import com.kelidly.service.AdminService;
+import com.kelidly.util.MD5;
 
 @Component("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -32,7 +33,9 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public boolean loginAdmin(String userName, String pwd) {
 		boolean flag = false;
-		Admin admin = adminDao.getAdminByInputNameAndPassword(userName, pwd);
+		MD5 md5 = new MD5();	
+		String password = md5.getMD5ofStr(pwd);
+		Admin admin = adminDao.getAdminByInputNameAndPassword(userName, password);
 		if (admin != null) {
 			flag = true;
 		}

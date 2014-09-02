@@ -12,45 +12,21 @@
 				<!-- , 您有 <a href="#messages" rel="modal">3条新消息</a> --><br /> <br /> <a href="${webroot}/index.html">网站首页</a> | <a
 					href="${webroot}/admin/loginout.html">退出</a>
 			</div>
-			<ul id="main-nav">
-				<li><a href="#" class="nav-top-item no-submenu"> 统计信息 </a></li>
-				<li><a href="#" class="nav-top-item <#if nid??&&nid='news'>current</#if>"> 新闻管理 </a>
-					<ul>
-						<li><a class="<#if mid??&&mid='news_pub'>current</#if>" href="${webroot}/back/news/pub.html">发布新闻</a></li>
-						<li><a class="<#if mid??&&mid='news_manage'>current</#if>" href="${webroot}/back/news/manage.html">新闻管理</a></li>
-						<li><a class="<#if mid??&&mid='news_typeManage'>current</#if>" href="${webroot}/back/news/toTypeView.html">类目管理</a></li>
-					</ul></li>
-				
+			<ul id="main-nav">				
 				<li><a href="#" class="nav-top-item <#if nid??&&nid='case'>current</#if>""> 客户案例 </a>
 					<ul>
 						<li><a class="<#if mid??&&mid='case_pub'>current</#if>" href="${webroot}/back/case/pub.html">发布案例</a></li>
 						<li><a class="<#if mid??&&mid='case_manage'>current</#if>" href="${webroot}/back/case/manage.html">案例管理</a></li>
 					</ul></li>
-				<!-- <li><a href="#" class="nav-top-item <#if nid??&&nid='about'>current</#if>""> 关于我们 </a>
-					<ul>
-						<li><a class="<#if mid??&&mid='about_intro'>current</#if>" href="${webroot}/back/about/updateView.html?aboutId=1">公司简介</a></li>
-						<li><a class="<#if mid??&&mid='about_proof'>current</#if>" href="${webroot}/back/about/updateView.html?aboutId=2">资质证明</a></li>
-						<li><a class="<#if mid??&&mid='about_contact'>current</#if>" href="${webroot}/back/about/updateView.html?aboutId=3">联系我们</a></li>
-						<li><a class="<#if mid??&&mid='about_teamwork'>current</#if>" href="${webroot}/back/about/updateView.html?aboutId=4">合作推广</a></li>
-						<li><a class="<#if mid??&&mid='about_manage'>current</#if>" href="${webroot}/back/words/manage.html">查看留言</a></li>
-					</ul></li> -->
+					
+				
 				<li><a href="#" class="nav-top-item <#if nid??&&nid='link'>current</#if>""> 友情链接 </a>
 					<ul>
 						<li><a class="<#if mid??&&mid='link_pub'>current</#if>" href="${webroot}/back/links/pub.html">添加链接</a></li>
 						<li><a class="<#if mid??&&mid='link_manage'>current</#if>" href="${webroot}/back/links/manage.html">链接管理</a></li>
 					</ul></li>
 
-				<!-- <li><a href="#" class="nav-top-item <#if nid??&&nid='product'>current</#if>""> 广告管理 </a>
-					<ul>
-						<li><a href="#">上传图片</a></li>
-						<li><a href="#">图片管理</a></li>
-						<li><a href="#">相册管理</a></li>
-						<li><a href="#">图片管理设置</a></li>
-					</ul></li> -->
-<!-- 				<li><a href="#" class="nav-top-item <#if nid??&&nid='product'>current</#if>""> 管理日志 </a>
-					<ul>
-						<li><a href="#">查看日志</a></li>
-					</ul></li>-->
+			
 				<li><a href="#" class="nav-top-item <#if nid??&&nid='system'>current</#if>"">系统设置 </a>
 					<ul>
 						<li><a class="<#if mid??&&mid='system_manage'>current</#if>" href="${webroot}/back/system/showSystemConfig.html">系统信息</a></li>

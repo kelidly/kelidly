@@ -5,9 +5,10 @@
 
 <#include "../include/resource.html">
 <body>
-	<#assign nid="article"> <#assign mid="article_pub"> <#include
-	"../include/left.html">
-
+	<#assign nid="article"> 
+	<#assign mid="article_pub"> 
+	<#include "../include/left.html">
+	
 
 	<div id="main-content">
 		<noscript>
@@ -51,7 +52,7 @@
 								<div style="float: right;">
 									<input id="create" style="display: none;" class="button" type="button" onclick="createEditor()" value="创建编辑器" /> 
 									<input id="delete" class="button" type="button"	onclick="deleteEditor()" value="删除编辑器" />
-									<input class="button" type="button"  value="发布" />	
+									<input class="button" type="submit"  value="发布" />	
 								</div>
 							</p>
 							<p>
@@ -73,7 +74,28 @@
 								<label>展示图片</label>
 								<input type="file"  name="imgfile" >
 							</p>
-
+							<p>
+								<label>falsh地址</label> <input
+									class="text-input medium-input datepicker" type="text"
+									id="flashurl_input" name="flashurl" value="" />
+										
+							</p>
+							<p>
+								<!-- 声明一个普通的html文件上传控件，并指定id -->
+								<input id="file_upload" name="file_upload" type="file" multiple="multiple">
+								<!-- 上传按钮 -->
+								<!-- <a href="javascript:$('#file_upload').uploadify('upload','*')" id="uploadButton"></a> -->
+							</p>
+							
+							<p>
+								<div id="swfnav">
+									<label>已上传</label>
+							        <ul id="colist" style="width: 1200px" >
+							        </ul>
+							    </div>					
+						
+							<p>
+							<p><p><p><p>
 							<p>
 								<label>添加内容</label>
 								<script id="editor" name="content" type="text/plain"
@@ -108,56 +130,48 @@
 			<!-- End .content-box-content -->
 		</div>
 		<!-- End .content-box -->
-		<div class="content-box column-left">
-			<!-- End .content-box-header -->
-
-			<!-- End .content-box-content -->
-		</div>
-		<!-- End .content-box -->
+		
 
 		<div class="clear"></div>
 		
-<form>
-		<!-- 声明一个普通的html文件上传控件，并指定id -->
-		<input id="file_upload" name="file_upload" type="file" multiple="multiple">
-		<!-- 上传按钮 -->
-		<a href="javascript:$('#file_upload').uploadify('upload','*')" id="uploadButton"></a>
-	</form>
+		
 
 	<!-- 上传成功后，文件地址显示在这里 -->
 
-<script src="${webroot}/kelidly/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="${webroot}/kelidly/uploadify/uploadify.css">
+	<script src="${webroot}/kelidly/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="${webroot}/kelidly/uploadify/uploadify.css">
   <script>  
-   var inputElement = document.getElementById("file_upload");    
-inputElement.addEventListener("change", handleFiles, false);  
-  
-function handleFiles(){  
-    var fileList = this.files;  
-       var dd = document.getElementById('content');  
-    for( var i = 0 ; i < fileList.length ; i++ ){  
-           dd.innerHTML += fileList[i].name+"<br>";  
-    }  
-}  
-//js获取项目根路径，如： http://localhost:8083/uimcardprj  
-function getRootPath(){  
-    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp  
-    var curWwwPath=window.document.location.href;  
-    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp  
-    var pathName=window.document.location.pathname;  
-    var pos=curWwwPath.indexOf(pathName);  
-    //获取主机地址，如： http://localhost:8083  
-    var localhostPaht=curWwwPath.substring(0,pos);  
-    //获取带"/"的项目名，如：/uimcardprj  
-    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);  
-    return(localhostPaht);  
-} 
-   </script>  
+	var inputElement = document.getElementById("file_upload");    
+	inputElement.addEventListener("change", handleFiles, false);  
+	  
+	function handleFiles(){  
+	    var fileList = this.files;  
+	       var dd = document.getElementById('content');  
+	    for( var i = 0 ; i < fileList.length ; i++ ){  
+	           dd.innerHTML += fileList[i].name+"<br>";  
+	    }  
+	} 
+	//js获取项目根路径，如： http://localhost:8083/uimcardprj  
+	function getRootPath(){  
+	    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp  
+	    var curWwwPath=window.document.location.href;  
+	    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp  
+	    var pathName=window.document.location.pathname;  
+	    var pos=curWwwPath.indexOf(pathName);  
+	    //获取主机地址，如： http://localhost:8083  
+	    var localhostPaht=curWwwPath.substring(0,pos);  
+	    //获取带"/"的项目名，如：/uimcardprj  
+	    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);  
+	    return(localhostPaht);  
+	} 
+	   </script>  
 	<!-- 将声明的普通上传控件与Uploadify插件绑定 -->
 	<script type="text/javascript">
-
+	var timestamp = Date.parse(new Date());
 		$(function() {
+			
 			$('#file_upload').uploadify({
+				
 				//校验数据
 				'formData'     	: {
 					'timestamp' : '100',
@@ -165,8 +179,8 @@ function getRootPath(){
 				},
 				
 				'swf'         	: getRootPath()+'/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
-				'uploader'    	: getRootPath()+'/back/article/addSwfFiles',			//指定服务器端上传处理文件，默认‘upload.php’
-				'auto'        	: false,					//手动上传
+				'uploader'    	: getRootPath()+'/back/article/addSwfFiles?swfdirName='+timestamp,			//指定服务器端上传处理文件，默认‘upload.php’
+				'auto'        	: true,					//手动上传
 				'buttonImage' 	: getRootPath() +'/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
 				'fileObjName'   : 'file',  
 				'multi'       	: true,					//单文件上传
@@ -174,7 +188,16 @@ function getRootPath(){
 				'fileSizeLimit'	: '300MB',					//上传文件的大小限制，单位为B, KB, MB, 或 GB
 				'successTimeout': 30,						//成功等待时间
 				'onUploadSuccess' : function(file, data, response) {//每成功完成一次文件上传时触发一次
-		            $('#url').append("<li>"+file.name+'<br/>'+data+"</li>");
+		            $('#url').append("<li style='display:block;float:left;padding:15px;line-height:30px;'>"+file.name+'<br/>'+data+"</li>");
+		            if(data!="")
+		            {
+		            	$('#flashurl_input').val(data+'/'+file.name);
+		            }		            
+		            var msg = "<li>" + file.name + "</li>";
+		            $("#colist").append(msg);
+		           
+					
+					
 		        },
 		        'onUploadError'   : function(file, data, response) {//当上传返回错误时触发
 		            $('#url').append("<li>"+data+"</li>");
@@ -189,6 +212,13 @@ function getRootPath(){
 		<!-- End Notifications -->
 		<#include "../include/footer.html">
 	</div>
+
+<style type="text/css">
+ #swfnav li{display:block;float:left;padding:15px;line-height:30px;}
+</style>
+
+
+
 
 </body>
 </html>

@@ -29,22 +29,20 @@ import com.kelidly.web.controller.BaseController;
 
 @Controller
 @RequestMapping("/back/article")
-public class BackArticleController extends BaseController{
+public class BackArticleController extends BaseController {
 
 	@Resource(name = "articleService")
 	ArticleService articleService;
-	
-	@Resource(name="siteService")
+
+	@Resource(name = "siteService")
 	SiteService siteService;
-	
+
 	@Autowired
 	private HttpServletRequest request;
-	
-
-	
 
 	/**
 	 * 添加文章
+	 * 
 	 * @param article
 	 * @param model
 	 * @return
@@ -53,52 +51,51 @@ public class BackArticleController extends BaseController{
 	public String addArticle1(
 			Article article,
 			Model model,
-			@RequestParam(value="status",required=false)String status,
-			@RequestParam(value="imgfile",required=false) CommonsMultipartFile imgfile){		
-		
-//		String realPath = request.getSession().getServletContext().getRealPath("/")
-//				+"/common/kelidly-res/effect"+"/"+new Date().getTime()+"/sss.jpg";
-//		String filePath = "/common/kelidly-res/effect/"+new Date().getTime()+"/sss.jpg";	
-		Global.getValue("resources");
-		
-		if("add".equals(status)){
-			
-			//添加图片
-			String filePath = addImage(imgfile);
-			if (filePath!=null) {
-				article.setImgurl(filePath);
-			}else {
-				article.setImgurl(null);
-			}			
-			
-			//添加flash(未编写)
+			@RequestParam(value = "status", required = false) String status,
+			@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile) {
+
+		if ("add".equals(status)) {
+
+			if(imgfile!=null){
+				// 添加图片
+				String filePath = addImage(imgfile);
+				if (filePath != null) {
+					article.setImgurl(filePath);
+				} else {
+					article.setImgurl(null);
+				}
+			}
+
+			// 添加flash(未编写)
 			article.setFlashurl("/");
-			
+
 			article.setAddtime(new Date());
 			String rtMsg = "";
 			boolean flag = articleService.addArticle(article);
 			if (flag) {
 				rtMsg = "添加成功！";
 				// 返回文章管理
-				model.addAttribute("rtMsg", rtMsg);		
-				return manageArticle(1,10,model);
+				model.addAttribute("rtMsg", rtMsg);
+				return manageArticle(1, 10, model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
-				List<Site> secListSiteList = siteService.findSecondListSiteList();			
+				List<Site> secListSiteList = siteService
+						.findSecondListSiteList();
 				model.addAttribute("secListSiteList", secListSiteList);
-				model.addAttribute("rtMsg", rtMsg);	
+				model.addAttribute("rtMsg", rtMsg);
 				return "/admin/article/article_pub";
 			}
-		}else{
-			List<Site> secListSiteList = siteService.findSecondListSiteList();			
+		} else {
+			List<Site> secListSiteList = siteService.findSecondListSiteList();
 			model.addAttribute("secListSiteList", secListSiteList);
 			return "/admin/article/article_pub";
 		}
-		
+
 	}
-	
+
 	/**
 	 * 添加文章
+	 * 
 	 * @param article
 	 * @param model
 	 * @return
@@ -107,168 +104,160 @@ public class BackArticleController extends BaseController{
 	public String addArticle(
 			Article article,
 			Model model,
-			@RequestParam(value="status",required=false)String status,
-			@RequestParam(value="imgfile",required=false) CommonsMultipartFile imgfile){		
-		
-//		String realPath = request.getSession().getServletContext().getRealPath("/")
-//				+"/common/kelidly-res/effect"+"/"+new Date().getTime()+"/sss.jpg";
-//		String filePath = "/common/kelidly-res/effect/"+new Date().getTime()+"/sss.jpg";	
-		Global.getValue("resources");
-		
-		if("add".equals(status)){
-			
-			//添加图片
-			String filePath = addImage(imgfile);
-			if (filePath!=null) {
-				article.setImgurl(filePath);
-			}else {
-				article.setImgurl(null);
-			}			
-			
-			//添加flash(未编写)
-/*			if (flashFiles != null && flashFiles.length !=0 && false == flashFiles[0].getOriginalFilename().equals("")) {
-				String flashPath = addFlashFiles(flashFiles);
-				if (flashPath != null) {
-					article.setFlashurl(flashPath);
-				}else{
-					article.setFlashurl(null);
-				}
-				article.setFlashurl(flashPath);
-			}*/
+			@RequestParam(value = "status", required = false) String status,
+			@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile) {
 
-			
+		if ("add".equals(status)) {
+
+			if(imgfile!=null){
+				// 添加图片
+				String filePath = addImage(imgfile);
+				if (filePath != null) {
+					article.setImgurl(filePath);
+				} else {
+					article.setImgurl(null);
+				}
+			}
+
+			// 添加flash(未编写)
+			/*
+			 * if (flashFiles != null && flashFiles.length !=0 && false ==
+			 * flashFiles[0].getOriginalFilename().equals("")) { String
+			 * flashPath = addFlashFiles(flashFiles); if (flashPath != null) {
+			 * article.setFlashurl(flashPath); }else{ article.setFlashurl(null);
+			 * } article.setFlashurl(flashPath); }
+			 */
+
 			article.setAddtime(new Date());
 			String rtMsg = "";
 			boolean flag = articleService.addArticle(article);
 			if (flag) {
 				rtMsg = "添加成功！";
 				// 返回文章管理
-				model.addAttribute("rtMsg", rtMsg);		
-				return manageArticle(1,10,model);
+				model.addAttribute("rtMsg", rtMsg);
+				return manageArticle(1, 10, model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
-				List<Site> secListSiteList = siteService.findSecondListSiteList();			
+				List<Site> secListSiteList = siteService
+						.findSecondListSiteList();
 				model.addAttribute("secListSiteList", secListSiteList);
-				model.addAttribute("rtMsg", rtMsg);	
+				model.addAttribute("rtMsg", rtMsg);
 				return "/admin/article/article_pub";
 			}
-		}else{
-			List<Site> secListSiteList = siteService.findSecondListSiteList();			
+		} else {
+			List<Site> secListSiteList = siteService.findSecondListSiteList();
 			model.addAttribute("secListSiteList", secListSiteList);
 			return "/admin/article/article_pub";
 		}
-		
+
 	}
-	
+
 	/**
 	 * 添加文章
+	 * 
 	 * @param article
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/addSwfFiles",method = RequestMethod.POST)
+	@RequestMapping(value = "/addSwfFiles", method = RequestMethod.POST)
 	@ResponseBody
-	public String addSwfFiles(@RequestParam(value="swfdirName",required=false) String filedirName,
-			@RequestParam("file") CommonsMultipartFile flashFile
-			){		
-//		MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
-//        //  获得第1张图片（根据前台的name名称得到上传的文件）   
-//        MultipartFile imgFile1  =  multipartRequest.getFile("6.jpg");
+	public String addSwfFiles(
+			@RequestParam(value = "swfdirName", required = false) String filedirName,
+			@RequestParam("file") CommonsMultipartFile flashFile) {
 
-		String savePath = null;
-		String result = "";
-		//filedirName = DateUtil.dateToString(DateUtil.stringToDate(filedirName, "yyyyMMddHHmmss"), "yyyyMMddHHmmss");
+		// 系统配置目录
+		String varfilename = Global.getValue("resources");
+		// 资源目录
+		String savePath = varfilename + "/" + filedirName;
 		
-		try {
-			//系统配置目录
-			String varfilename = Global.getValue("resources");
-			
-			//系统目录
-			savePath = varfilename + "/common/kelidly-res/effect/" + filedirName ;
-			//保存目录
-			String rootPath = request.getSession().getServletContext().getRealPath("/") + savePath;
+		return this.addFlashFiles(savePath, flashFile);
 
-			checkfolderExists(rootPath);
-			checkfolderExists(rootPath + "/image");
-			this.addFlashFiles(rootPath,flashFile);
-		} catch (Exception e) {
-			result = "error";
-		}
-		
-			
-	   return  savePath;
-		
 	}
-	
+
 	/**
 	 * 管理文章
+	 * 
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/manageArticle")
-	public String manageArticle(@RequestParam(value="currentPage",defaultValue="1") int pageNo,
-			@RequestParam(value="pageSize",defaultValue="10") int pageSize,Model model){
-		
-		PageModel pagemodel = articleService.findArticleByPage(pageNo,pageSize);		
+	public String manageArticle(
+			@RequestParam(value = "currentPage", defaultValue = "1") int pageNo,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			Model model) {
+
+		PageModel pagemodel = articleService
+				.findArticleByPage(pageNo, pageSize);
 		model.addAttribute("pagemodel", pagemodel);
-		
+
 		List<Site> secondSiteList = siteService.findAllSecondSiteList();
 		model.addAttribute("secondSiteList", secondSiteList);
 
 		return "/admin/article/article_manage";
 	}
-	
 
-	
 	/**
 	 * 删除该id文章
+	 * 
 	 * @param model
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/delArticle")
-	public String delArticle(Model model,@RequestParam("id") int id){		
-		
+	public String delArticle(Model model, @RequestParam("id") int id) {
+
 		String rtMsg = "";
 		boolean flag = articleService.deleteArticle(id);
-        if (flag) {        	
-        	rtMsg = "删除成功！";	
-		}else{
+		if (flag) {
+			rtMsg = "删除成功！";
+		} else {
 			rtMsg = "删除失败！请查明原因。";
-		}        
-        model.addAttribute("rtMsg", rtMsg);
-        
-        return manageArticle(1,10,model);
-		
+		}
+		model.addAttribute("rtMsg", rtMsg);
+
+		return manageArticle(1, 10, model);
+
 	}
-	
+
 	/**
 	 * 修改文章
+	 * 
 	 * @param id
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/updateArticle")
-	public String updateArticle(@RequestParam("id")int id,Model model){
-		
+	public String updateArticle(@RequestParam("id") int id, Model model) {
+
 		Article article = articleService.findArticleByid(id);
 		model.addAttribute("article", article);
 
-		List<Site> secListSiteList = siteService.findSecondListSiteList();			
+		List<Site> secListSiteList = siteService.findSecondListSiteList();
 		model.addAttribute("secListSiteList", secListSiteList);
 
 		return "/admin/article/article_update";
-		
+
 	}
-	
+
 	/**
 	 * 修改文章操作
+	 * 
 	 * @param article
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/doupdateArticle")
-	public String updateArticle(Article article,Model model){
+	public String updateArticle(Article article,@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile, Model model) {
+		
+		if(imgfile!=null){
+			// 添加图片
+			String filePath = addImage(imgfile);
+			if (filePath != null) {
+				article.setImgurl(filePath);
+			} else {
+				article.setImgurl(null);
+			}
+		}
 		
 		String rtMsg = "";
 		boolean flag = articleService.updateArticle(article);
@@ -278,9 +267,7 @@ public class BackArticleController extends BaseController{
 			rtMsg = "修改失败！请查明原因。";
 		}
 		model.addAttribute("rtMsg", rtMsg);
-		return manageArticle(1,10,model);
+		return manageArticle(1, 10, model);
 	}
-	
-	
-	
+
 }
