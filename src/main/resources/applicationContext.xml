@@ -22,15 +22,25 @@
 	<mvc:annotation-driven />  
 	
 	
-	<!-- 获取配置文件 -->
-    <bean id="config"
+	<!-- 获取配置文件  -->
+   <!--  <bean id="config"
        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
        <property name="locations">
            <list>
               <value>classpath:/db-config.properties</value>
            </list>
        </property>
+    </bean> -->
+    <!-- 加密码属性文件 -->
+    <bean id="myPropertyConfigurer"
+        class="com.kelidly.util.des.DecryptPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list><value>classpath:/en_db-config.properties</value></list>
+        </property>
+        <property name="fileEncoding" value="UTF-8"/>
+        <property name="keyLocation" value="classpath:/dbkey.key" />
     </bean>
+    
 	
 	
 	 <bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
