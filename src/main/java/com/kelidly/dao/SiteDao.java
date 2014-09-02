@@ -34,11 +34,15 @@ public interface SiteDao extends BaseDao<Site> {
 	 */
 	List<Site> getFirstSiteList();
 	/**
-	 * 查找二级栏目	
+	 * 查找二级列表栏目	
 	 * @return
 	 */
-
 	List<Site> getSecondListSiteList();
+	/**
+	 * 查找所有二级栏目
+	 * @return
+	 */
+	List<Site> getAllSecondSiteList();
 
 	List<Integer> getIdListByPid(long pid);
 	

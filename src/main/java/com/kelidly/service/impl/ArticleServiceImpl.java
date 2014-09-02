@@ -92,11 +92,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return true;
 	}
 
+
 	@Override
-	public PageModel findArticlebypage(int pageNo, int pageSize) {
+	public PageModel findArticleByPage(int pageNo, int pageSize) {
 		return articleDao.getArticlebypage(pageNo, pageSize);
 	}
-
 	@Override
 	public boolean deleteArticle(int id) {
 		
@@ -127,10 +127,7 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.getArticleByType(type);
 	}
 
-	@Override
-	public PageModel findArticleByPage(int pageNo, int pageSize) {
-		return articleDao.query(pageNo, pageSize);
-	}
+
 	
 	@Override
 	public PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid){
@@ -153,6 +150,8 @@ public class ArticleServiceImpl implements ArticleService {
 		List<Article> articleList = articleDao.getArticleByLimit(a, i);
 		return articleList;
 	}
+
+
 
 	
 

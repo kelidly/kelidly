@@ -4,7 +4,10 @@
 
 <#include "../include/resource.html">
 <body>
+	<#assign nid="article"> <#assign mid="article_pub"> 
 	<#include "../include/left.html">
+
+
 	<div id="main-content">
 		<noscript>
 			<div class="notification error png_bg">
@@ -25,6 +28,14 @@
 			</div>
 			<div class="content-box-content">
 
+				<#if rtMsg??>
+				<div class="notification attention png_bg">
+					<a href="#" class="close"><img
+						src="${webroot}/freemarker/themes/admin/img/icons/cross_grey_small.png"
+						title="Close this notification" alt="close" /></a>
+					<div id="editNoteHint">${rtMsg}</div>
+				</div>
+				</#if>
 
 
 				<div class="tab-content default-tab" id="tab1">
@@ -46,21 +57,22 @@
 							</p>
 							<br />
 							<p>
-								<label>类型</label> <select name="type" class="small-input">
+								<label>选择栏目</label> <select name="siteid" class="small-input">
+									<#list secListSiteList as secListSite>
+									<option value="${secListSite.id }">${secListSite.name}</option> </#list>
 
-									<#list articleTypeList as articleType>
-
-
-									<option<#if articleType.id == article.type>
-										selected="selected" </#if> value="${articleType.id }">
-										${articleType.type}</option> </#list>
-
+								
 
 								</select>
 							</p>
 							<p>
-								<label>内容</label>
-							<script id="editor" name="content" type="text/plain"
+								<label>展示图片</label>
+								<input type="file"  name="imgfile" >
+							</p>
+
+							<p>
+								<label>添加内容</label>
+								<script id="editor" name="content" type="text/plain"
 									style="width:100%;height:500px;">${article.content!"内容显示错误！！！"}</script>
 							</p>
 							
