@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.kelidly.constants.Global;
@@ -252,7 +251,7 @@ public class BackArticleController extends BaseController{
 	@RequestMapping("/addSwfFiles")
 	@ResponseBody
 	public String addSwfFiles(@RequestParam(value="swfdirName",required=false) String filedirName,
-			@RequestParam MultipartHttpServletRequest multipartRequest){		
+			@RequestParam("X_FILENAME") CommonsMultipartFile file){		
 		
 		String savePath = null;
 		String result = "";

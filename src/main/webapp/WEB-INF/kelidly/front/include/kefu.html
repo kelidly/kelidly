@@ -6,8 +6,12 @@
     
     <script type="text/javascript" src="js/kefu.js"></script>
     <div id="floatTools" class="kefu">
-  <div class="floatL"><a style="display:none" id="aFloatTools_Show" class="btnOpen" title="查看在线客服" onclick="javascript:jQuery('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ jQuery('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });jQuery('#aFloatTools_Show').attr('style','display:none');jQuery('#aFloatTools_Hide').attr('style','display:block');" href="javascript:void(0);">展开</a> <a style="display:block" id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服" onclick="javascript:jQuery('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){jQuery('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });jQuery('#aFloatTools_Show').attr('style','display:block');jQuery('#aFloatTools_Hide').attr('style','display:none');" href="javascript:void(0);">收缩</a> </div>
-  <div id="divFloatToolsView" class="floatR" style="">
+  <div class="floatL">
+
+<a style="display:block" id="aFloatTools_Show" class="btnOpen" title="查看在线客服" onclick="javascript:jQuery('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ jQuery('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });jQuery('#aFloatTools_Show').attr('style','display:none');jQuery('#aFloatTools_Hide').attr('style','display:block');" href="javascript:void(0);">展开</a> 
+<a style="display:none" id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服" onclick="javascript:jQuery('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){jQuery('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });jQuery('#aFloatTools_Show').attr('style','display:block');jQuery('#aFloatTools_Hide').attr('style','display:none');" href="javascript:void(0);">收缩</a> 
+   </div>
+  <div id="divFloatToolsView" class="floatR" style="display:none">
     <div class="tp"></div>
     <div class="cn">
       <ul>

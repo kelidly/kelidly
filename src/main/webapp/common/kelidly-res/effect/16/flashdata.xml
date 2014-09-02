@@ -1,0 +1,34 @@
+ï»¿<?xml version="1.0" encoding="UTF-8"?>
+<animation>
+  <enlarge scale="1"/>
+  <music hasSnd="false"/>
+  <logo ShowImage="false" FileName="logo.png" XIPosition="0" YIPosition="0" ImageAlpha="100" ShowText="false" Text="»ãÐËÖÇÄÜ»¯" FontSize="24" TextColor="8388736" XTPosition="100" YTPosition="340" TextAlpha="100" />
+  <sequences>
+    <sequence name="Ö÷¶¯»­" layer = "1"> 
+      <keyFrame index="1" />
+      <keyFrame index="2" />
+      <keyFrame index="3" />
+      <keyFrame index="4" />
+      <keyFrame index="5" />
+      <keyFrame index="6" />
+      <keyFrame index="7" />
+      <keyFrame index="8" />
+      <keyFrame index="9" />
+      <keyFrame index="10" />
+      <keyFrame index="11" />
+      <keyFrame index="12" />
+      <keyFrame index="13" />
+      <keyFrame index="14" />
+      <keyFrame index="15" />
+      <keyFrame index="16" />
+      <keyFrame index="17" />
+      <keyFrame index="18" />
+      <keyFrame index="19" />
+      <keyFrame index="20" />
+      <keyFrame index="21" />
+      <keyFrame index="22" />
+      <keyFrame index="23" />
+      <keyFrame index="24" />
+    </sequence>
+  </sequences>
+</animation>
