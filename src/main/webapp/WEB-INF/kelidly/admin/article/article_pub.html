@@ -117,183 +117,75 @@
 
 		<div class="clear"></div>
 		
-		<input type="file" name="file_upload" id="uploadify" />  
-		<script type="text/javascript">  
-$(function() {  
-    $('#uploadify').uploadify({  
-        //是否自动上传  
-        'auto' : false,  
-        //按钮相关样式  
-        //'buttonClass' : 'class',  
-        'buttonCursor' : 'hand',  
-        //'buttonImage' : '',  
-        'buttonText' : '选择文件',  
-        'height' : 30,  
-        'width' : 100,  
-        //检查是否有已存在的文件  
-        //'checkExisting' : '',  
-        //显示debug信息  
-        'debug' : true,  
-        //file相关  
-        'multi' : false,  
-        'fileObjName' : 'theFile',  
-        //'fileSizeLimit' : '100B, KB, MB, or GB',  
-        //'fileTypeDesc' : '描述文件类型',  
-        //'fileTypeExts' : '*.gif; *.jpg; *.png',  
-        //表单数据  
-        //'method' : 'post',  
-        //'formData'     : {'someKey' : 'someValue', 'someOtherKey' : 1},  
-        //'onUploadStart' : function(file) {  
-          //  $("#file_upload").uploadify("settings", "someOtherKey", 2);  
-        //},  
-        //上传是下面那个进度条  
-        //'itemTemplate' : 'html code use instanceId,fileId,fileName,fileSize',  
-        //覆盖默认的事件，声明哪些事件会被覆盖  
-        //'overrideEvents' : ['',''],  
-        //防止缓存  
-        //'preventCaching' : true,  
-        //显示进度  
-        //'progressData' : 'percentage,speed',  
-        //指定文件队列的domId  
-        //'queueID'  : 'some_file_queue',  
-        //一次可以往队列添加多少文件  
-        //'queueSizeLimit' : 123,  
-        //上传完成的文件是否自定隐藏显示  
-        //'removeCompleted' : false,  
-        //移除上传完成文件的时间，单位s  
-        //'removeTimeout' : 10,  
-        //上传出错后会多次尝试  
-        //'requeueErrors' ： true,  
-        //上传完毕后，等待后台返回时间但，单位s  
-        //'successTimeout' : 5,  
-        //swf  
-        'swf' : '/kelidly/uploadify/uploadify.swf',  
-        'uploader' : 'uploadFile111.jsp'  
-        //处理文件的上传  
-        //'uploader' : '<%=path%>/assignmentAction!test.action',  
-        //同时上传文件个数的限定  
-        'uploadLimit' : 1  
-    });  
-});  
-</script> 
-		
-		
-		
-		
-<!-- 							<p>
-								<label>flash上传</label>
-								<input type="hidden" value="" id="flashurl" name="flashurl"></input>
-				<form id="uploadForm" action='${webroot}/back/article/addSwfFiles.html' method="post" enctype="multipart/form-data">
-						
-						<div class="upload_box">
-                        <div class="upload_main">
-                            <div class="upload_choose">
-                                <input id="fileselect" type="file" size="30" name="fileselect" multiple />
-                                <span id="fileDragArea" class="upload_drag_area">或者将文件拖到此处</span>
-                            </div>
-                            <div id="preview" class="upload_preview"></div>
-                        </div>
-                        <div class="upload_submit">
-                        
-                        <button type="button" id="fileSubmit" class="upload_submit_btn">确认上传文件</button>
-                        </div>
-                        <div id="uploadInf" class="upload_inf"></div>
-                    </div>
-                    </form>
-							</p> -->
-<!-- <script>		
+<form>
+		<!-- 声明一个普通的html文件上传控件，并指定id -->
+		<input id="file_upload" name="file_upload" type="file" multiple="multiple">
+		<!-- 上传按钮 -->
+		<a href="javascript:$('#file_upload').uploadify('upload','*')" id="uploadButton"></a>
+	</form>
 
-var arrFiles = [];
-var params = {
-	fileInput: $("#fileselect").get(0),
-	dragDrop: $("#fileDragArea").get(0),
-	upButton: $("#fileSubmit").get(0),
-	url: $("#uploadForm").attr("action"),
-	filter: function(files) {
+	<!-- 上传成功后，文件地址显示在这里 -->
+
+<script src="${webroot}/kelidly/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="${webroot}/kelidly/uploadify/uploadify.css">
+  <script>  
+   var inputElement = document.getElementById("file_upload");    
+inputElement.addEventListener("change", handleFiles, false);  
+  
+function handleFiles(){  
+    var fileList = this.files;  
+       var dd = document.getElementById('content');  
+    for( var i = 0 ; i < fileList.length ; i++ ){  
+           dd.innerHTML += fileList[i].name+"<br>";  
+    }  
+}  
+//js获取项目根路径，如： http://localhost:8083/uimcardprj  
+function getRootPath(){  
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp  
+    var curWwwPath=window.document.location.href;  
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp  
+    var pathName=window.document.location.pathname;  
+    var pos=curWwwPath.indexOf(pathName);  
+    //获取主机地址，如： http://localhost:8083  
+    var localhostPaht=curWwwPath.substring(0,pos);  
+    //获取带"/"的项目名，如：/uimcardprj  
+    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);  
+    return(localhostPaht);  
+} 
+   </script>  
+	<!-- 将声明的普通上传控件与Uploadify插件绑定 -->
+	<script type="text/javascript">
+
+		$(function() {
+			$('#file_upload').uploadify({
+				//校验数据
+				'formData'     	: {
+					'timestamp' : '100',
+					'token'     : '1234'//声明令牌
+				},
+				
+				'swf'         	: getRootPath()+'/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
+				'uploader'    	: getRootPath()+'/back/article/addSwfFiles',			//指定服务器端上传处理文件，默认‘upload.php’
+				'auto'        	: false,					//手动上传
+				'buttonImage' 	: getRootPath() +'/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
+				'fileObjName'   : 'file',  
+				'multi'       	: true,					//单文件上传
+				'fileTypeExts'	: '*.gif; *.jpg; *.png; *.flv; *.swf; *.xml;',	//允许上传的文件后缀
+				'fileSizeLimit'	: '300MB',					//上传文件的大小限制，单位为B, KB, MB, 或 GB
+				'successTimeout': 30,						//成功等待时间
+				'onUploadSuccess' : function(file, data, response) {//每成功完成一次文件上传时触发一次
+		            $('#url').append("<li>"+file.name+'<br/>'+data+"</li>");
+		        },
+		        'onUploadError'   : function(file, data, response) {//当上传返回错误时触发
+		            $('#url').append("<li>"+data+"</li>");
+		        }
+			});
+		});
+	</script>
 		
-		for (var i = 0, file; file = files[i]; i++) {
-			if (file.type.indexOf("image") == 0 || file.type.indexOf("application/x-shockwave-flash") == 0
-			|| file.type.indexOf("text/xml") == 0) {
-				if (file.size >= 1024000) {
-					alert('您这张"'+ file.name +'"文件大小过大，应小于1M');	
-				} else {
-					arrFiles.push(file);	
-				}			
-			}else {
-				alert('文件"' + file.name + '"不是图片,swf,xml格式。');	
-			}
-		}
-		return arrFiles;
-	},
-	onSelect: function(files) {
-		var html = '', i = 0;
-		$("#preview").html('<div class="upload_loading"></div>');
-		var funAppendImage = function() {
-			file = files[i];
-			if (file) {
-				var reader = new FileReader()
-				reader.onload = function(e) {
-					html = html + '<div id="uploadList_'+ i +'" class="upload_append_list"><p><strong>' + file.name + '</strong>'+ 
-						'<a href="javascript:" class="upload_delete" title="删除" data-index="'+ i +'">删除</a><br />' +
-						
-						'<span id="uploadProgress_' + i + '" class="upload_progress"></span>' +
-					'</div>';
-					
-					i++;
-					funAppendImage();
-				}
-				reader.readAsDataURL(file);
-			} else {
-				$("#preview").html(html);
-				if (html) {
-					//删除方法
-					$(".upload_delete").click(function() {
-						ZXXFILE.funDeleteFile(files[parseInt($(this).attr("data-index"))]);
-						return false;	
-					});
-					//提交按钮显示
-					$("#fileSubmit").show();	
-				} else {
-					//提交按钮隐藏
-					$("#fileSubmit").hide();	
-				}
-			}
-		};
-		funAppendImage();		
-	},
-	onDelete: function(file) {
-		$("#uploadList_" + file.index).fadeOut(10);
-		ZXXFILE.fileFilter.pop(file);
-	},
-	onDragOver: function() {
-		$(this).addClass("upload_drag_hover");
-	},
-	onDragLeave: function() {
-		$(this).removeClass("upload_drag_hover");
-	},
-	onProgress: function(file, loaded, total) {
-		var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
-		eleProgress.show().html(percent);
-	},
-	onSuccess: function(file, response) {
-		$("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
-		$("#flashurl").val(response);
-	},
-	onFailure: function(file) {
-		$("#uploadInf").append("<p>文件" + file.name + "上传失败！</p>");	
-		$("#uploadImage_" + file.index).css("opacity", 0.2);
-	},
-	onComplete: function() {
-		//提交按钮隐藏
-		$("#fileSubmit").hide();
-		//file控件value置空
-		$("#fileselect").val("");
-		$("#uploadInf").append("<p>当前文件全部上传完毕，可继续添加上传。</p>");
-	}
-};
-ZXXFILE = $.extend(ZXXFILE, params);
-ZXXFILE.init();
-</script> -->
+		
+		
+
 		<!-- End Notifications -->
 		<#include "../include/footer.html">
 	</div>

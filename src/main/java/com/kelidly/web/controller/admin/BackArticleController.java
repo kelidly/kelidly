@@ -169,8 +169,7 @@ public class BackArticleController extends BaseController{
 	@RequestMapping(value="/addSwfFiles",method = RequestMethod.POST)
 	@ResponseBody
 	public String addSwfFiles(@RequestParam(value="swfdirName",required=false) String filedirName,
-
-			CommonsMultipartFile file
+			@RequestParam("file") CommonsMultipartFile flashFile
 			){		
 //		MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
 //        //  获得第1张图片（根据前台的name名称得到上传的文件）   
@@ -178,7 +177,7 @@ public class BackArticleController extends BaseController{
 
 		String savePath = null;
 		String result = "";
-		filedirName = DateUtil.dateToString(DateUtil.stringToDate(filedirName, "yyyyMMddHHmmss"), "yyyyMMddHHmmss");
+		//filedirName = DateUtil.dateToString(DateUtil.stringToDate(filedirName, "yyyyMMddHHmmss"), "yyyyMMddHHmmss");
 		
 		try {
 			//系统配置目录
@@ -188,12 +187,10 @@ public class BackArticleController extends BaseController{
 			savePath = varfilename + "/common/kelidly-res/effect/" + filedirName ;
 			//保存目录
 			String rootPath = request.getSession().getServletContext().getRealPath("/") + savePath;
-			
-			//checkfolderExists(rootPath);
-			//checkfolderExists(rootPath + "/image");
+
 			checkfolderExists(rootPath);
 			checkfolderExists(rootPath + "/image");
-			//this.addFlashFiles(rootPath,flashFile);
+			this.addFlashFiles(rootPath,flashFile);
 		} catch (Exception e) {
 			result = "error";
 		}
