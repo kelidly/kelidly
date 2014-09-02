@@ -25,8 +25,6 @@ public interface ArticleService {
 
 	boolean addArticle(Article article);
 
-	PageModel findArticlebypage(int pageNo, int pageSize);
-
 	boolean deleteArticle(int id);
 
 	boolean updateArticle(Article article);

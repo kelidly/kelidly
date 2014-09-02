@@ -76,16 +76,7 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 		return super.find(hql);
 	}
 
-	@Override
-	public PageModel query(int pageNo, int pageSize) {
-		StringBuffer queryHql = new StringBuffer("from Article");
-		StringBuffer countSql = new StringBuffer("select * from article");
-		//List<NewsBean> list = query(hql);
-		PageModel pageModel = queryPageModel(pageNo,pageSize,queryHql,"",countSql);
-		
-		
-		return pageModel;
-	}
+	
 
 	
 	@Override

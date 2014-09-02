@@ -101,7 +101,7 @@ var ZXXFILE = {
 					};
 		
 					// 开始上传
-					xhr.open("POST", self.url, true);
+					xhr.open("post", self.url, true);
 					xhr.setRequestHeader("X_FILENAME", file.name);
 					//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
 					xhr.send(file);

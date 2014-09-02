@@ -49,7 +49,7 @@
             <tfoot>
               <tr>
                 <td colspan="6">
-                  <div class="bulk-actions align-left">
+                 <!--  <div class="bulk-actions align-left">
                     <select name="dropdown">       
                       <option value="option3">批量删除</option>
                     </select>
@@ -63,11 +63,11 @@
 	   form.submit();
 	}
 </script>
-                    <a class="button" onclick="submitform('checkId');" >确定操作</a> </div>
+                    <a class="button" onclick="submitform('checkId');" >确定操作</a> </div> -->
 
                     <!-- 分页导航 -->
     <!-- 注意这个表单必须做，action：必须指向控制器,id必须叫做pageForm_search -->
-<form action="${webroot}/back/article/pageQuery" id="pageForm_search" method="get">
+<form action="${webroot}/back/article/manageArticle" id="pageForm_search" method="get">
 	
 
         
@@ -88,15 +88,20 @@
                     <input type="checkbox" name="checkId" id="checkId" value="${article.id}"/>
 	                     
                 </td>
-                <td>${article_index +1 } </td>
+                <td>${article_index + 1 + (pagemodel.currentPage-1)*pagemodel.pageSize } </td>
                 
-                <#if articleTypeList??>
-                <#list articleTypeList as articleType>
-                	<#if articleType.id==article.type><td>${articleType.type}</td></#if>                	
+
+                
+                
+                <#if secondSiteList??>
+                <#list secondSiteList as secondSite>
+                	<#if secondSite.id==article.siteid><td>${secondSite.name}</td></#if>                	
                 </#list>
                 <#else>
-                	<td>类型错误</td>
-                </#if> 
+                	<td>类型错误!!</td>
+                </#if>           
+                
+               
                 
                 <td>${article.title }</td>
                 

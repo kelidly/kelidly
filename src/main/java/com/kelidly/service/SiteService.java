@@ -31,6 +31,8 @@ public interface SiteService {
 	
 	List<Integer> findIdListByPid(long pid);
 
+	List<Site> findAllSecondSiteList();
+
 
 
 	

@@ -1,0 +1,69 @@
+<html>  
+<head>  
+<title>Uploadify</title>  
+<link rel="stylesheet" type="text/css" href="${webroot}/kelidly/uploadify/uploadify.css">  
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" src="${webroot}/kelidly/uploadify/jquery.uploadify.min.js"></script>  
+<script type="text/javascript">  
+$(function() {  
+    $('#uploadify').uploadify({  
+        //是否自动上传  
+        'auto' : true,  
+        //按钮相关样式  
+        //'buttonClass' : 'class',  
+        'buttonCursor' : 'hand',  
+        //'buttonImage' : '',  
+        'buttonText' : '选择文件',  
+        'height' : 30,  
+        'width' : 100,  
+        //检查是否有已存在的文件  
+        //'checkExisting' : '',  
+        //显示debug信息  
+        'debug' : true,  
+        //file相关  
+        'multi' : false,  
+        'fileObjName' : 'theFile',  
+        //'fileSizeLimit' : '100B, KB, MB, or GB',  
+        //'fileTypeDesc' : '描述文件类型',  
+        //'fileTypeExts' : '*.gif; *.jpg; *.png',  
+        //表单数据  
+        //'method' : 'post',  
+        //'formData'     : {'someKey' : 'someValue', 'someOtherKey' : 1},  
+        //'onUploadStart' : function(file) {  
+          //  $("#file_upload").uploadify("settings", "someOtherKey", 2);  
+        //},  
+        //上传是下面那个进度条  
+        //'itemTemplate' : 'html code use instanceId,fileId,fileName,fileSize',  
+        //覆盖默认的事件，声明哪些事件会被覆盖  
+        //'overrideEvents' : ['',''],  
+        //防止缓存  
+        //'preventCaching' : true,  
+        //显示进度  
+        //'progressData' : 'percentage,speed',  
+        //指定文件队列的domId  
+        //'queueID'  : 'some_file_queue',  
+        //一次可以往队列添加多少文件  
+        //'queueSizeLimit' : 123,  
+        //上传完成的文件是否自定隐藏显示  
+        //'removeCompleted' : false,  
+        //移除上传完成文件的时间，单位s  
+        //'removeTimeout' : 10,  
+        //上传出错后会多次尝试  
+        //'requeueErrors' ： true,  
+        //上传完毕后，等待后台返回时间但，单位s  
+        //'successTimeout' : 5,  
+        //swf  
+        'swf' : '/kelidly/uploadify/uploadify.swf',  
+        'uploader' : '/back/article/addSwfFiles'  
+        //处理文件的上传  
+        //'uploader' : '<%=path%>/assignmentAction!test.action',  
+        //同时上传文件个数的限定  
+        //'uploadLimit' : 1  
+    });  
+});  
+</script>  
+</head>  
+<body>  
+    <input type="file" name="file" id="uploadify" />  
+</body>  
+</html>  

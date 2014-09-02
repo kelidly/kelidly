@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,77 +55,7 @@ public class BackArticleController extends BaseController{
 		return "/admin/article/type_manage";
 	}
 	
-	/**
-	 * 修改文章标题
-	 * @param response
-	 * @param model
-	 * @param articleType
-	 * @return
-	 */
-	@RequestMapping("/updateArticleType")
-	@ResponseBody
-	public String updateArticleType(HttpServletResponse response,Model model,ArticleType articleType){
-	
-		String result = "";
-		boolean flag = articleService.updateArticleType(articleType);
-        if (flag) {
-			result = "success";
-		}        
-        //response.setCharacterEncoding("utf-8");
-		return "success";
-	}
-	
-	/**
-	 * 删除该id文章类型
-	 * @param model
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping("/delArticleType")
-	public String delArticleType(Model model,@RequestParam("typeId") int id){		
-		
-		String rtMsg = "";
-		boolean flag = articleService.deleteArticleType(id);
-        if (flag) {        	
-        	rtMsg = "删除成功！";	
-		}else{
-			rtMsg = "删除失败！请查明原因。";
-		}        
-        model.addAttribute("rtMsg", rtMsg);
-        
-        return showArticleType(model);
-		
-	}
-	
-	/**
-	 * 添加文章类型
-	 * @param model
-	 * @param articleType
-	 * @return
-	 */
-	@RequestMapping("/addArticleType")		
-	public String addType(Model model, ArticleType articleType) {
 
-		String rtMsg = "";
-		boolean flag = articleService.addArticleType(articleType);
-		if (flag) {
-			rtMsg = "添加成功！";
-		} else {
-			rtMsg = "添加失败！请查明原因。";
-		}
-		model.addAttribute("rtMsg", rtMsg);
-		
-		return showArticleType(model);
-	}
-	
-//	@RequestMapping("/addArticleView")
-//	public String addArticleView(Model model){
-//		
-//		List<ArticleType> articletypeList = articleService.findAllArticleType();
-//		model.addAttribute("articletypeList", articletypeList);
-//		return "/admin/article/article_pub";
-//	}
-	
 	/**
 	 * 添加文章
 	 * @param article
@@ -163,7 +94,7 @@ public class BackArticleController extends BaseController{
 				rtMsg = "添加成功！";
 				// 返回文章管理
 				model.addAttribute("rtMsg", rtMsg);		
-				return manageArticle(model);
+				return manageArticle(1,10,model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
 				List<ArticleType> articletypeList = articleService.findAllArticleType();
@@ -226,7 +157,7 @@ public class BackArticleController extends BaseController{
 				rtMsg = "添加成功！";
 				// 返回文章管理
 				model.addAttribute("rtMsg", rtMsg);		
-				return manageArticle(model);
+				return manageArticle(1,10,model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
 				List<ArticleType> articletypeList = articleService.findAllArticleType();
@@ -248,11 +179,16 @@ public class BackArticleController extends BaseController{
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/addSwfFiles")
+	@RequestMapping(value="/addSwfFiles",method = RequestMethod.POST)
 	@ResponseBody
 	public String addSwfFiles(@RequestParam(value="swfdirName",required=false) String filedirName,
-			@RequestParam("X_FILENAME") CommonsMultipartFile file){		
-		
+
+			CommonsMultipartFile file
+			){		
+//		MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
+//        //  获得第1张图片（根据前台的name名称得到上传的文件）   
+//        MultipartFile imgFile1  =  multipartRequest.getFile("6.jpg");
+
 		String savePath = null;
 		String result = "";
 		filedirName = DateUtil.dateToString(DateUtil.stringToDate(filedirName, "yyyyMMddHHmmss"), "yyyyMMddHHmmss");
@@ -286,16 +222,19 @@ public class BackArticleController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping("/manageArticle")
-	public String manageArticle(Model model){
+	public String manageArticle(@RequestParam(value="currentPage",defaultValue="1") int pageNo,
+			@RequestParam(value="pageSize",defaultValue="10") int pageSize,Model model){
 		
-		PageModel pagemodel = articleService.findArticlebypage(1,5);		
+		PageModel pagemodel = articleService.findArticleByPage(pageNo,pageSize);		
 		model.addAttribute("pagemodel", pagemodel);
 		
-		List<ArticleType> articleTypeList = articleService.findAllArticleType();
-		model.addAttribute("articleTypeList", articleTypeList);
-		
+		List<Site> secondSiteList = siteService.findAllSecondSiteList();
+		model.addAttribute("secondSiteList", secondSiteList);
+
 		return "/admin/article/article_manage";
 	}
+	
+
 	
 	/**
 	 * 删除该id文章
@@ -315,12 +254,12 @@ public class BackArticleController extends BaseController{
 		}        
         model.addAttribute("rtMsg", rtMsg);
         
-        return manageArticle(model);
+        return manageArticle(1,10,model);
 		
 	}
 	
 	/**
-	 * 编辑文章
+	 * 修改文章
 	 * @param id
 	 * @param model
 	 * @return
@@ -331,13 +270,19 @@ public class BackArticleController extends BaseController{
 		Article article = articleService.findArticleByid(id);
 		model.addAttribute("article", article);
 
-		List<ArticleType> articleTypeList = articleService.findAllArticleType();
-		model.addAttribute("articleTypeList", articleTypeList);
+		List<Site> secListSiteList = siteService.findSecondListSiteList();			
+		model.addAttribute("secListSiteList", secListSiteList);
 
 		return "/admin/article/article_update";
 		
 	}
 	
+	/**
+	 * 修改文章操作
+	 * @param article
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/doupdateArticle")
 	public String updateArticle(Article article,Model model){
 		
@@ -349,21 +294,9 @@ public class BackArticleController extends BaseController{
 			rtMsg = "修改失败！请查明原因。";
 		}
 		model.addAttribute("rtMsg", rtMsg);
-		return manageArticle(model);
+		return manageArticle(1,10,model);
 	}
 	
-	@RequestMapping("/pageQuery")
-	public String toPageManage(@RequestParam(value="currentPage",defaultValue="1") int pageNo,
-			@RequestParam(value="pageSize",defaultValue="8") int pageSize,Model model){
 	
-		
-		PageModel pagemodel = articleService.findArticleByPage(pageNo,pageSize);		
-		model.addAttribute("pagemodel", pagemodel);
-		
-		List<ArticleType> articleTypeList = articleService.findAllArticleType();
-		model.addAttribute("articleTypeList", articleTypeList);
-		
-		return "/admin/article/article_manage";
-	}	
 	
 }

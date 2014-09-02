@@ -105,4 +105,10 @@ public class SiteServiceImpl  implements SiteService{
 		List<Integer> list = siteDao.getIdListByPid(pid);
 		return list;
 	}
+	
+	@Override
+	public List<Site> findAllSecondSiteList() {
+		List<Site> site=siteDao.getAllSecondSiteList();
+		return site;
+	}
 }

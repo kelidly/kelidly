@@ -91,7 +91,7 @@ public class IndexController {
 	@RequestMapping("/interceptor")
 	public String interceptor(){
 		
-		return "interceptor";
+		return "/front/test";
 	}
 
 

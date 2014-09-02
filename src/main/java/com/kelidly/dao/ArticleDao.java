@@ -20,7 +20,7 @@ public interface ArticleDao extends BaseDao<Article> {
 
 	List<Article> getArticleByType(long type);
 
-	PageModel query(int pageNo, int pageSize);
+
 
 	PageModel getPageArticleBySiteId(int pageNo, int pageSize, long siteid);
 
