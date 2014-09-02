@@ -20,7 +20,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.kelidly.constants.Global;
 import com.kelidly.entity.Article;
-import com.kelidly.entity.ArticleType;
 import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
 import com.kelidly.service.ArticleService;
@@ -41,19 +40,7 @@ public class BackArticleController extends BaseController{
 	@Autowired
 	private HttpServletRequest request;
 	
-	/**
-	 * 类目管理
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/showArticleType")
-	public String showArticleType(Model model){
-		
-		List<ArticleType> articleTypeList = articleService.findAllArticleType();
-		model.addAttribute("articleTypeList", articleTypeList);
-		
-		return "/admin/article/type_manage";
-	}
+
 	
 
 	/**
@@ -97,8 +84,8 @@ public class BackArticleController extends BaseController{
 				return manageArticle(1,10,model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
-				List<ArticleType> articletypeList = articleService.findAllArticleType();
-				model.addAttribute("articletypeList", articletypeList);
+				List<Site> secListSiteList = siteService.findSecondListSiteList();			
+				model.addAttribute("secListSiteList", secListSiteList);
 				model.addAttribute("rtMsg", rtMsg);	
 				return "/admin/article/article_pub";
 			}
@@ -160,8 +147,8 @@ public class BackArticleController extends BaseController{
 				return manageArticle(1,10,model);
 			} else {
 				rtMsg = "添加失败！请查明原因。";
-				List<ArticleType> articletypeList = articleService.findAllArticleType();
-				model.addAttribute("articletypeList", articletypeList);
+				List<Site> secListSiteList = siteService.findSecondListSiteList();			
+				model.addAttribute("secListSiteList", secListSiteList);
 				model.addAttribute("rtMsg", rtMsg);	
 				return "/admin/article/article_pub";
 			}

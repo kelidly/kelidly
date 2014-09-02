@@ -18,18 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kelidly.entity.News;
-import com.kelidly.entity.NewsType;
 import com.kelidly.model.PageModel;
-import com.kelidly.service.NewsService;
 
 @Controller
 @RequestMapping("download")
 public class DownloadController extends BaseController {
 
-	@Resource(name = "newsService")
-	NewsService newsService;
-	
 	@Autowired
 	private HttpServletRequest request;
 
