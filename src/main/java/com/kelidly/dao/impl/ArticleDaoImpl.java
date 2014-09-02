@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import com.kelidly.dao.ArticleDao;
 import com.kelidly.entity.Article;
-import com.kelidly.entity.ArticleType;
 import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
 
@@ -51,14 +50,6 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 	}
 
 	@Override
-	public List<ArticleType> getAllArticleType() {
-		
-		String hql="from ArticleType";	
-		
-		return super.find(hql);
-	}
-
-	@Override
 	public PageModel getArticlebypage(int pageNo, int pageSize) {
 		
 		StringBuffer queryHql = new StringBuffer("from Article");
@@ -68,17 +59,6 @@ public class ArticleDaoImpl extends ObjectDaoImpl<Article> implements ArticleDao
 		return pageModel;
 	}
 
-	@Override
-	public List<Article> getArticleByType(long type) {
-		
-		String hql="from Article where type= "+type;	
-		
-		return super.find(hql);
-	}
-
-	
-
-	
 	@Override
 	public PageModel getPageArticleBySiteId(int pageNo, int pageSize, long siteid) {
 		StringBuffer queryHql = new StringBuffer("from Article where siteid="+siteid);

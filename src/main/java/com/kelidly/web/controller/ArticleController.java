@@ -15,99 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kelidly.entity.Article;
 import com.kelidly.entity.Words;
 import com.kelidly.service.ArticleService;
-import com.kelidly.service.NewsService;
 import com.kelidly.service.WordsService;
 
 @Controller
 @RequestMapping("article")
 public class ArticleController {
-	@Resource (name="newsService")
-	NewsService newsService;
 	@Resource (name="articleService")
 	ArticleService articleService;	
 	@Resource (name="wordsService")
 	WordsService wordsService;
-	/**
-	 * 关于汇兴
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/about")
-	public String aboutDetail(@RequestParam(value="id",defaultValue="1")int id,Model model){
-		
-		//查询左右文章，
-		List<Article> articleList = articleService.findArticleByType(1);
-		model.addAttribute("articleList", articleList);
-		//根据id查文章
-		Article article = articleService.findArticleByid(id);
-		model.addAttribute("article", article);
-		
-		return "/front/about/detail";
-	}
-	/**
-	 * 产品介绍
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/product")
-	public String productDetail(@RequestParam(value="id",defaultValue="1")int id,Model model){
-		
-		//查询左右文章，所有product文章
-		List<Article> articleList = articleService.findArticleByType(2);
-		model.addAttribute("articleList", articleList);
-		//根据id查文章
-		Article article = articleService.findArticleByid(id);
-		model.addAttribute("article", article);
-		
-		return "/front/product/detail";
-	}
-	
-	@RequestMapping("/productinfo")
-	public String productInfo(@RequestParam(value="id",defaultValue="1")int id,Model model){		
-		
-		//根据id查文章
-		Article article = articleService.findArticleByid(id);
-		model.addAttribute("article", article);
-		
-		return "/front/product/info";
-	}
-	/**
-	 * 联系我们
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/contact")
-	public String contactDetail(@RequestParam(value="id",defaultValue="1")int id,Model model){
-		
-		//查询左右文章，
-		List<Article> articleList = articleService.findArticleByType(3);
-		model.addAttribute("articleList", articleList);
-		//根据id查文章
-		Article article = articleService.findArticleByid(id);
-		model.addAttribute("article", article);
-		
-		return "/front/contact/detail";
-	}
 	
 	
-	@RequestMapping("/feedback")
-	public String toFeedBackView(Model model){		
-		
-		return "/front/contact/feedback";
-	}
-	
-	@RequestMapping("/cooperative")
-	public String toCooperativeView(Model model) {
-	
-		return "/front/contact/cooperative";
-	}
 	
 	
-	@RequestMapping("/emap")
-	public String eMap(Model model){
-		
-		return "/front/contact/emap";
-	}
+
 	
 	@RequestMapping("/words")	
 	public String toWords(Model model,Words bean){		

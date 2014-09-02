@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.kelidly.dao.ArticleDao;
 import com.kelidly.entity.Article;
-import com.kelidly.entity.ArticleType;
 import com.kelidly.model.PageModel;
 import com.kelidly.service.ArticleService;
 import com.kelidly.service.SiteService;
@@ -38,47 +37,6 @@ public class ArticleServiceImpl implements ArticleService {
 	public Article findArticleByid(long id) {
 
 		return articleDao.getArticleByid(id);
-	}
-
-	@Override
-	public List<ArticleType> findAllArticleType() {
-		
-		return articleDao.getAllArticleType();
-	}
-
-	@Override
-	public boolean updateArticleType(ArticleType articleType) {
-		
-		try {
-			articleDao.update(articleType);
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
-	}
-	
-	@Override
-	public boolean deleteArticleType(int id) {
-		
-		try {
-			articleDao.delete(ArticleType.class,(long)id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public boolean addArticleType(ArticleType articleType) {
-
-		try {
-			articleDao.create(articleType);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 
 	@Override
@@ -122,27 +80,9 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> findArticleByType(long type) {
-		
-		return articleDao.getArticleByType(type);
-	}
-
-
-	
-	@Override
 	public PageModel findPageArticleBySiteId(int pageNo, int pageSize, long siteid){
 		return articleDao.getPageArticleBySiteId(pageNo, pageSize, siteid);
 	}
-//	@Override
-//	public List<Article> findArticleByLimit(long pid,int i){
-//		
-//		List<Integer> a = siteService.findIdListByPid(pid);
-//		
-//		List<Article> articles = articleDao.getArticleByLimit(a,i);
-//		
-//		return articles;
-//		
-//	}
 	
 	@Override
 	public List<Article> getArticleByLimit(List<Integer> a, int i) {

@@ -7,14 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kelidly.service.NewsService;
 
 @Controller
 @RequestMapping("support")
 public class SupportController extends BaseController{
 
-	@Resource (name="newsService")
-	NewsService newsService;
+
 
 	@RequestMapping("/index")
 	public String index(
