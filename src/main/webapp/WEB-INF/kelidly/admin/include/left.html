@@ -36,11 +36,11 @@
 				
 				            <#list tree.child as item>
 				                <li>
-				            <div ><a class="<#if mid??&&mid=item.model.id?c>current</#if>" href="/back/site/showSite.html?siteid=${item.model.id?c}">一级：${item.model.name!}</a></div>
+				            <div ><a class="<#if mid??&&mid=item.model.id?c>current</#if>" href="${webroot}/back/site/showSite.html?siteid=${item.model.id?c}">一级：${item.model.name!}</a></div>
 				                <#if item??&&item.hasChild()>
 				                				                    
 				                    <#list item.child as subitem>
-				                    <li><a class="<#if mid??&&mid=subitem.model.id?c>current</#if>" href="/back/site/showSite.html?siteid=${subitem.model.id?c}" ><span>&#183;</span>${subitem.model.name}</a></li>
+				                    <li><a class="<#if mid??&&mid=subitem.model.id?c>current</#if>" href="${webroot}/back/site/showSite.html?siteid=${subitem.model.id?c}" ><span>&#183;</span>${subitem.model.name}</a></li>
 				                    </#list>
 				                
 				                </#if>

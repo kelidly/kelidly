@@ -193,10 +193,10 @@
 					'token'     : '1234'//声明令牌
 				},
 				
-				'swf'         	: getRootPath()+'/common/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
-				'uploader'    	: getRootPath()+'/back/article/addSwfFiles;jsessionid='+jsessionId+'?swfdirName='+timestamp,//指定服务器端上传处理文件，默认‘upload.php’
+				'swf'         	: getRootPath()+'${webroot}/common/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
+				'uploader'    	: getRootPath()+'${webroot}/back/article/addSwfFiles;jsessionid='+jsessionId+'?swfdirName='+timestamp,//指定服务器端上传处理文件，默认‘upload.php’
 				'auto'        	: true,					//手动上传
-				'buttonImage' 	: getRootPath() +'/common/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
+				'buttonImage' 	: getRootPath() +'${webroot}/common/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
 				'fileObjName'   : 'file',  
 				'multi'       	: true,					//单文件上传
 				'fileTypeExts'	: '*.gif; *.jpg; *.png; *.flv; *.swf; *.xml;',	//允许上传的文件后缀

@@ -40,9 +40,9 @@
 						<fieldset>
 							<p>
 								<div style="float: right;">
-									<a class="button" href="/back/site/addSite.html?<#if site??>pid=${site.pid!0}</#if>" >添加同级栏目</a>
-									<a class="button" href="/back/site/addSite.html?<#if site??>pid=${site.id!0}</#if>" >添加子级栏目</a>
-                                    <a class="button" href="/back/site/delSite.html?<#if site??>siteid=${site.id!0}</#if>" >删除该栏目</a>
+									<a class="button" href="${webroot}/back/site/addSite.html?<#if site??>pid=${site.pid!0}</#if>" >添加同级栏目</a>
+									<a class="button" href="${webroot}/back/site/addSite.html?<#if site??>pid=${site.id!0}</#if>" >添加子级栏目</a>
+                                    <a class="button" href="${webroot}/back/site/delSite.html?<#if site??>siteid=${site.id!0}</#if>" onClick="delcfm()">删除该栏目</a>
                                     <hr />
                                     <input id="create" style="display: none;" class="button" type="button" onclick="createEditor()" value="创建编辑器" /> 
 									<input id="delete" class="button" type="button"	onclick="deleteEditor()" value="删除编辑器" />

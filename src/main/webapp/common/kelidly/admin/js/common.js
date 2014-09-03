@@ -219,3 +219,8 @@ function change_used_cj(record_id, fromuser) {
         }
     });
 }
+function delcfm() {
+    if (!confirm("确认要删除？")) {
+        window.event.returnValue = false;
+    }
+}
