@@ -40,14 +40,14 @@
                 <th>序列</th>    
                 <th>名称</th>
                 <th>网址</th>
-                <th>图标</th>
+                <th>案例图标</th>
                 
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <td colspan="6">
-                  <div class="bulk-actions align-left">
+                 <!--  <div class="bulk-actions align-left">
                     <select name="dropdown">       
                       <option value="option3">批量删除</option>
                     </select>
@@ -61,7 +61,7 @@
 	   form.submit();
 	}
 </script>
-                    <a class="button" onclick="submitform('checkId');" >确定操作</a> </div>
+                    <a class="button" onclick="submitform('checkId');" >确定操作</a> </div> -->
 
                     <!-- 分页导航 -->
     <!-- 注意这个表单必须做，action：必须指向控制器,id必须叫做pageForm_search -->
@@ -85,19 +85,19 @@
                     <input type="checkbox" name="checkId" id="checkId" value="${bean.id}"/>
 	                     
                 </td>
-                <td>${bean_index +1 } </td>
-                <td>${bean.name }</td>
-                <td>${bean.url }</td>
-                <td><img src="${webroot}${bean.pic}">
+                 <td>${bean_index + 1 + (pagemodel.currentPage-1)*pagemodel.pageSize } </td>
+                <td>${bean.name!"" }</td>
+                <td>${bean.url!"" }</td>
+                <td><img src="${webroot}${bean.pic!'img/icons/cross_grey_small.png'}" >
                </td>
                 <td>
                   <!-- Icons -->
                   <a href="${webroot}/back/case/updateView?caseId=${bean.id}" title="编辑">
-                  <img src="${webroot}/freemarker/themes/admin/img/icons/pencil.png" alt="Edit" /></a>
+                  <img src="img/icons/pencil.png" alt="Edit" /></a>
                   <a href="${webroot}/back/case/del?caseId=${bean.id}" title="删除">
-                  <img src="${webroot}/freemarker/themes/admin/img/icons/cross.png" alt="Delete" /></a> 
-                  <a href="#" title="设置">
-                  <img src="${webroot}/freemarker/themes/admin/img/icons/hammer_screwdriver.png" alt="Edit Meta" /></a> </td>
+                  <img src="img/icons/cross.png" alt="Delete" /></a> 
+                  <!-- <a href="#" title="设置">
+                  <img src="img/icons/hammer_screwdriver.png" alt="Edit Meta" /></a> </td> -->
               </tr>
               </#list>
              </form>     

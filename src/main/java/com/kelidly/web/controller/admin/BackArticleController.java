@@ -40,58 +40,7 @@ public class BackArticleController extends BaseController {
 	@Autowired
 	private HttpServletRequest request;
 
-	/**
-	 * 添加文章
-	 * 
-	 * @param article
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/addArticle1")
-	public String addArticle1(
-			Article article,
-			Model model,
-			@RequestParam(value = "status", required = false) String status,
-			@RequestParam(value = "imgfile", required = false) CommonsMultipartFile imgfile) {
-
-		if ("add".equals(status)) {
-
-			if(imgfile!=null){
-				// 添加图片
-				String filePath = addImage(imgfile);
-				if (filePath != null) {
-					article.setImgurl(filePath);
-				} else {
-					article.setImgurl(null);
-				}
-			}
-
-			// 添加flash(未编写)
-			article.setFlashurl("/");
-
-			article.setAddtime(new Date());
-			String rtMsg = "";
-			boolean flag = articleService.addArticle(article);
-			if (flag) {
-				rtMsg = "添加成功！";
-				// 返回文章管理
-				model.addAttribute("rtMsg", rtMsg);
-				return manageArticle(1, 10, model);
-			} else {
-				rtMsg = "添加失败！请查明原因。";
-				List<Site> secListSiteList = siteService
-						.findSecondListSiteList();
-				model.addAttribute("secListSiteList", secListSiteList);
-				model.addAttribute("rtMsg", rtMsg);
-				return "/admin/article/article_pub";
-			}
-		} else {
-			List<Site> secListSiteList = siteService.findSecondListSiteList();
-			model.addAttribute("secListSiteList", secListSiteList);
-			return "/admin/article/article_pub";
-		}
-
-	}
+	
 
 	/**
 	 * 添加文章
@@ -119,14 +68,7 @@ public class BackArticleController extends BaseController {
 				}
 			}
 
-			// 添加flash(未编写)
-			/*
-			 * if (flashFiles != null && flashFiles.length !=0 && false ==
-			 * flashFiles[0].getOriginalFilename().equals("")) { String
-			 * flashPath = addFlashFiles(flashFiles); if (flashPath != null) {
-			 * article.setFlashurl(flashPath); }else{ article.setFlashurl(null);
-			 * } article.setFlashurl(flashPath); }
-			 */
+
 
 			article.setAddtime(new Date());
 			String rtMsg = "";

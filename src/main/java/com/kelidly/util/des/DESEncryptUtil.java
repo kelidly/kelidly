@@ -32,13 +32,13 @@ public class DESEncryptUtil
 {
     public static void main(String[] args) throws Exception
     {
-        /** 生成KEY */
-        String operatorType = "key";
+//        /** 生成KEY */
+//        String operatorType = "key";
         String keyFilePath = "D:/dbkey.key";
-        DESEncryptUtil.test(keyFilePath, null, operatorType);
+//        DESEncryptUtil.test(keyFilePath, null, operatorType);
          
         /** 加密 */
-        operatorType = "encrypt";
+        String operatorType = "encrypt";
         String sourceFilePath = "D:/db-config.properties";
         DESEncryptUtil.test(keyFilePath, sourceFilePath, operatorType);
          

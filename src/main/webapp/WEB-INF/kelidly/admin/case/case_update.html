@@ -49,8 +49,9 @@
               
               <input type="file"  name="file"  >
               <br />
-              <img   src="${webroot}${bean.pic}"/>
-   
+              <img   src="${webroot}${bean.pic!'img/icons/cross_grey_small.png'}"/>
+  			  
+			    <input type="hidden" name="imgurl" value="${bean.imgurl!''}"  disabled="disabled" style="width: 600px"></input>
               </p>
               <!--<span class="input-notification success png_bg">成功通过提示信息</span>
               <span class="input-notification error png_bg">错误提示信息</span>

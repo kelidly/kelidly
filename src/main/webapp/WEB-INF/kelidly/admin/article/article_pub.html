@@ -8,7 +8,8 @@
 	<#assign nid="article"> 
 	<#assign mid="article_pub"> 
 	<#include "../include/left.html">
-	
+
+
 
 	<div id="main-content">
 		<noscript>
@@ -33,7 +34,7 @@
 				<#if rtMsg??>
 				<div class="notification attention png_bg">
 					<a href="#" class="close"><img
-						src="${webroot}/freemarker/themes/admin/img/icons/cross_grey_small.png"
+						src="img/icons/cross_grey_small.png"
 						title="Close this notification" alt="close" /></a>
 					<div id="editNoteHint">${rtMsg}</div>
 				</div>
@@ -138,8 +139,8 @@
 
 	<!-- 上传成功后，文件地址显示在这里 -->
 
-	<script src="${webroot}/kelidly/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="${webroot}/kelidly/uploadify/uploadify.css">
+	<script src="${webroot}/common/kelidly/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="${webroot}/common/kelidly/uploadify/uploadify.css">
   <script>  
 	var inputElement = document.getElementById("file_upload");    
 	inputElement.addEventListener("change", handleFiles, false);  
@@ -166,10 +167,24 @@
 	} 
 	   </script>  
 	<!-- 将声明的普通上传控件与Uploadify插件绑定 -->
+	
 	<script type="text/javascript">
-	var timestamp = Date.parse(new Date());
-		$(function() {
-			
+		var timestamp = new Date().getTime();
+		function getSessionId(){  
+            var c_name = 'JSESSIONID';  
+            if(document.cookie.length>0){  
+               c_start=document.cookie.indexOf(c_name + "=")  
+               if(c_start!=-1){   
+                 c_start=c_start + c_name.length+1   
+                 c_end=document.cookie.indexOf(";",c_start)  
+                 if(c_end==-1) c_end=document.cookie.length  
+                 return unescape(document.cookie.substring(c_start,c_end));  
+               }  
+            }  
+        }  
+		var jsessionId = getSessionId();
+		
+		$(function() {			
 			$('#file_upload').uploadify({
 				
 				//校验数据
@@ -178,10 +193,10 @@
 					'token'     : '1234'//声明令牌
 				},
 				
-				'swf'         	: getRootPath()+'/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
-				'uploader'    	: getRootPath()+'/back/article/addSwfFiles?swfdirName='+timestamp,			//指定服务器端上传处理文件，默认‘upload.php’
+				'swf'         	: getRootPath()+'/common/kelidly/uploadify/uploadify.swf',			//指定上传控件的主体文件，默认‘uploader.swf’
+				'uploader'    	: getRootPath()+'/back/article/addSwfFiles;jsessionid='+jsessionId+'?swfdirName='+timestamp,//指定服务器端上传处理文件，默认‘upload.php’
 				'auto'        	: true,					//手动上传
-				'buttonImage' 	: getRootPath() +'/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
+				'buttonImage' 	: getRootPath() +'/common/kelidly/uploadify/uploadify-browse.png',	//浏览按钮背景图片
 				'fileObjName'   : 'file',  
 				'multi'       	: true,					//单文件上传
 				'fileTypeExts'	: '*.gif; *.jpg; *.png; *.flv; *.swf; *.xml;',	//允许上传的文件后缀

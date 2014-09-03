@@ -34,11 +34,17 @@ public class BackLinksController {
 		
 		Boolean flag = false;
 		flag = linksService.delete(id);
-		if(flag){
-			
-			return toManage(model);
+		
+		String rtMsg = "";
+		if (flag) {
+			rtMsg = "删除成功！";
+		} else {
+			rtMsg = "删除失败！请查明原因。";
 		}
-		return "/admin/links/links_manage";
+		model.addAttribute("rtMsg", rtMsg);
+		
+		return toManage(model);
+		
 	}
 	
 	@RequestMapping("/pub")
@@ -55,11 +61,15 @@ public class BackLinksController {
 		Boolean flag = false;
 	
 		flag = linksService.update(bean);
-		if(flag){
-			
-			return toManage(model);
+		String rtMsg = "";		
+		if (flag) {
+			rtMsg = "修改成功！";
+		} else {
+			rtMsg = "修改失败！请查明原因。";
 		}
-		return "/admin/links/links_manage";
+		model.addAttribute("rtMsg", rtMsg);	
+		
+		return toManage(model);
 	}
 
 	
@@ -68,11 +78,16 @@ public class BackLinksController {
 		
 		Boolean flag = false;
 		flag = linksService.add(bean);
-		if(flag){
-			
-			return toManage(model);
+		String rtMsg = "";		
+		if (flag) {
+			rtMsg = "修改成功！";
+		} else {
+			rtMsg = "修改失败！请查明原因。";
 		}
-		return "/admin/links/links_manage";
+		model.addAttribute("rtMsg", rtMsg);		
+			
+		return toManage(model);
+		
 	}
 	
 	@RequestMapping("/updateView")

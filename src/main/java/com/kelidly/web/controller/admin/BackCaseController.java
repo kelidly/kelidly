@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.kelidly.entity.Case;
+import com.kelidly.entity.Site;
 import com.kelidly.model.PageModel;
 import com.kelidly.service.CaseService;
+import com.kelidly.web.controller.BaseController;
 
 
 
 @Controller
 @RequestMapping("/back/case")
-public class BackCaseController {
+public class BackCaseController extends BaseController{
 
 	@Resource(name = "caseService")
 	CaseService caseService;
@@ -39,11 +42,18 @@ public class BackCaseController {
 		
 		Boolean flag = false;
 		flag = caseService.delete(id);
-		if(flag){
-			
-			return toManage(model);
+		
+		String rtMsg = "";
+		if (flag) {
+			rtMsg = "删除成功！";
+		} else {
+			rtMsg = "删除失败！请查明原因。";
 		}
-		return "/admin/case/case_manage";
+		model.addAttribute("rtMsg", rtMsg);
+		
+		return toManage(model);
+		
+		
 	}
 	
 	@RequestMapping("/pub")
@@ -54,72 +64,63 @@ public class BackCaseController {
 	}
 	@RequestMapping("/update")
 	public String update(@RequestParam("file") CommonsMultipartFile file,
-			HttpServletRequest request,Case bean,Model model) throws IOException{
-		if (!file.isEmpty()) {
-			InputStream is=null;
-			FileOutputStream fos =null;
-			    
-				String filePath = "/upload/images/"+new Date().getTime()+file.getOriginalFilename();
-				String realPath = request.getSession().getServletContext().getRealPath("common/")
-						+filePath;
-				
-				System.out.println(realPath);
-				fos = new FileOutputStream(realPath);
-				is = file.getInputStream();
-				int b=0;
-				while((b=is.read())!= -1){
-					fos.write(b);
-				}
-				fos.flush();
-				fos.close();
-				is.close();
-				
-				bean.setPic("/common"+filePath);
-		}
+			HttpServletRequest request,Case c,Model model) throws IOException{
 		
+		
+		if(file!=null){
+			// 添加图片
+			String filePath = addImage(file);
+			if (filePath != null) {
+				c.setPic(filePath);
+			} else {
+				c.setPic(null);
+			}
+		}		
 			
-		Boolean flag = false;
-	
-		flag = caseService.update(bean);
-		if(flag){
-			
-			return toManage(model);
+		Boolean flag = false;	
+		flag = caseService.update(c);		
+		String rtMsg = "";		
+		if (flag) {
+			rtMsg = "修改成功！";
+		} else {
+			rtMsg = "修改失败！请查明原因。";
 		}
-		return "/admin/case/case_manage";
+		model.addAttribute("rtMsg", rtMsg);		
+			
+		return toManage(model);
+		
+		
 	}
 
 	
 	@RequestMapping("/add")
 	public String add(@RequestParam("file") CommonsMultipartFile file,
-			HttpServletRequest request,Case bean,Model model) throws IOException{
-		if (!file.isEmpty()) {
-			InputStream is=null;
-			FileOutputStream fos =null;
-			    
-				String filePath = "/upload/images/"+new Date().getTime()+file.getOriginalFilename();
-				String realPath = request.getSession().getServletContext().getRealPath("common/")
-						+filePath;
-				
-				System.out.println(realPath);
-				fos = new FileOutputStream(realPath);
-				is = file.getInputStream();
-				int b=0;
-				while((b=is.read())!= -1){
-					fos.write(b);
-				}
-				fos.flush();
-				fos.close();
-				is.close();
-				
-				bean.setPic("/common"+filePath);
-		}
+			HttpServletRequest request,Case c,Model model) throws IOException{
+		
+		if(file!=null){
+			// 添加图片
+			String filePath = addImage(file);
+			if (filePath != null) {
+				c.setPic(filePath);
+			} else {
+				c.setPic(null);
+			}
+		}		
 		Boolean flag = false;
-		flag = caseService.add(bean);
-		if(flag){
-			
+		flag = caseService.add(c);
+		String rtMsg = "";
+		if (flag) {
+			rtMsg = "添加成功！";
+			// 返回文章管理
+			model.addAttribute("rtMsg", rtMsg);
 			return toManage(model);
-		}
-		return "/admin/case/case_manage";
+		} else {
+			rtMsg = "添加失败！请查明原因。";			
+			model.addAttribute("rtMsg", rtMsg);
+			return "/admin/case/case_manage";
+		}		
+		
+		
 	}
 	
 	@RequestMapping("/updateView")
@@ -147,13 +148,19 @@ public class BackCaseController {
 	@RequestMapping("/delMany")
 	public String delMany(@RequestParam("checkId")int[] idArr,Model model){
 
-		 Boolean flag = false;
-		 flag = caseService.delete(idArr);
-		 if(flag){
-			 
-			 return toManage(model);
-		 }
-		return "/admin/product/pro_manage";
+		Boolean flag = false;
+		flag = caseService.delete(idArr);
+		String rtMsg = "";
+		if (flag) {
+			rtMsg = "删除成功！";
+		} else {
+			rtMsg = "删除失败！请查明原因。";
+		}
+		model.addAttribute("rtMsg", rtMsg);
+		
+		return toManage(model);
+		
+		
 	}
 	
 	
